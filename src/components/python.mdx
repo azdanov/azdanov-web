@@ -1,0 +1,18 @@
+```python
+import requests
+import json
+
+url = "https://azdanov.dev/api/login"
+
+payload = json.dumps({
+  "username": "admin",
+  "password": "admin"
+})
+headers = {
+  'Content-Type': 'application/json'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text.encode('utf8'))
+```

@@ -1,0 +1,21 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import './prism.css';
+@import 'tailwindcss/utilities';
+
+.languages .prose :where(.prose > *):not(:where([class~="not-prose"] *)) {
+  opacity: 0.9;
+  margin-top: 0;
+  margin-bottom: 0;
+  border-radius: 13px;
+  pointer-events: none;
+  overflow: hidden;
+  height: 195px;
+}
+
+@media (min-width: 640px) {
+  .languages .prose :where(.prose > *):not(:where([class~="not-prose"] *)) {
+    height: 320px;
+    border-radius: 17px;
+  }
+}

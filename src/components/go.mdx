@@ -1,0 +1,26 @@
+```go
+func main() {
+  url := "https://azdanov.dev/api/login"
+
+  postBody, _ := json.Marshal(map[string]string{
+    "username":  "admin",
+    "password": "admin",
+  })
+  responseBody := bytes.NewBuffer(postBody)
+
+  response, err := http.Post(url, "application/json", responseBody)
+  if err != nil {
+    log.Fatal(err)
+  }
+
+  defer response.Body.Close()
+
+  body, err := ioutil.ReadAll(response.Body)
+
+  if err != nil {
+    log.Fatal(err)
+  }
+
+  log.Println(string(body))
+}
+```

@@ -1,0 +1,26 @@
+```java
+public class Login {
+  private final static URL login = new URL("https://azdanov.dev/api/login");
+
+  public static void main(String[] args) {
+    URLConnection connection = login.openConnection();
+    connection.setDoOutput(true);
+    connection.setRequestProperty("Content-Type", "application/json");
+    connection.setRequestProperty("Accept", "application/json");
+
+    try (OutputStream os = connection.getOutputStream()) {
+      byte[] input = "{\"username\":\"admin\",\"password\":\"admin\"}".getBytes("utf-8");
+      os.write(input, 0, input.length);
+    }
+    try (BufferedReader br = new BufferedReader(
+        new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+      StringBuilder response = new StringBuilder();
+      String responseLine = null;
+      while ((responseLine = br.readLine()) != null) {
+          response.append(responseLine.trim());
+      }
+      System.out.println(response.toString());
+    }
+  }
+}
+```
