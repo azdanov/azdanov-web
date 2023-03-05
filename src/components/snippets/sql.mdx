@@ -1,0 +1,15 @@
+```sql
+SELECT
+  id         AS id,
+  username   AS username,
+  email      AS email,
+  created_at AS created_at,
+  updated_at AS updated_at,
+  roles.name AS role
+FROM users
+INNER JOIN user_roles ON users.id = user_roles.user_id
+INNER JOIN roles ON user_roles.role_id = roles.id
+WHERE username = 'admin'
+  AND password = '$2a$10$T6dqyjVcnXx975Il7XMvM.jFr.QjupMeTi2HOfU2g6s4G2yGm5MCi'
+LIMIT 1;
+```

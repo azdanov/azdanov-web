@@ -11,12 +11,16 @@ import pawapayLogo from "@/images/logos/pawapay.jpeg";
 import { formatDate } from "@/lib/formatDate";
 import { generateRssFeed } from "@/lib/generateRssFeed";
 import { getAllArticles } from "@/lib/getAllArticles";
-import Go from "@/components/go.mdx";
-import Java from "@/components/java.mdx";
-import CSharp from "@/components/csharp.mdx";
-import JavaScript from "@/components/javascript.mdx";
-import Python from "@/components/python.mdx";
+import Go from "@/components/snippets/go.mdx";
+import Java from "@/components/snippets/java.mdx";
+import CSharp from "@/components/snippets/csharp.mdx";
+import JavaScript from "@/components/snippets/javascript.mdx";
+import Python from "@/components/snippets/python.mdx";
+import PHP from "@/components/snippets/php.mdx";
+import Ruby from "@/components/snippets/ruby.mdx";
+import Sql from "@/components/snippets/sql.mdx";
 import { Prose } from "@/components/Prose";
+import { useEffect, useState } from "react";
 
 function BriefcaseIcon(props) {
   return (
@@ -136,10 +140,21 @@ function Code() {
     "-rotate-2",
   ];
 
+  const [languages, setLanguages] = useState([]);
+
+  useEffect(() => {
+    setLanguages(
+      [Python, Go, CSharp, JavaScript, Java, PHP, Ruby, Sql]
+        .map((value) => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ value }) => value)
+    );
+  }, []);
+
   return (
     <div className="mt-16 sm:mt-20">
       <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
-        {[Python, Go, CSharp, JavaScript, Java].map((Language, index) => (
+        {languages.map((Language, index) => (
           <div
             key={index}
             className={clsx(
