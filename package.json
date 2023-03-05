@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint"
   },
-  "browserslist": "defaults, not ie <= 11",
+  "browserslist": ["defaults"],
   "dependencies": {
     "@headlessui/react": "^1.7.12",
     "@mapbox/rehype-prism": "^0.8.0",
