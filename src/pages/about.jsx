@@ -45,6 +45,39 @@ export default function About() {
             </h1>
             <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
               <p>
+                I work with front-end, back-end, database, and infrastructure
+                technologies. In my free time, I like to play video games, enjoy
+                doing fitness, read books and study to get better at what I do.
+              </p>
+              <p>
+                Here are some of the technologies I've worked with over the
+                years (for a more detailed list, check out my{" "}
+                <a
+                  href="https://www.linkedin.com/in/thezdanov/"
+                  className="text-zinc-500 underline hover:text-zinc-600 dark:text-zinc-300 dark:hover:text-zinc-200"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  LinkedIn profile
+                </a>
+                ):{" "}
+                <ul className="list-inside list-disc">
+                  <li>HTML / CSS / SCSS</li>
+                  <li>
+                    JavaScript / TypeScript (React.js, Next.js, Vue.js, Angular,
+                    Node.js)
+                  </li>
+                  <li>Java (Spring) / Hibernate</li>
+                  <li>C# (.NET) / Entity Framework Core</li>
+                  <li>SQL (MySQL) / RabbitMQ / Redis</li>
+                  <li>Go / Python / PHP</li>
+                  <li>AWS / Terraform / Docker / Git</li>
+                </ul>
+              </p>
+              <h2 className="text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-4xl">
+                My story
+              </h2>
+              <p>
                 Ever since I was a kid, I was fascinated by video games. I would
                 spend hours playing them and submerging myself in their worlds.
                 Later on I started learning how to make 3D models, photoshop
@@ -78,30 +111,13 @@ export default function About() {
                 improving legacy code.
               </p>
               <p>
-                Here are some of the technologies I've worked with over the
-                years (for a more detailed list, check out my{" "}
-                <a
-                  href="https://www.linkedin.com/in/thezdanov/"
-                  className="text-zinc-500 underline hover:text-zinc-600 dark:text-zinc-300 dark:hover:text-zinc-200"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  LinkedIn profile
-                </a>
-                ):{" "}
+                In my free time I like to play video games, enjoy doing fitness,
+                listen to music, read books and study. I do kettlebell training
+                and Brazilian Jiu-Jitsu. I enjoy playing all sorts of games
+                without specific preferences. Same about music, as long as it
+                sounds good I'm happy. With books I prefer fantasy and sci-fi
+                genres.
               </p>
-              <ul className="list-inside list-disc">
-                <li>HTML / CSS</li>
-                <li>
-                  JavaScript / TypeScript (React.js, Next.js, Vue.js, Angular,
-                  Node.js)
-                </li>
-                <li>Java (Spring) / Hibernate</li>
-                <li>C# (.NET) / EF Core</li>
-                <li>SQL (MySQL) / RabbitMQ / Redis</li>
-                <li>Go / Python / PHP</li>
-                <li>AWS / Docker / Git</li>
-              </ul>
             </div>
           </div>
           <div className="lg:pl-20">
