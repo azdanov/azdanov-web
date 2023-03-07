@@ -5,6 +5,7 @@ import { Container } from "@/components/Container";
 import { GitHubIcon, LinkedInIcon } from "@/components/SocialIcons";
 import portraitImage from "@/images/portrait.jpg";
 import { SocialLink } from "@/components/Social";
+import Link from "next/link";
 
 function MailIcon(props) {
   return (
@@ -68,14 +69,14 @@ export default function About() {
                 </ul>
                 <small>
                   More on my{" "}
-                  <a
+                  <Link
                     href="https://www.linkedin.com/in/thezdanov/"
                     className="text-zinc-500 underline hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     LinkedIn profile
-                  </a>
+                  </Link>
                 </small>
               </section>
               <h2 className="text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-4xl">
