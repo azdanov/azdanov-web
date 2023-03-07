@@ -1,17 +1,17 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import './prism.css';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "./prism.css";
+@import "tailwindcss/utilities";
 
 .languages .prose :where(.prose > *):not(:where([class~="not-prose"] *)) {
   opacity: 0.9;
   margin-top: 0;
   margin-bottom: 0;
-  border-radius: 13px;
+  border-radius: 20px;
   pointer-events: none;
   overflow: hidden;
   height: 325px;
-  width: 291px;
+  width: 293px;
   transform: scale(0.6);
   transform-origin: 0 0 0;
 }
@@ -19,8 +19,8 @@
 @media (min-width: 640px) {
   .languages .prose :where(.prose > *):not(:where([class~="not-prose"] *)) {
     height: 400px;
-    width: 362px;
-    border-radius: 17px;
+    width: 360px;
+    border-radius: 20px;
     transform: scale(0.8);
   }
 }
