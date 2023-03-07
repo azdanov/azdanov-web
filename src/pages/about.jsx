@@ -49,18 +49,11 @@ export default function About() {
                 technologies. In my free time, I like to play video games, enjoy
                 doing fitness, read books and study to get better at what I do.
               </p>
-              <p>
-                Here are some of the technologies I've worked with over the
-                years (for a more detailed list, check out my{" "}
-                <a
-                  href="https://www.linkedin.com/in/thezdanov/"
-                  className="text-zinc-500 underline hover:text-zinc-600 dark:text-zinc-300 dark:hover:text-zinc-200"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  LinkedIn profile
-                </a>
-                ):{" "}
+              <section>
+                <p>
+                  Here are some of the technologies I've worked with over the
+                  years:
+                </p>
                 <ul className="list-inside list-disc">
                   <li>HTML / CSS / SCSS</li>
                   <li>
@@ -73,7 +66,18 @@ export default function About() {
                   <li>Go / Python / PHP</li>
                   <li>AWS / Terraform / Docker / Git</li>
                 </ul>
-              </p>
+                <small>
+                  More on my{" "}
+                  <a
+                    href="https://www.linkedin.com/in/thezdanov/"
+                    className="text-zinc-500 underline hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    LinkedIn profile
+                  </a>
+                </small>
+              </section>
               <h2 className="text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-4xl">
                 My story
               </h2>
