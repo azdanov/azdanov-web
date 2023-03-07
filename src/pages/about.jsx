@@ -61,7 +61,7 @@ export default function About() {
                     Node.js)
                   </li>
                   <li>Java (Spring) / Hibernate</li>
-                  <li>C# (.NET) / Entity Framework Core</li>
+                  <li>C# (.NET) / Entity Framework</li>
                   <li>SQL (MySQL) / RabbitMQ / Redis</li>
                   <li>Go / Python / PHP</li>
                   <li>AWS / Terraform / Docker / Git</li>
