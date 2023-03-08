@@ -50,25 +50,25 @@ export default function Document() {
           type="application/feed+json"
           href={`${process.env.NEXT_PUBLIC_SITE_URL}/rss/feed.json`}
         />
-        <meta name="theme-color" content="#ffffff" />
-        <link
-          rel="icon"
-          href={`${process.env.NEXT_PUBLIC_SITE_URL}/favicon.svg`}
-        />
-        <link
-          rel="mask-icon"
-          href={`${process.env.NEXT_PUBLIC_SITE_URL}/mask-icon.svg`}
-          color="#000000"
-        />
         <link
           rel="apple-touch-icon"
           href={`${process.env.NEXT_PUBLIC_SITE_URL}/apple-touch-icon.png`}
         />
         <link
+          rel="icon"
+          type="image/svg+xml"
+          href={`${process.env.NEXT_PUBLIC_SITE_URL}/favicon.svg`}
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          href={`${process.env.NEXT_PUBLIC_SITE_URL}/favicon.png`}
+        />
+        <link
           rel="manifest"
           href={`${process.env.NEXT_PUBLIC_SITE_URL}/site.webmanifest`}
         />
-        <meta name="msapplication-TileColor" content="#ffc40d" />
+        <meta name="msapplication-TileColor" content="#2d89ef" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <body className="flex h-full flex-col bg-zinc-50 dark:bg-black">
