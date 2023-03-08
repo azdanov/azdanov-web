@@ -20,3 +20,42 @@ continue to adjust it to my needs as I go.
 Overall, I am very happy with the result. I like the way Next.js works and the theme looks fabulous. As a bonus, the
 project uses the same language everywhere, which is a big plus. It was a bit difficult when there were some Go-specific
 things while using Hugo.
+
+## Aside: React Hydration Error
+
+While migrating I encountered this error:
+
+```text
+Unhandled Runtime Error
+Error: Hydration failed because the initial UI does not match what was rendered on the server.
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+```
+
+Which documentation was very helpful in providing an example `Invalid HTML may cause hydration mismatch such as div inside p.`.
+
+Unknowingly I previously had a `ul` inside a `p` tag, which caused the error, it wasn't a valid HTML, yet it is allowed for backwards compatibility.
+An easy fix is to extract the `ul` from the `p` tag.
+
+```html
+<!-- Error -->
+<p>
+  Text
+  <ul>
+    <li>First</li>
+    <li>Second</li>
+    <li>Third</li>
+  </ul>
+</p>
+<!-- No error -->
+<p>
+  Text
+</p>
+<ul>
+    <li>First</li>
+    <li>Second</li>
+    <li>Third</li>
+  </ul>
+```
+
+I'm quite surprised and happy that Next.js helped me to learn more about writing correct HTML markup.
