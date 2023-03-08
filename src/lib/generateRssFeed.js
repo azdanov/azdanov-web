@@ -14,13 +14,15 @@ export async function generateRssFeed() {
 
   const feed = new Feed({
     title: author.name,
-    description: "Your blog description",
+    description: `Personal website of ${author.name}`,
     author,
     id: siteUrl,
     link: siteUrl,
     image: `${siteUrl}/favicon.ico`,
     favicon: `${siteUrl}/favicon.ico`,
-    copyright: `All rights reserved ${new Date().getFullYear()}`,
+    copyright: `All rights reserved ${new Date().getFullYear()}, ${
+      author.name
+    }`,
     feedLinks: {
       rss2: `${siteUrl}/rss/feed.xml`,
       json: `${siteUrl}/rss/feed.json`,
