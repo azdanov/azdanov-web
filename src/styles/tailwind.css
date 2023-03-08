@@ -9,6 +9,7 @@
   margin-bottom: 0;
   border-radius: 20px;
   pointer-events: none;
+  user-select: none;
   overflow: hidden;
   height: 325px;
   width: 293px;
