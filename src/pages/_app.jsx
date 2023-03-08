@@ -7,7 +7,7 @@ import "@/styles/tailwind.css";
 import "focus-visible";
 
 function usePrevious(value) {
-  let ref = useRef();
+  const ref = useRef();
 
   useEffect(() => {
     ref.current = value;
@@ -17,7 +17,7 @@ function usePrevious(value) {
 }
 
 export default function App({ Component, pageProps, router }) {
-  let previousPathname = usePrevious(router.pathname);
+  const previousPathname = usePrevious(router.pathname);
 
   return (
     <>

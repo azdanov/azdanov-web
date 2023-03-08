@@ -61,7 +61,7 @@ function Article({ article }) {
 }
 
 function Resume() {
-  let resume = [
+  const resume = [
     {
       company: "pawaPay",
       title: "Software Engineer",
@@ -132,7 +132,7 @@ function Resume() {
 }
 
 function Code() {
-  let rotations = [
+  const rotations = [
     "rotate-2",
     "-rotate-2",
     "rotate-2",
