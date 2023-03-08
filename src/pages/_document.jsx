@@ -50,43 +50,23 @@ export default function Document() {
           type="application/feed+json"
           href={`${process.env.NEXT_PUBLIC_SITE_URL}/rss/feed.json`}
         />
+        <meta name="theme-color" content="#ffffff" />
         <link
           rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href={`${process.env.NEXT_PUBLIC_SITE_URL}/favicon-32x32.png`}
+          href={`${process.env.NEXT_PUBLIC_SITE_URL}/favicon.svg`}
         />
         <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href={`${process.env.NEXT_PUBLIC_SITE_URL}/favicon-16x16.png`}
+          rel="mask-icon"
+          href={`${process.env.NEXT_PUBLIC_SITE_URL}/mask-icon.svg`}
+          color="#000000"
         />
         <link
           rel="apple-touch-icon"
-          sizes="180x180"
           href={`${process.env.NEXT_PUBLIC_SITE_URL}/apple-touch-icon.png`}
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href={`${process.env.NEXT_PUBLIC_SITE_URL}/favicon-32x32.png`}
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href={`${process.env.NEXT_PUBLIC_SITE_URL}/favicon-16x16.png`}
         />
         <link
           rel="manifest"
           href={`${process.env.NEXT_PUBLIC_SITE_URL}/site.webmanifest`}
-        />
-        <link
-          rel="mask-icon"
-          href={`${process.env.NEXT_PUBLIC_SITE_URL}/safari-pinned-tab.svg`}
-          color="#ffc40d"
         />
         <meta name="msapplication-TileColor" content="#ffc40d" />
         <meta name="theme-color" content="#ffffff" />
