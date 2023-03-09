@@ -15,8 +15,12 @@ import Go from "@/components/snippets/go.mdx";
 import Java from "@/components/snippets/java.mdx";
 import CSharp from "@/components/snippets/csharp.mdx";
 import JavaScript from "@/components/snippets/javascript.mdx";
+import Python from "@/components/snippets/python.mdx";
+import PHP from "@/components/snippets/php.mdx";
+import Ruby from "@/components/snippets/ruby.mdx";
 import Sql from "@/components/snippets/sql.mdx";
 import { Prose } from "@/components/Prose";
+import { useEffect, useState } from "react";
 
 function BriefcaseIcon(props) {
   return (
@@ -136,7 +140,16 @@ function Code() {
     "-rotate-2",
   ];
 
-  const languages = [Go, CSharp, Sql, JavaScript, Java];
+  const [languages, setLanguages] = useState([]);
+
+  useEffect(() => {
+    setLanguages(
+      [Python, Go, CSharp, JavaScript, Java, PHP, Ruby, Sql]
+        .map((value) => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ value }) => value)
+    );
+  }, []);
 
   return (
     <div className="mt-16 sm:mt-20">
