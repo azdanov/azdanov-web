@@ -21,6 +21,7 @@ import Ruby from "@/components/snippets/ruby.mdx";
 import Sql from "@/components/snippets/sql.mdx";
 import { Prose } from "@/components/Prose";
 import { useEffect, useState } from "react";
+import { Transition } from "@headlessui/react";
 
 function BriefcaseIcon(props) {
   return (
@@ -153,8 +154,17 @@ function Code() {
   }, []);
 
   return (
-    <div className="mt-16 h-[320px] sm:mt-20">
-      <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
+    <div className="mt-16 h-[330px] border border-transparent sm:mt-20">
+      <Transition
+        className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8"
+        show={languages.length > 0}
+        enter="transition-opacity duration-100"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition-opacity duration-150"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+      >
         {languages.map((Language, index) => (
           <div
             key={index}
@@ -168,7 +178,7 @@ function Code() {
             </Prose>
           </div>
         ))}
-      </div>
+      </Transition>
     </div>
   );
 }
