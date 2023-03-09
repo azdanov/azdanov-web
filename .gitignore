@@ -36,12 +36,7 @@ yarn-error.log*
 /public/robots.txt
 /public/sitemap.xml
 /public/sitemap-0.xml
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
+.vscode/
 .history/
 *.vsix
 cmake-build-*/
