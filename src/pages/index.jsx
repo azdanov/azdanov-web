@@ -148,11 +148,12 @@ function Code() {
         .map((value) => ({ value, sort: Math.random() }))
         .sort((a, b) => a.sort - b.sort)
         .map(({ value }) => value)
+        .slice(0, 5)
     );
   }, []);
 
   return (
-    <div className="mt-16 sm:mt-20">
+    <div className="mt-16 h-[320px] sm:mt-20">
       <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
         {languages.map((Language, index) => (
           <div
