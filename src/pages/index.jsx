@@ -154,7 +154,7 @@ function Code() {
   }, []);
 
   return (
-    <div className="mt-16 h-[330px] border border-transparent sm:mt-20">
+    <div className="mt-16 h-[200px] border border-transparent sm:mt-20 sm:h-[325px]">
       <Transition
         className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8"
         show={languages.length > 0}
