@@ -21,7 +21,6 @@ import Ruby from "@/components/snippets/ruby.mdx";
 import Sql from "@/components/snippets/sql.mdx";
 import { Prose } from "@/components/Prose";
 import { useEffect, useState } from "react";
-import { Transition } from "@headlessui/react";
 
 function BriefcaseIcon(props) {
   return (
@@ -132,6 +131,14 @@ function Resume() {
   );
 }
 
+function Dummy() {
+  return (
+    <pre>
+      <code></code>
+    </pre>
+  );
+}
+
 function Code() {
   const rotations = [
     "rotate-2",
@@ -141,7 +148,9 @@ function Code() {
     "-rotate-2",
   ];
 
-  const [languages, setLanguages] = useState([]);
+  const [languages, setLanguages] = useState(
+    Array.from({ length: rotations.length }, () => Dummy)
+  );
 
   useEffect(() => {
     setLanguages(
@@ -149,22 +158,13 @@ function Code() {
         .map((value) => ({ value, sort: Math.random() }))
         .sort((a, b) => a.sort - b.sort)
         .map(({ value }) => value)
-        .slice(0, 5)
+        .slice(0, rotations.length)
     );
-  }, []);
+  }, [rotations.length]);
 
   return (
     <div className="mt-16 h-[200px] border border-transparent sm:mt-20 sm:h-[325px]">
-      <Transition
-        className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8"
-        show={languages.length > 0}
-        enter="transition-opacity duration-100"
-        enterFrom="opacity-0"
-        enterTo="opacity-100"
-        leave="transition-opacity duration-150"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-      >
+      <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
         {languages.map((Language, index) => (
           <div
             key={index}
@@ -178,7 +178,7 @@ function Code() {
             </Prose>
           </div>
         ))}
-      </Transition>
+      </div>
     </div>
   );
 }
