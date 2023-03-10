@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useRef } from "react";
+import { Fragment, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -7,6 +7,7 @@ import clsx from "clsx";
 
 import { Container } from "@/components/Container";
 import avatarImage from "@/images/avatar.jpg";
+import { useIsomorphicLayoutEffect } from "@/hooks/useIsomorphicLayoutEffect";
 
 function CloseIcon(props) {
   return (
@@ -254,7 +255,7 @@ export function Header() {
   const avatarRef = useRef();
   const isInitial = useRef(true);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const downDelay = avatarRef.current?.offsetTop ?? 0;
     const upDelay = 64;
 
