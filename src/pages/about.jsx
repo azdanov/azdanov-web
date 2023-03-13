@@ -46,10 +46,19 @@ export default function About() {
             </h1>
             <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
               <p>
-                I work with front-end, back-end, database, and infrastructure
-                technologies. In my free time, I like to play video games, enjoy
-                doing fitness, read books and study to get better at what I do.
+                Hi there! I’m a full-stack developer with over 3 years of
+                experience in creating web applications that solve real-world
+                problems.
               </p>
+              <p>
+                I have worked with various technologies across the front-end,
+                back-end, database, and infrastructure layers. Some of the
+                projects I’m proud of include a payment widget and a dashboard
+                for a financial company, an app for operators to provide
+                customers with real-time support, and an app that is used for
+                reconciling and keeping the balance of financial transactions.
+              </p>
+              <p>I’m always eager to learn new skills and improve my craft.</p>
               <section>
                 <p>
                   Here are some of the technologies I've worked with over the
