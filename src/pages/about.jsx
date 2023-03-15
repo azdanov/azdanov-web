@@ -70,9 +70,9 @@ export default function About() {
                     JavaScript / TypeScript (React.js, Next.js, Vue.js, Angular,
                     Node.js)
                   </li>
-                  <li>Java (Spring) / Hibernate</li>
-                  <li>C# (.NET) / Entity Framework</li>
-                  <li>SQL (MySQL) / RabbitMQ / Redis</li>
+                  <li>Java (Spring) / JDBC / Hibernate</li>
+                  <li>C# (.NET) / Dapper / Entity Framework</li>
+                  <li>SQL (MySQL, PostgreSQL) / RabbitMQ / Redis</li>
                   <li>Go / Python / PHP</li>
                   <li>AWS / Terraform / Docker / Git</li>
                 </ul>
