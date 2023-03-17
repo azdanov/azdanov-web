@@ -1,5 +1,8 @@
 {
   "cSpell.words": [
     "clsx"
+  ],
+  "exportall.config.folderListener": [
+    "/src/components/icons"
   ]
 }

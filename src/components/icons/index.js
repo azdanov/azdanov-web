@@ -1,0 +1,10 @@
+export { ArrowLeftIcon } from "@/components/icons/ArrowLeftIcon";
+export { BriefcaseIcon } from "@/components/icons/BriefcaseIcon";
+export { ChevronDownIcon } from "@/components/icons/ChevronDownIcon";
+export { ChevronRightIcon } from "@/components/icons/ChevronRightIcon";
+export { CloseIcon } from "@/components/icons/CloseIcon";
+export { GitHubIcon } from "@/components/icons/GitHubIcon";
+export { LinkedInIcon } from "@/components/icons/LinkedInIcon";
+export { MailIcon } from "@/components/icons/MailIcon";
+export { MoonIcon } from "@/components/icons/MoonIcon";
+export { SunIcon } from "@/components/icons/SunIcon";
