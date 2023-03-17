@@ -5,7 +5,8 @@ export function ChevronRightIcon(props) {
         d="M6.75 5.75 9.25 8l-2.5 2.25"
         strokeWidth="1.5"
         strokeLinecap="round"
-        strokeLinejoin="round" />
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }

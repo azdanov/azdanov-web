@@ -6,7 +6,8 @@ export function ChevronDownIcon(props) {
         fill="none"
         strokeWidth="1.5"
         strokeLinecap="round"
-        strokeLinejoin="round" />
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
