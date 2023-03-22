@@ -1,0 +1,39 @@
+import Image from "next/image";
+import { ArticleLayout } from "@/components/ArticleLayout";
+import restfulCertificatePng from "./images/nick-chapsas-restful-certificate_imageoptim.png";
+
+export const meta = {
+  author: "Anton Ždanov",
+  date: "2023-03-22T19:11:39.244Z",
+  title: "Learning to build RESTful APIs with C# and .NET 7",
+  description: "My first steps in learning how to build RESTful APIs with C#, .NET 7, Dapper and PostgreSQL",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+I started learning C# and .NET a few weeks ago and finished a course on building a modern RESTful API. I would like to share that I've finished a GitHub project and have a certificate from the website.
+
+The course I took was from [Nick Chapsas - From Zero to Hero:
+REST APIs in .NET](https://nickchapsas.com/p/from-zero-to-hero-rest-apis-in-asp-net-core), a well-known YouTube instructor with many years of experience building production APIs in .NET. It taught me how to create a REST API end-to-end from scratch using the latest .NET 7, Dapper and other libraries. The course uses the C# (obviously), which is one of my favorites and the reasons for switching from Java and Node.js.
+
+The REST API I built is a simple movie app that allows users to create, read, update and delete movies and ratings associated with a movie. It uses ASP.NET, Dapper for data access, PostgreSQL
+for database storage, and Swagger for documentation.
+
+I've made a GitHub project that contains all the source code and instructions on how to run it locally. You can find it here: https://github.com/azdanov/MoviesApp
+
+The course covered a bunch of topics, including:
+
+* Basics of HTTP verbs and CRUD
+* Building a RESTful API with data validation
+* Authentication and authorization
+* User-specific actions
+* Filtering, sorting, pagination, versioning and swagger
+* Building an SDK and consuming the API
+* Minimal API
+
+After completing the course, I got a certificate, nice surprise. Here it is:
+
+<Image src={restfulCertificatePng} alt="Certificate for completing From Zero to Hero:
+REST APIs in .NET" />
+
+I really enjoyed this course and can recommend it to anyone who wants to learn how to create REST APIs with .NET 7 and C#. If you have any questions or feedback, feel free to contact me.
