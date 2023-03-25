@@ -36,8 +36,7 @@ export default function About() {
             <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
               <p>
                 Hi there! I’m a full-stack developer with over 3 years of
-                experience in creating web applications that solve real-world
-                problems.
+                experience in creating web applications.
               </p>
               <p>
                 I have worked with various technologies across the front-end,
