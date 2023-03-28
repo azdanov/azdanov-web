@@ -53,16 +53,19 @@ export default function About() {
                   years:
                 </p>
                 <ul className="list-inside list-disc">
-                  <li>HTML / CSS / SCSS</li>
+                  <li>HTML, CSS, SCSS</li>
                   <li>
-                    JavaScript / TypeScript (React.js, Next.js, Vue.js, Angular,
-                    Node.js)
+                    TypeScript, JavaScript, Node.js, React.js, Next.js, Vue.js,
+                    Angular
                   </li>
-                  <li>Java (Spring) / JDBC / Hibernate</li>
-                  <li>C# (.NET) / Dapper / Entity Framework</li>
-                  <li>SQL (MySQL, PostgreSQL) / RabbitMQ / Redis</li>
-                  <li>Go / Python / PHP</li>
-                  <li>AWS / Terraform / Docker / Git</li>
+                  <li>Java, Spring, JDBC, Hibernate</li>
+                  <li>C#, .NET, ASP.NET Core, Dapper, Entity Framework Core</li>
+                  <li>SQL, MySQL, PostgreSQL, RabbitMQ, Redis</li>
+                  <li>
+                    AWS: Lambda, S3, CloudFront, API Gateway, DynamoDB,
+                    EventBridge CloudWatch, IAM, Route53
+                  </li>
+                  <li>Terraform, Docker, Git</li>
                 </ul>
                 <small>
                   More on my{" "}
