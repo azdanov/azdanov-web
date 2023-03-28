@@ -63,8 +63,8 @@ export default function About() {
                   <li>SQL, MySQL, PostgreSQL, RabbitMQ, Redis</li>
                   <li>Go, PHP, Python</li>
                   <li>
-                    AWS: Lambda, S3, CloudFront, API Gateway, DynamoDB,
-                    EventBridge CloudWatch, IAM, Route53
+                    AWS: Lambda, Step Functions, S3, CloudFront, API Gateway,
+                    DynamoDB, EventBridge, CloudWatch, IAM, Route53, Cognito
                   </li>
                   <li>Terraform, Docker, Grpc, Git</li>
                 </ul>
