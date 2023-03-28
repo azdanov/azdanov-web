@@ -61,6 +61,7 @@ export default function About() {
                   <li>Java, Spring, JDBC, Hibernate</li>
                   <li>C#, .NET, ASP.NET Core, Dapper, Entity Framework Core</li>
                   <li>SQL, MySQL, PostgreSQL, RabbitMQ, Redis</li>
+                  <li>Go, PHP, Python</li>
                   <li>
                     AWS: Lambda, S3, CloudFront, API Gateway, DynamoDB,
                     EventBridge CloudWatch, IAM, Route53
