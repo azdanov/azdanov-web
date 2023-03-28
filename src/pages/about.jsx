@@ -66,7 +66,7 @@ export default function About() {
                     AWS: Lambda, S3, CloudFront, API Gateway, DynamoDB,
                     EventBridge CloudWatch, IAM, Route53
                   </li>
-                  <li>Terraform, Docker, Git</li>
+                  <li>Terraform, Docker, Grpc, Git</li>
                 </ul>
                 <small>
                   More on my{" "}
