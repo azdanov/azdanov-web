@@ -60,13 +60,13 @@ export default function About() {
                   </li>
                   <li>Java, Spring, JDBC, Hibernate</li>
                   <li>C#, .NET, ASP.NET Core, Dapper, Entity Framework Core</li>
-                  <li>SQL, MySQL, PostgreSQL, RabbitMQ, Redis</li>
+                  <li>SQL, MySQL, PostgreSQL, RabbitMQ, Redis, Grpc</li>
                   <li>Go, PHP, Python</li>
                   <li>
                     AWS: Lambda, Step Functions, S3, CloudFront, API Gateway,
                     DynamoDB, EventBridge, CloudWatch, IAM, Route53, Cognito
                   </li>
-                  <li>Terraform, Docker, Grpc, Git</li>
+                  <li>Terraform, Docker, Git</li>
                 </ul>
                 <small>
                   More on my{" "}
