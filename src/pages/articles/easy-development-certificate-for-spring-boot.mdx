@@ -5,7 +5,8 @@ export const meta = {
   author: "Anton Ždanov",
   date: "2021-05-15T23:17:18+03:00",
   title: "Easy Development Certificates (SSL/TLS) for Spring Boot",
-  description: "Using mkcert to generate locally-trusted development certificates for Spring.",
+  description:
+    "Using mkcert to generate locally-trusted development certificates for Spring.",
 };
 
 export default (props) => <ArticleLayout meta={meta} {...props} />;
@@ -19,11 +20,11 @@ In the 2nd chapter we are given an example of how to use HTTPS with spring boot:
 3. Copy the generated 'certificate.p12' file inside 'src/main/resources' directory.
 4. Update 'application.properties':
 
-    ```properties
-    server.ssl.key-store-type=PKCS12
-    server.ssl.key-store=classpath:certificate.p12
-    server.ssl.key-store-password=12345
-    ```
+   ```properties
+   server.ssl.key-store-type=PKCS12
+   server.ssl.key-store=classpath:certificate.p12
+   server.ssl.key-store-password=12345
+   ```
 
 One problem with this approach is that such certificates are not recognized by browsers, which will show an indicator that "this certificate is not trustworthy".
 
