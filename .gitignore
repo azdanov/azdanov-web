@@ -36,12 +36,7 @@ yarn-error.log*
 /public/robots.txt
 /public/sitemap.xml
 /public/sitemap-0.xml
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
+.vscode/
 .history/
 *.vsix
 cmake-build-*/
@@ -53,7 +48,7 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
-.idea
+.idea/
 *.iml
 out
 gen
@@ -86,3 +81,4 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+.next/
