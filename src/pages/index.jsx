@@ -96,7 +96,7 @@ function Resume() {
         ))}
       </ol>
       <Button
-        href="https://www.linkedin.com/in/thezdanov/"
+        href="https://www.linkedin.com/in/azdanov/"
         variant="secondary"
         className="group mt-6 w-full"
         target="_blank"
@@ -193,7 +193,7 @@ export default function Home({ articles }) {
               rel="noopener noreferrer"
             />
             <IconLink
-              href="https://www.linkedin.com/in/thezdanov/"
+              href="https://www.linkedin.com/in/azdanov/"
               aria-label="Follow on LinkedIn"
               icon={LinkedInIcon}
               target="_blank"

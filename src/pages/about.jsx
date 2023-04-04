@@ -71,7 +71,7 @@ export default function About() {
                 <small>
                   More on my{" "}
                   <Link
-                    href="https://www.linkedin.com/in/thezdanov/"
+                    href="https://www.linkedin.com/in/azdanov/"
                     className="text-zinc-500 underline hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -137,7 +137,7 @@ export default function About() {
                 Follow on GitHub
               </SocialLink>
               <SocialLink
-                href="https://www.linkedin.com/in/thezdanov/"
+                href="https://www.linkedin.com/in/azdanov/"
                 icon={LinkedInIcon}
                 className="mt-4"
                 target="_blank"
