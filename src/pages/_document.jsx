@@ -6,31 +6,31 @@ const modeScript = `
   updateMode();
   darkModeMediaQuery.addEventListener("change", updateModeWithoutTransitions);
   window.addEventListener("storage", updateModeWithoutTransitions);
-  
+
   function updateMode() {
     const isSystemDarkMode = darkModeMediaQuery.matches;
     const isDarkMode =
       window.localStorage.isDarkMode === "true" ||
       (!("isDarkMode" in window.localStorage) && isSystemDarkMode);
-  
+
     if (isDarkMode) {
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
     }
-  
+
     if (isDarkMode === isSystemDarkMode) {
       delete window.localStorage.isDarkMode;
     }
   }
-  
+
   function disableTransitionsTemporarily() {
     document.documentElement.classList.add("[&_*]:!transition-none");
     window.setTimeout(() => {
       document.documentElement.classList.remove("[&_*]:!transition-none");
     }, 0);
   }
-  
+
   function updateModeWithoutTransitions() {
     disableTransitionsTemporarily();
     updateMode();
@@ -70,7 +70,7 @@ export default function Document() {
           rel="manifest"
           href={`${process.env.NEXT_PUBLIC_SITE_URL}/site.webmanifest`}
         />
-        <meta name="msapplication-TileColor" content="#2d89ef" />
+        <meta name="msapplication-TileColor" content="#fbbf24" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <body className="flex h-full flex-col bg-zinc-50 dark:bg-black">

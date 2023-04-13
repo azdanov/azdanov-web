@@ -25,10 +25,12 @@ export function Footer() {
                 <NavLink href="/about">About</NavLink>
                 <NavLink href="/articles">Articles</NavLink>
               </div>
-              <p className="text-sm text-zinc-400 dark:text-zinc-500">
-                &copy; {new Date().getFullYear()} Anton Ždanov. All rights
-                reserved.
-              </p>
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="text-sm transition hover:text-blue-500 dark:hover:text-blue-400"
+              >
+                Back to top
+              </button>
             </div>
           </Container.Inner>
         </div>

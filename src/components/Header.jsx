@@ -91,7 +91,7 @@ function NavItem({ href, children }) {
       >
         {children}
         {isActive && (
-          <span className="absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-blue-500/0 via-blue-500/40 to-blue-500/0 dark:from-blue-400/0 dark:via-blue-400/40 dark:to-blue-400/0" />
+          <span className="absolute inset-x-2 bottom-1 h-px bg-blue-500/80 dark:bg-blue-400/80" />
         )}
       </Link>
     </li>
@@ -155,7 +155,7 @@ function Logo({ className, ...props }) {
         aria-label="Home"
         className={clsx(
           className,
-          "pointer-events-auto block h-10 w-12 rounded-sm bg-blue-500 text-center font-medium text-zinc-100 dark:bg-blue-500/90"
+          "pointer-events-auto block h-10 w-11 rounded-sm bg-blue-500 text-center font-medium text-zinc-100 dark:bg-blue-500/90"
         )}
         {...props}
       >
