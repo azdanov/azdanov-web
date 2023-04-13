@@ -1,12 +1,9 @@
-import { Fragment, useRef } from "react";
-import Image from "next/image";
+import { Fragment } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Popover, Transition } from "@headlessui/react";
 import clsx from "clsx";
 import { Container } from "@/components/Container";
-import avatarImage from "@/images/avatar.jpg";
-import { useIsomorphicLayoutEffect } from "@/hooks/useIsomorphicLayoutEffect";
 import {
   CloseIcon,
   ChevronDownIcon,
@@ -27,7 +24,7 @@ function MobileNavItem({ href, children }) {
 function MobileNavigation(props) {
   return (
     <Popover {...props}>
-      <Popover.Button className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20">
+      <Popover.Button className="group flex items-center rounded-sm bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 backdrop-blur dark:bg-zinc-900 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20">
         Menu
         <ChevronDownIcon className="ml-3 h-auto w-2 stroke-zinc-500 group-hover:stroke-zinc-700 dark:group-hover:stroke-zinc-400" />
       </Popover.Button>
@@ -54,7 +51,7 @@ function MobileNavigation(props) {
         >
           <Popover.Panel
             focus
-            className="fixed inset-x-4 top-8 z-50 origin-top rounded-3xl bg-white p-8 ring-1 ring-zinc-900/5 dark:bg-zinc-900 dark:ring-zinc-800"
+            className="fixed inset-x-4 top-8 z-50 origin-top rounded-sm bg-white p-8 ring-1 ring-zinc-900/5 dark:bg-zinc-900 dark:ring-zinc-800"
           >
             <div className="flex flex-row-reverse items-center justify-between">
               <Popover.Button aria-label="Close menu" className="-m-1 p-1">
@@ -104,11 +101,10 @@ function NavItem({ href, children }) {
 function DesktopNavigation(props) {
   return (
     <nav {...props}>
-      <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
+      <ul className="flex bg-white/90 px-3 text-sm font-medium text-zinc-800 backdrop-blur dark:bg-zinc-900 dark:text-zinc-200 dark:ring-white/10">
         <NavItem href="/">Home</NavItem>
         <NavItem href="/about">About</NavItem>
         <NavItem href="/articles">Articles</NavItem>
-        {/*<NavItem href="/projects">Projects</NavItem>*/}
       </ul>
     </nav>
   );
@@ -142,7 +138,7 @@ function ModeToggle() {
     <button
       type="button"
       aria-label="Toggle dark mode"
-      className="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
+      className="group bg-white/90 px-3 py-2 backdrop-blur transition dark:bg-zinc-900 dark:ring-white/10 dark:hover:ring-white/20"
       onClick={toggleMode}
     >
       <SunIcon className="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-blue-50 [@media(prefers-color-scheme:dark)]:stroke-blue-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-blue-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-blue-600" />
@@ -151,206 +147,35 @@ function ModeToggle() {
   );
 }
 
-function clamp(number, a, b) {
-  const min = Math.min(a, b);
-  const max = Math.max(a, b);
-  return Math.min(Math.max(number, min), max);
-}
-
-function AvatarContainer({ className, ...props }) {
+function Logo({ className, ...props }) {
   return (
-    <div
-      className={clsx(
-        className,
-        "h-10 w-10 rounded-full bg-white/90 p-0.5 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10"
-      )}
-      {...props}
-    />
-  );
-}
-
-function Avatar({ large = false, className, ...props }) {
-  return (
-    <Link
-      href="/"
-      aria-label="Home"
-      className={clsx(className, "pointer-events-auto")}
-      {...props}
-    >
-      <Image
-        src={avatarImage}
-        alt=""
-        sizes={large ? "4rem" : "2.25rem"}
+    <div className="relative">
+      <Link
+        href="/"
+        aria-label="Home"
         className={clsx(
-          "rounded-full bg-zinc-100 object-cover dark:bg-zinc-800",
-          large ? "h-16 w-16" : "h-9 w-9"
+          className,
+          "pointer-events-auto block h-10 w-12 rounded-sm bg-blue-500 text-center font-medium text-zinc-100 dark:bg-blue-500/90"
         )}
-        priority
-      />
-    </Link>
+        {...props}
+      >
+        <span className="absolute bottom-1 right-1 text-2xl leading-[1.5rem]">
+          AZ
+        </span>
+      </Link>
+    </div>
   );
-}
-
-function setProperty(property, value) {
-  document.documentElement.style.setProperty(property, value);
-}
-
-function removeProperty(property) {
-  document.documentElement.style.removeProperty(property);
-}
-
-function updateHeaderStyles({ headerRef, isInitial, downDelay, upDelay }) {
-  const { top, height } = headerRef.current.getBoundingClientRect();
-  const scrollY = clamp(
-    window.scrollY,
-    0,
-    document.body.scrollHeight - window.innerHeight
-  );
-
-  if (isInitial.current) {
-    setProperty("--header-position", "sticky");
-  }
-
-  setProperty("--content-offset", `${downDelay}px`);
-
-  if (isInitial.current || scrollY < downDelay) {
-    setProperty("--header-height", `${downDelay + height}px`);
-    setProperty("--header-mb", `${-downDelay}px`);
-  } else if (top + height < -upDelay) {
-    const offset = Math.max(height, scrollY - upDelay);
-    setProperty("--header-height", `${offset}px`);
-    setProperty("--header-mb", `${height - offset}px`);
-  } else if (top === 0) {
-    setProperty("--header-height", `${scrollY + height}px`);
-    setProperty("--header-mb", `${-scrollY}px`);
-  }
-
-  if (top === 0 && scrollY > 0 && scrollY >= downDelay) {
-    setProperty("--header-inner-position", "fixed");
-    removeProperty("--header-top");
-    removeProperty("--avatar-top");
-  } else {
-    removeProperty("--header-inner-position");
-    setProperty("--header-top", "0px");
-    setProperty("--avatar-top", "0px");
-  }
-}
-
-function updateAvatarStyles({ isHomePage, downDelay }) {
-  if (!isHomePage) {
-    return;
-  }
-
-  const fromScale = 1;
-  const toScale = 36 / 64;
-  const fromX = 0;
-  const toX = 2 / 16;
-
-  const scrollY = downDelay - window.scrollY;
-
-  let scale = (scrollY * (fromScale - toScale)) / downDelay + toScale;
-  scale = clamp(scale, fromScale, toScale);
-
-  let x = (scrollY * (fromX - toX)) / downDelay + toX;
-  x = clamp(x, fromX, toX);
-
-  setProperty(
-    "--avatar-image-transform",
-    `translate3d(${x}rem, 0, 0) scale(${scale})`
-  );
-
-  const borderScale = 1 / (toScale / scale);
-  const borderX = (-toX + x) * borderScale;
-  const borderTransform = `translate3d(${borderX}rem, 0, 0) scale(${borderScale})`;
-
-  setProperty("--avatar-border-transform", borderTransform);
-  setProperty("--avatar-border-opacity", scale === toScale ? 1 : 0);
 }
 
 export function Header() {
-  const isHomePage = useRouter().pathname === "/";
-
-  const headerRef = useRef();
-  const avatarRef = useRef();
-  const isInitial = useRef(true);
-
-  useIsomorphicLayoutEffect(() => {
-    const downDelay = avatarRef.current?.offsetTop ?? 0;
-    const upDelay = 64;
-
-    function updateStyles() {
-      updateHeaderStyles({ headerRef, isInitial, downDelay, upDelay });
-      updateAvatarStyles({ isHomePage, downDelay });
-      isInitial.current = false;
-    }
-
-    updateStyles();
-    window.addEventListener("scroll", updateStyles, { passive: true });
-    window.addEventListener("resize", updateStyles);
-
-    return () => {
-      window.removeEventListener("scroll", updateStyles);
-      window.removeEventListener("resize", updateStyles);
-    };
-  }, [isHomePage]);
-
   return (
     <>
-      <header
-        className="pointer-events-none relative z-50 flex flex-col"
-        style={{
-          height: "var(--header-height)",
-          marginBottom: "var(--header-mb)",
-        }}
-      >
-        {isHomePage && (
-          <>
-            <div
-              ref={avatarRef}
-              className="order-last mt-[calc(theme(spacing.16)-theme(spacing.3))]"
-            />
-            <Container
-              className="top-0 order-last -mb-3 pt-3"
-              style={{ position: "var(--header-position)" }}
-            >
-              <div
-                className="top-[var(--avatar-top,theme(spacing.3))] w-full"
-                style={{ position: "var(--header-inner-position)" }}
-              >
-                <div className="relative">
-                  <AvatarContainer
-                    className="absolute left-0 top-3 origin-left transition-opacity"
-                    style={{
-                      opacity: "var(--avatar-border-opacity, 0)",
-                      transform: "var(--avatar-border-transform)",
-                    }}
-                  />
-                  <Avatar
-                    large
-                    className="block h-16 w-16 origin-left"
-                    style={{ transform: "var(--avatar-image-transform)" }}
-                  />
-                </div>
-              </div>
-            </Container>
-          </>
-        )}
-        <div
-          ref={headerRef}
-          className="top-0 z-10 h-16 pt-6"
-          style={{ position: "var(--header-position)" }}
-        >
-          <Container
-            className="top-[var(--header-top,theme(spacing.6))] w-full"
-            style={{ position: "var(--header-inner-position)" }}
-          >
+      <header className="pointer-events-none relative z-50 flex flex-col">
+        <div className="top-0 z-10 h-16 pt-6">
+          <Container className="w-full">
             <div className="relative flex gap-4">
               <div className="flex flex-1">
-                {!isHomePage && (
-                  <AvatarContainer>
-                    <Avatar />
-                  </AvatarContainer>
-                )}
+                <Logo />
               </div>
               <div className="flex flex-1 justify-end md:justify-center">
                 <MobileNavigation className="pointer-events-auto md:hidden" />
@@ -365,7 +190,6 @@ export function Header() {
           </Container>
         </div>
       </header>
-      {isHomePage && <div style={{ height: "var(--content-offset)" }} />}
     </>
   );
 }

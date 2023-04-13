@@ -173,7 +173,7 @@ export default function Home({ articles }) {
             books and study to get better at what I do."
         />
       </Head>
-      <Container className="mt-9">
+      <Container className="mt-16 sm:mt-32">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
             Full-stack developer, curious learner and fitness enthusiast.
