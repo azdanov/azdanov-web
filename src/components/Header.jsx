@@ -155,7 +155,7 @@ function Logo({ className, ...props }) {
         aria-label="Home"
         className={clsx(
           className,
-          "pointer-events-auto block h-10 w-11 rounded-sm bg-blue-500 text-center font-medium text-zinc-100 dark:bg-blue-500/90"
+          "pointer-events-auto block h-10 w-11 rounded-sm bg-blue-500 text-center font-medium text-white dark:bg-blue-500/90"
         )}
         {...props}
       >
