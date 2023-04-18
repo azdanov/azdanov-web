@@ -1,0 +1,329 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Anton Ždanov",
+  date: "2023-04-18T07:02:24.190Z",
+  title: "How to host a static website on AWS S3, CloudFront and Route53 using Terraform",
+  description:
+    "A recipe on hosting a static website on AWS S3, CloudFront and Route53 using Terraform. Including a GitHub repository source code.",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+In this article, I'd like to share my experience of hosting a static website on AWS S3, CloudFront and Route53 using Terraform.
+It will use a custom domain name, and it will be secured with a TLS certificate.
+
+## Prerequisites
+
+### AWS Account
+
+You'll need an AWS account to host your website. If you don't have one, you can create one for free.
+
+* [Create an AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)
+* [Getting started: Are you a first-time AWS user?](https://docs.aws.amazon.com/accounts/latest/reference/welcome-first-time-user.html)
+* [Getting Started: Follow Security Best Practices as You Configure Your AWS Resources](https://aws.amazon.com/blogs/security/getting-started-follow-security-best-practices-as-you-configure-your-aws-resources/)
+* [Avoiding unexpected charges](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/checklistforunwantedcharges.html)
+* [What is the AWS Free Tier, and how do I use it?](https://repost.aws/knowledge-center/what-is-free-tier)
+
+Just to reiterate, you should follow the best practices when working with AWS:
+
+1. Create a separate [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) and don't use the root account.
+2. [Enable MFA](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable.html#id_credentials_mfa_enable-overview) for both the root account and the IAM user (or even better [use SSO](https://aws.amazon.com/iam/identity-center/)).
+3. Create an [AWS Budget](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html?icmpid=docs_costmanagement_hp-budgets-overview)
+to alert you when your costs exceed a certain threshold.
+
+### AWS CLI
+
+You'll need to set up the AWS CLI and to configure your AWS credentials. If you don't have it installed, you can download it from the [official website](https://aws.amazon.com/cli/).
+
+### Terraform
+
+You'll need Terraform to provision the infrastructure. If you don't have it installed, you can download it from the [official website](https://www.terraform.io/downloads.html).
+
+### Domain Name
+
+You'll need a domain name to host your website. If you don't have one, you can buy one from a domain registrar.
+In this article, I'll be using [Route53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-register.html?icmpid=docs_console_unmapped) to manage my domain,
+because it will simplify the Terraform configuration.
+
+There are ways to connect or migrate an existing domain name, but it's out of scope for this article.
+
+We will be using a domain for the CloudFront distribution, and a TLS certificate.
+
+## Setup
+
+After you've set up your AWS account, AWS CLI and Terraform, you can start provisioning the infrastructure.
+
+I'll be using my Demo Next.js app as an example. You can find the source code on [GitHub](https://github.com/azdanov/aws-terraform-static-website-demo).
+
+### Setting up Terraform
+
+Before we start, it's a good idea to manually create a DynamoDB table for Terraform state locking and an S3 bucket for Terraform remote state storage.
+
+```bash
+# Create an S3 bucket for Terraform remote state storage
+aws s3api create-bucket --bucket azdanov-aws-static-website-demo-terraform-state --region us-east-1
+
+# Disable public access to the S3 bucket
+aws s3api put-public-access-block --bucket azdanov-aws-static-website-demo-terraform-state --public-access-block-configuration "BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true"
+
+# Create a DynamoDB table for Terraform state locking
+aws dynamodb create-table --table-name azdanov-aws-static-website-demo-terraform-lock-table --region us-east-1 --attribute-definitions AttributeName=LockID,AttributeType=S --key-schema AttributeName=LockID,KeyType=HASH --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1
+```
+
+### Writing Terraform file
+
+Now, we can start writing the Terraform file. You can easily copy it from the [GitHub repository](https://github.com/azdanov/aws-terraform-static-website-demo/blob/main/infrastructure/main.tf).
+
+```hcl
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.63"
+    }
+  }
+  backend "s3" {
+    bucket         = "azdanov-aws-static-website-demo-terraform-state"
+    key            = "terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "azdanov-aws-static-website-demo-terraform-lock-table"
+  }
+}
+
+provider "aws" {
+  region = "us-east-1"
+
+}
+
+variable "domain_name" {
+  type        = string
+  description = "The domain name for the website, e.g. example.com. Must already be registered with Route53."
+}
+
+locals {
+  origin_id = "${var.domain_name}-${sha1(var.domain_name)}"
+}
+
+# Route53 zone
+data "aws_route53_zone" "zone" {
+  name = var.domain_name
+}
+
+
+# S3 bucket
+resource "aws_s3_bucket" "bucket" {
+  bucket = substr(local.origin_id, 0, 63)
+
+  tags = {
+    Name = var.domain_name
+  }
+}
+
+resource "aws_s3_bucket_public_access_block" "access" {
+  bucket = aws_s3_bucket.bucket.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
+
+
+# ACM certificate
+resource "aws_acm_certificate" "certificate" {
+  domain_name       = var.domain_name
+  validation_method = "DNS"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_route53_record" "acm_record" {
+  for_each = {
+    for dvo in aws_acm_certificate.certificate.domain_validation_options : dvo.domain_name => {
+      name   = dvo.resource_record_name
+      record = dvo.resource_record_value
+      type   = dvo.resource_record_type
+    }
+  }
+
+  allow_overwrite = true
+  name            = each.value.name
+  records         = [each.value.record]
+  ttl             = 60
+  type            = each.value.type
+  zone_id         = data.aws_route53_zone.zone.zone_id
+}
+
+resource "aws_acm_certificate_validation" "validation" {
+  certificate_arn         = aws_acm_certificate.certificate.arn
+  validation_record_fqdns = [for record in aws_route53_record.acm_record : record.fqdn]
+}
+
+
+# CloudFront distribution
+resource "aws_cloudfront_origin_access_control" "oac" {
+  name                              = "${var.domain_name} access control"
+  description                       = "Cloudfront access control for the ${var.domain_name} distribution."
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
+}
+
+data "aws_cloudfront_cache_policy" "cache_policy" {
+  name = "Managed-CachingOptimized"
+}
+
+data "aws_cloudfront_origin_request_policy" "origin_request_policy" {
+  name = "Managed-CORS-S3Origin"
+}
+
+data "aws_cloudfront_response_headers_policy" "response_headers_policy" {
+  name = "Managed-SecurityHeadersPolicy"
+}
+
+resource "aws_cloudfront_distribution" "distribution" {
+  enabled             = true
+  is_ipv6_enabled     = true
+  default_root_object = "index.html"
+  http_version        = "http2and3"
+  price_class         = "PriceClass_100"
+  retain_on_delete    = false
+  wait_for_deployment = false
+  aliases             = [var.domain_name]
+
+  origin {
+    domain_name              = aws_s3_bucket.bucket.bucket_regional_domain_name
+    origin_access_control_id = aws_cloudfront_origin_access_control.oac.id
+    origin_id                = local.origin_id
+  }
+
+  custom_error_response {
+    error_code         = "403"
+    response_code      = "200"
+    response_page_path = "/index.html"
+  }
+
+  default_cache_behavior {
+    compress                   = true
+    viewer_protocol_policy     = "redirect-to-https"
+    allowed_methods            = ["GET", "HEAD"]
+    cached_methods             = ["GET", "HEAD"]
+    target_origin_id           = local.origin_id
+    cache_policy_id            = data.aws_cloudfront_cache_policy.cache_policy.id
+    origin_request_policy_id   = data.aws_cloudfront_origin_request_policy.origin_request_policy.id
+    response_headers_policy_id = data.aws_cloudfront_response_headers_policy.response_headers_policy.id
+  }
+
+  restrictions {
+    geo_restriction {
+      restriction_type = "none"
+    }
+  }
+
+  viewer_certificate {
+    cloudfront_default_certificate = false
+    acm_certificate_arn            = aws_acm_certificate.certificate.arn
+    minimum_protocol_version       = "TLSv1.2_2021"
+    ssl_support_method             = "sni-only"
+  }
+}
+
+resource "aws_route53_record" "cloudfront_record" {
+  zone_id = data.aws_route53_zone.zone.zone_id
+  name    = var.domain_name
+  type    = "A"
+
+  alias {
+    evaluate_target_health = false
+    name                   = aws_cloudfront_distribution.distribution.domain_name
+    zone_id                = aws_cloudfront_distribution.distribution.hosted_zone_id
+  }
+}
+
+data "aws_iam_policy_document" "document" {
+  statement {
+    actions   = ["s3:GetObject"]
+    resources = ["${aws_s3_bucket.bucket.arn}/*"]
+
+    principals {
+      type        = "Service"
+      identifiers = ["cloudfront.amazonaws.com"]
+    }
+
+    condition {
+      test     = "StringEquals"
+      variable = "AWS:SourceArn"
+      values   = [aws_cloudfront_distribution.distribution.arn]
+    }
+  }
+}
+
+resource "aws_s3_bucket_policy" "policy" {
+  bucket = aws_s3_bucket.bucket.id
+  policy = data.aws_iam_policy_document.document.json
+}
+```
+
+### Running Terraform
+
+Now, we can start provisioning the infrastructure.
+
+```bash
+# Initialize Terraform
+terraform init
+
+# Create a plan
+terraform plan
+
+# Apply the plan
+terraform apply
+```
+
+This will take a few minutes to complete. Once it’s done, we can manually upload our static website to the S3 bucket.
+You'll need to have the AWS CLI installed and configured and to copy the newly created S3 bucket name and CloudFront distribution ID.
+
+```bash
+# Remove the old files from S3 bucket
+aws s3 rm s3://<bucket-name> --recursive
+
+# Upload the website to the S3 bucket
+aws s3 sync ./<dist-dir> s3://<bucket-name>
+
+# Invalidate the CloudFront cache
+aws cloudfront create-invalidation --distribution-id <distribution-id> --paths "/*"
+```
+
+This should make our website available at the domain name we specified.
+
+We could've made uploading of website as part of the Terraform script, but it isn't the responsibility of Terraform to manage the content of the bucket.
+A better approach would be to use a CI/CD pipeline to automate the process of building and deploying the website, alongside keeping the infrastructure up to date.
+
+## Aside: Using external domain registrar
+
+If you're using a domain registrar other than Route53, you'll need to create a CNAME record pointing to the CloudFront distribution
+and a CNAME record for the ACM certificate. For that you'll need to modify the Terraform script and remove the `aws_route53_record` resources.
+
+### Tear down
+
+When we're done with the website, we can tear down the infrastructure by running:
+
+```bash
+terraform destroy
+```
+
+This will remove all the resources we created.
+
+## Conclusion
+
+In this article, we've learned how to deploy a static website to AWS S3 and CloudFront. This process can be simplified by using
+[Vercel](https://vercel.com/) or [Netlify](https://www.netlify.com/), but their free plans have some limitations,
+so it's good to know how to host on your own.
+
+I didn't cover the process of writing the terraform script in detail, but I hope that this article will give you a good starting point for your own projects.
+My recommendation is to use the [Terraform AWS docs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) to figure out the available options.
+Also, manually setting up the infrastructure and then writing the Terraform scripts is a good way to learn how Terraform works and what is required to provision the resources.
+
+If you have any questions or suggestions, feel free to contact me.
