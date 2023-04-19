@@ -47,7 +47,7 @@ export function ArticleLayout({
                   <span className="ml-3">{formatDate(meta.date)}</span>
                 </time>
               </header>
-              <Prose className="mt-8">{children}</Prose>
+              <Prose className="mt-12">{children}</Prose>
             </article>
           </div>
         </div>
