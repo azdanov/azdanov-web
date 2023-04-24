@@ -37,6 +37,9 @@ dependencies:
   next:
     specifier: 13.2.4
     version: 13.2.4(react-dom@18.2.0)(react@18.2.0)
+  next-safe:
+    specifier: ^3.4.1
+    version: 3.4.1(next@13.2.4)
   next-sitemap:
     specifier: ^4.0.7
     version: 4.0.7(@next/env@13.3.1)(next@13.2.4)
@@ -3931,6 +3934,14 @@ packages:
 
   /neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
+    dev: false
+
+  /next-safe@3.4.1(next@13.2.4):
+    resolution: {integrity: sha512-GOam3DYMHUIKwxHeqVg9pkuYFhvtUeivHexdbL3lg0mjibsnIB3NOD81dKDgaeX+cReWbugdCtWYllzXmmpE+Q==}
+    peerDependencies:
+      next: ^9.5.0 || ^10.2.1 || ^11.1.0 || ^12.1.0 || ^13.0.0
+    dependencies:
+      next: 13.2.4(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
   /next-sitemap@4.0.7(@next/env@13.3.1)(next@13.2.4):
