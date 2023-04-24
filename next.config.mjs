@@ -13,7 +13,7 @@ const ContentSecurityPolicy = `
   script-src 'self' 'sha256-COiD90rc+P2uaVVk9/ag5Fkb+hUKuRTCyRoZoyLTnJ0='${
     isDev ? " 'unsafe-eval'" : ""
   };
-  style-src 'self' 'sha256-zlqnbDt84zf1iSefLU/ImC54isoprH/MRiVZGskwexk='${
+  style-src 'self' 'sha256-zlqnbDt84zf1iSefLU/ImC54isoprH/MRiVZGskwexk=' 'unsafe-hashes'${
     isDev ? " 'unsafe-inline'" : ""
   };
   font-src 'self';
