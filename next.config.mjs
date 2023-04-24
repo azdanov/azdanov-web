@@ -20,6 +20,9 @@ const nextConfig = {
         contentSecurityPolicy: {
           mergeDefaultDirectives: true,
           "img-src": ["https: data: blob:"],
+          "script-src": [
+            "'sha256-COiD90rc+P2uaVVk9/ag5Fkb+hUKuRTCyRoZoyLTnJ0='",
+          ],
         },
       }),
     },
