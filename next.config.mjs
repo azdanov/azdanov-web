@@ -4,11 +4,12 @@ import rehypePrism from "@mapbox/rehype-prism";
 
 const ContentSecurityPolicy = `
   default-src 'none';
-  base-url: 'self';
-  form-action: 'self';
-  object-src: 'self';
+  connect-src 'self';
+  manifest-src 'self';
+  base-uri 'self';
+  form-action 'self';
   script-src 'self' 'sha256-COiD90rc+P2uaVVk9/ag5Fkb+hUKuRTCyRoZoyLTnJ0=';
-  style-src 'self' 'unsafe-inline';
+  style-src 'self';
   font-src 'self';
   img-src 'self' data: https: blob:;
 `;
