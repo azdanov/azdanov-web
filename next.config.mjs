@@ -5,7 +5,7 @@ import rehypePrism from "@mapbox/rehype-prism";
 const ContentSecurityPolicy = `
   default-src 'self';
   script-src 'self' 'sha256-COiD90rc+P2uaVVk9/ag5Fkb+hUKuRTCyRoZoyLTnJ0=';
-  style-src 'self';
+  style-src 'self' 'sha256-zlqnbDt84zf1iSefLU/ImC54isoprH/MRiVZGskwexk=';
   font-src 'self';
   img-src 'self' data: https: blob:;
 `;
