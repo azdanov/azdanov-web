@@ -3,13 +3,13 @@ import remarkGfm from "remark-gfm";
 import rehypePrism from "@mapbox/rehype-prism";
 
 const ContentSecurityPolicy = `
-  default-src 'none';
+  default-src 'self';
   connect-src 'self';
   manifest-src 'self';
   base-uri 'none';
   form-action 'self';
   script-src 'self' 'sha256-COiD90rc+P2uaVVk9/ag5Fkb+hUKuRTCyRoZoyLTnJ0=';
-  style-src 'self' 'sha256-zlqnbDt84zf1iSefLU/ImC54isoprH/MRiVZGskwexk=';
+  style-src 'self';
   font-src 'self';
   img-src 'self' data: https: blob:;
   frame-ancestors 'none';
