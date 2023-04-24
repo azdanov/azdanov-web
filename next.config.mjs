@@ -3,9 +3,12 @@ import remarkGfm from "remark-gfm";
 import rehypePrism from "@mapbox/rehype-prism";
 
 const ContentSecurityPolicy = `
-  default-src 'self';
+  default-src 'none';
+  base-url: 'self';
+  form-action: 'self';
+  object-src: 'self';
   script-src 'self' 'sha256-COiD90rc+P2uaVVk9/ag5Fkb+hUKuRTCyRoZoyLTnJ0=';
-  style-src 'self' 'sha256-zlqnbDt84zf1iSefLU/ImC54isoprH/MRiVZGskwexk=';
+  style-src 'self' 'unsafe-inline';
   font-src 'self';
   img-src 'self' data: https: blob:;
 `;
