@@ -15,7 +15,13 @@ const nextConfig = {
   headers: () => [
     {
       source: "/:path*",
-      headers: nextSafe({ isDev }),
+      headers: nextSafe({
+        isDev,
+        contentSecurityPolicy: {
+          mergeDefaultDirectives: true,
+          "img-src": ["https: data: blob:"],
+        },
+      }),
     },
   ],
 };
