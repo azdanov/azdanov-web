@@ -12,6 +12,7 @@ const ContentSecurityPolicy = `
   style-src 'self' 'sha256-zlqnbDt84zf1iSefLU/ImC54isoprH/MRiVZGskwexk=';
   font-src 'self';
   img-src 'self' data: https: blob:;
+  frame-ancestors 'none';
 `;
 
 const securityHeaders = [
