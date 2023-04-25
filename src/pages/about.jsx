@@ -14,7 +14,7 @@ export default function About() {
         <title>About - Anton Ždanov</title>
         <meta
           name="description"
-          content="I’m Anton Ždanov. I live in Tallinn."
+          content="I'm Anton Ždanov. I live in Tallinn."
         />
       </Head>
       <Container className="mt-16 sm:mt-32">
@@ -31,23 +31,23 @@ export default function About() {
           </div>
           <div className="lg:order-first lg:row-span-2">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-              I’m Anton Ždanov. I live in{" "}
+              I'm Anton Ždanov. I live in{" "}
               <span title="Tallinn, Estonia">Tallinn</span>.
             </h1>
             <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
               <p>
-                Hi there! I’m a full-stack developer with over 3 years of
+                Hi there! I'm a full-stack developer with over 3 years of
                 experience in creating web applications.
               </p>
               <p>
                 I have worked with various technologies across the front-end,
                 back-end, database, and infrastructure layers. Some of the
-                projects I’m proud of include a payment widget and a dashboard
+                projects I'm proud of include a payment widget and a dashboard
                 for a financial company, an app for operators to provide
                 customers with real-time support, and an app that is used for
                 reconciling and keeping the balance of financial transactions.
               </p>
-              <p>I’m always eager to learn new skills and improve my craft.</p>
+              <p>I'm always eager to learn new skills and improve my craft.</p>
               <article className="space-y-7">
                 <section>
                   <p>I'm currently interested in and actively learning:</p>

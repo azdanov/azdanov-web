@@ -167,7 +167,7 @@ export default function Home({ articles }) {
         <title>Anton Ždanov - Full-stack developer</title>
         <meta
           name="description"
-          content="Hey, I’m Anton, a full-stack developer based in Tallinn. I work with
+          content="Hey, I'm Anton, a full-stack developer based in Tallinn. I work with
             front-end, back-end, database, and infrastructure technologies. In
             my free time, I like to play video games, enjoy doing fitness, read
             books and study to get better at what I do."
@@ -179,7 +179,8 @@ export default function Home({ articles }) {
             Full-stack developer, curious learner and fitness enthusiast.
           </h1>
           <p className="mt-6 text-lg text-zinc-600 dark:text-zinc-400">
-            Hey, I’m Anton, a full-stack developer based in Tallinn. I work with
+            Hey, I'm Anton, a full-stack developer based in{" "}
+            <span title="Tallinn, Estonia">Tallinn</span>. I work with
             front-end, back-end, database, and infrastructure technologies. In
             my free time, I like to play video games, enjoy doing fitness, read
             books and study to get better at what I do.
