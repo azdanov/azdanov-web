@@ -31,7 +31,8 @@ export default function About() {
           </div>
           <div className="lg:order-first lg:row-span-2">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-              I’m Anton Ždanov. I live in Tallinn.
+              I’m Anton Ždanov. I live in{" "}
+              <span title="Tallinn, Estonia">Tallinn</span>.
             </h1>
             <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
               <p>
@@ -47,39 +48,35 @@ export default function About() {
                 reconciling and keeping the balance of financial transactions.
               </p>
               <p>I’m always eager to learn new skills and improve my craft.</p>
-              <section>
-                <p>
-                  Here are some of the technologies I've worked with over the
-                  years:
-                </p>
-                <ul className="list-inside list-disc">
-                  <li>HTML, CSS, SCSS</li>
-                  <li>
-                    TypeScript, JavaScript, Node.js, React.js, Next.js, Vue.js,
-                    Angular
-                  </li>
-                  <li>Java, Spring, JDBC, Hibernate</li>
-                  <li>C#, .NET, ASP.NET Core, Dapper, Entity Framework Core</li>
-                  <li>SQL, MySQL, PostgreSQL, RabbitMQ, Redis, Grpc</li>
-                  <li>Go, PHP, Python</li>
-                  <li>
-                    AWS: Lambda, Step Functions, S3, CloudFront, API Gateway,
-                    DynamoDB, EventBridge, CloudWatch, IAM, Route53, Cognito
-                  </li>
-                  <li>Terraform, Docker, Git</li>
-                </ul>
-                <small>
-                  More on my{" "}
-                  <Link
-                    href="https://www.linkedin.com/in/azdanov/"
-                    className="text-zinc-500 underline hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    LinkedIn profile
-                  </Link>
-                </small>
-              </section>
+              <article className="space-y-7">
+                <section>
+                  <p>I'm currently interested in and actively learning:</p>
+                  <ul className="list-inside list-disc">
+                    <li>TypeScript, React.js</li>
+                    <li>C#, .NET. ASP.NET Core, EF Core</li>
+                    <li>Azure, Terraform</li>
+                  </ul>
+                </section>
+                <section>
+                  <p>
+                    Some of the technologies I've worked with over the years:
+                  </p>
+                  <ul className="list-inside list-disc">
+                    <li>HTML, CSS, SCSS, Tailwind CSS</li>
+                    <li>
+                      JavaScript, TypeScript, Node.js, React.js, Vue.js, Angular
+                    </li>
+                    <li>Java, Spring, JDBC, Hibernate</li>
+                    <li>
+                      SQL, MySQL, RabbitMQ, Redis, Grpc, Grafana, Prometheus
+                    </li>
+                    <li>
+                      AWS, Terraform, Docker, Jenkins, GitHub Actions, Git
+                    </li>
+                  </ul>
+                </section>
+                <p>I'm also familiar with: Python, PHP, Go and C.</p>
+              </article>
               <h2 className="text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-4xl">
                 My story
               </h2>
