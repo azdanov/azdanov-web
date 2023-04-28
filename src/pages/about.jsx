@@ -5,7 +5,6 @@ import { Container } from "@/components/Container";
 import { LinkedInIcon, GitHubIcon, MailIcon } from "@/components/icons";
 import portraitImage from "@/images/portrait.jpg";
 import { SocialLink } from "@/components/Social";
-import Link from "next/link";
 
 export default function About() {
   return (
@@ -23,7 +22,7 @@ export default function About() {
             <div className="max-w-xs px-2.5 lg:max-w-none">
               <Image
                 src={portraitImage}
-                alt=""
+                alt="Anton Ždanov sitting in front of a laptop and smiling."
                 sizes="(min-width: 1024px) 32rem, 20rem"
                 className="aspect-square rotate-3 rounded-md bg-zinc-100 object-cover dark:bg-zinc-800"
               />
