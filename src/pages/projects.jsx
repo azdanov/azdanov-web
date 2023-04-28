@@ -62,7 +62,7 @@ export default function Projects() {
   return (
     <>
       <Head>
-        <title>Projects - Spencer Sharp</title>
+        <title>Projects - Anton Ždanov</title>
         <meta name="description" content="Personal Projects" />
       </Head>
       <SimpleLayout
