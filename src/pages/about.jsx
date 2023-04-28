@@ -70,7 +70,8 @@ export default function About() {
                       SQL, MySQL, RabbitMQ, Redis, Grpc, Grafana, Prometheus
                     </li>
                     <li>
-                      AWS, Terraform, Docker, Jenkins, GitHub Actions, Git
+                      AWS, Terraform, Serverless, Docker, Jenkins, GitHub
+                      Actions, Git
                     </li>
                   </ul>
                 </section>
