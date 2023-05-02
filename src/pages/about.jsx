@@ -24,7 +24,7 @@ export default function About() {
                 src={portraitImage}
                 alt="Anton Ždanov sitting in front of a laptop and smiling."
                 sizes="(min-width: 1024px) 32rem, 20rem"
-                className="aspect-square rotate-3 rounded-md bg-zinc-100 object-cover dark:bg-zinc-800"
+                className="-rotate-3 rounded-md bg-zinc-100 object-cover dark:bg-zinc-800"
               />
             </div>
           </div>
