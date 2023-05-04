@@ -18,8 +18,8 @@ export default function About() {
         />
       </Head>
       <Container className="mt-16 sm:mt-32">
-        <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
-          <div className="lg:pl-20">
+        <div className="grid grid-cols-1 gap-y-16 md:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
+          <div className="order-1 lg:pl-20">
             <div className="max-w-xs px-2.5 lg:max-w-none">
               <Image
                 src={portraitImage}
@@ -29,7 +29,7 @@ export default function About() {
               />
             </div>
           </div>
-          <div className="lg:order-first lg:row-span-2">
+          <div className="order-3 md:col-span-2 lg:order-first lg:col-span-1 lg:row-span-2">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
               I'm Anton Ždanov. I live in{" "}
               <span title="Tallinn, Estonia">Tallinn</span>.
@@ -124,7 +124,7 @@ export default function About() {
               </p>
             </div>
           </div>
-          <div className="lg:pl-20">
+          <div className="order-2 lg:pl-20">
             <ul role="list">
               <SocialLink
                 href="https://github.com/azdanov"
