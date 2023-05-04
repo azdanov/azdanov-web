@@ -5,6 +5,7 @@ import { Container } from "@/components/Container";
 import { LinkedInIcon, GitHubIcon, MailIcon } from "@/components/icons";
 import portraitImage from "@/images/portrait.jpg";
 import { SocialLink } from "@/components/Social";
+import { TwitterIcon } from "@/components/icons/TwitterIcon";
 
 export default function About() {
   return (
@@ -131,7 +132,7 @@ export default function About() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Follow on GitHub
+                Connect on GitHub
               </SocialLink>
               <SocialLink
                 href="https://www.linkedin.com/in/azdanov/"
@@ -141,6 +142,15 @@ export default function About() {
                 rel="noopener noreferrer"
               >
                 Connect on LinkedIn
+              </SocialLink>
+              <SocialLink
+                href="https://twitter.com/thezdanov/"
+                icon={TwitterIcon}
+                className="mt-4"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Connect on Twitter
               </SocialLink>
               <SocialLink
                 href="mailto:anton@azdanov.dev"

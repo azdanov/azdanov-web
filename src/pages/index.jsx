@@ -21,6 +21,7 @@ import Ruby from "@/components/snippets/ruby.mdx";
 import Sql from "@/components/snippets/sql.mdx";
 import { Prose } from "@/components/Prose";
 import { useEffect, useState } from "react";
+import { TwitterIcon } from "@/components/icons/TwitterIcon";
 
 function Article({ article }) {
   return (
@@ -188,15 +189,22 @@ export default function Home({ articles }) {
           <div className="mt-6 flex gap-6">
             <IconLink
               href="https://github.com/azdanov"
-              aria-label="Follow on GitHub"
+              aria-label="Connect on GitHub"
               icon={GitHubIcon}
               target="_blank"
               rel="noopener noreferrer"
             />
             <IconLink
               href="https://www.linkedin.com/in/azdanov/"
-              aria-label="Follow on LinkedIn"
+              aria-label="Connect on LinkedIn"
               icon={LinkedInIcon}
+              target="_blank"
+              rel="noopener noreferrer"
+            />
+            <IconLink
+              href="https://twitter.com/thezdanov/"
+              aria-label="Connect on Twitter"
+              icon={TwitterIcon}
               target="_blank"
               rel="noopener noreferrer"
             />
