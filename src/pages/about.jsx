@@ -23,7 +23,6 @@ export default function About() {
             <div className="max-w-xs px-2.5 lg:max-w-none">
               <Image
                 src={portraitImage}
-                placeholder="blur"
                 alt="Anton Ždanov sitting in front of a laptop and smiling."
                 sizes="(min-width: 1024px) 32rem, 20rem"
                 className="-rotate-3 rounded-md bg-zinc-100 object-cover dark:bg-zinc-800"
