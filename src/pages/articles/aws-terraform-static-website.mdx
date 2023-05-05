@@ -3,7 +3,8 @@ import { ArticleLayout } from "@/components/ArticleLayout";
 export const meta = {
   author: "Anton Ždanov",
   date: "2023-04-18T07:02:24.190Z",
-  title: "How to host a static website on AWS S3, CloudFront and Route53 using Terraform",
+  title:
+    "How to host a static website on AWS S3, CloudFront and Route53 using Terraform",
   description:
     "A recipe on hosting a static website on AWS S3, CloudFront and Route53 using Terraform. Including a GitHub repository source code.",
 };
@@ -13,24 +14,28 @@ export default (props) => <ArticleLayout meta={meta} {...props} />;
 In this article, I'd like to share my experience of hosting a static website on AWS S3, CloudFront and Route53 using Terraform.
 It will use a custom domain name, and it will be secured with a TLS certificate.
 
+**Update:**
+You can also watch a very useful code review of the terraform project on YouTube by Azure Terraformer.
+[Terraform Code Review: File Structure & Naming Conventions](https://www.youtube.com/watch?v=taVEy7Rinoo).
+
 ## Prerequisites
 
 ### AWS Account
 
 You'll need an AWS account to host your website. If you don't have one, you can create one for free.
 
-* [Create an AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)
-* [Getting started: Are you a first-time AWS user?](https://docs.aws.amazon.com/accounts/latest/reference/welcome-first-time-user.html)
-* [Getting Started: Follow Security Best Practices as You Configure Your AWS Resources](https://aws.amazon.com/blogs/security/getting-started-follow-security-best-practices-as-you-configure-your-aws-resources/)
-* [Avoiding unexpected charges](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/checklistforunwantedcharges.html)
-* [What is the AWS Free Tier, and how do I use it?](https://repost.aws/knowledge-center/what-is-free-tier)
+- [Create an AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)
+- [Getting started: Are you a first-time AWS user?](https://docs.aws.amazon.com/accounts/latest/reference/welcome-first-time-user.html)
+- [Getting Started: Follow Security Best Practices as You Configure Your AWS Resources](https://aws.amazon.com/blogs/security/getting-started-follow-security-best-practices-as-you-configure-your-aws-resources/)
+- [Avoiding unexpected charges](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/checklistforunwantedcharges.html)
+- [What is the AWS Free Tier, and how do I use it?](https://repost.aws/knowledge-center/what-is-free-tier)
 
 Just to reiterate, you should follow the best practices when working with AWS:
 
 1. Create a separate [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) and don't use the root account.
 2. [Enable MFA](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable.html#id_credentials_mfa_enable-overview) for both the root account and the IAM user (or even better [use SSO](https://aws.amazon.com/iam/identity-center/)).
 3. Create an [AWS Budget](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html?icmpid=docs_costmanagement_hp-budgets-overview)
-to alert you when your costs exceed a certain threshold.
+   to alert you when your costs exceed a certain threshold.
 
 ### AWS CLI
 
