@@ -48,7 +48,6 @@ const securityHeaders = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "standalone",
   pageExtensions: ["js", "jsx", "mdx"],
   reactStrictMode: true,
   experimental: {
