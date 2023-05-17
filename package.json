@@ -12,10 +12,7 @@
     "lint:fix": "next lint --fix",
     "format": "prettier --write ."
   },
-  "engines": {
-    "node": ">=18.0.0",
-    "pnpm": ">=8.0.0"
-  },
+  "packageManager": "pnpm@8.5.1",
   "browserslist": [
     "defaults"
   ],
