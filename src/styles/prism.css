@@ -1,6 +1,8 @@
 pre[class*="language-"] {
   color: theme("colors.zinc.100");
-  border-radius: theme("borderRadius.md") !important; /* index page languages weren't updated by global config */
+  border-radius: theme(
+    "borderRadius.md"
+  ) !important; /* index page languages weren't updated by global config */
 }
 
 .token.tag,
