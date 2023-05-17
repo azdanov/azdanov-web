@@ -31,7 +31,7 @@ jobs:
           api_location: "" # Api source code path - optional
           output_location: "out" # Built app content directory - optional
           app_build_command: "npm install -g pnpm && pnpm install && pnpm run build && pnpm run export"
-          skip_api_build: true
+          skip_api_build: false
           ###### End of Repository/Build Configurations ######
         env: # Add environment variables here
           is_static_export: true
