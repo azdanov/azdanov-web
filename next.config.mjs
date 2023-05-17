@@ -48,7 +48,6 @@ const securityHeaders = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
   pageExtensions: ["js", "jsx", "mdx"],
   reactStrictMode: true,
   experimental: {
@@ -56,17 +55,16 @@ const nextConfig = {
   },
   images: {
     formats: ["image/avif", "image/webp"],
-    unoptimized: true,
   },
-  // async headers() {
-  //   return [
-  //     {
-  //       // Apply these headers to all routes in your application.
-  //       source: "/:path*",
-  //       headers: securityHeaders,
-  //     },
-  //   ];
-  // },
+  async headers() {
+    return [
+      {
+        // Apply these headers to all routes in your application.
+        source: "/:path*",
+        headers: securityHeaders,
+      },
+    ];
+  },
 };
 
 const withMDX = nextMDX({
