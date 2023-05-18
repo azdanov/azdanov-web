@@ -76,6 +76,21 @@ export default function About() {
                     </li>
                   </ul>
                 </section>
+                <section>
+                  <p>Certificates that I have:</p>
+                  <ul className="list-inside list-disc">
+                    <li>
+                      <a
+                        className="underline"
+                        href="https://www.credly.com/badges/ee880635-b5c8-46b2-8d7c-e882b3366fad/public_url"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Azure Fundamentals (AZ-900)
+                      </a>
+                    </li>
+                  </ul>
+                </section>
                 <p>I'm also familiar with: Python, PHP, Go and C.</p>
               </article>
               <h2 className="text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-4xl">
