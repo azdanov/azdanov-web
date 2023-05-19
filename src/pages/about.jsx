@@ -92,6 +92,12 @@ export default function About() {
                   </ul>
                 </section>
                 <p>I'm also familiar with: Python, PHP, Go and C.</p>
+                <p>
+                  One day I would love to learn Kubernetes, KEDA, Dapr, Envoy
+                  and similar technologies. To have a better understanding of
+                  modern tools and gain Mechanical Sympathy for the solutions I
+                  create.
+                </p>
               </article>
               <h2 className="text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-4xl">
                 My story
