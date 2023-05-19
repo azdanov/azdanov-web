@@ -44,6 +44,10 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: ContentSecurityPolicy.replace(/\s{2,}/g, " ").trim(),
   },
+  {
+    key: "Permissions-Policy",
+    value: "camera=(), microphone=(), geolocation=(), interest-cohort=(), payment=(), usb=()",
+  }
 ];
 
 /** @type {import('next').NextConfig} */
