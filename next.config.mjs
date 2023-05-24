@@ -6,7 +6,7 @@ const isDev = process.env.NODE_ENV !== "production";
 
 const ContentSecurityPolicy = `
   default-src 'none';
-  connect-src 'self'${isDev ? " webpack://*" : ""};
+  connect-src 'self' ${isDev ? " webpack://*" : "https://analytics.umami.is/api/send"};
   manifest-src 'self';
   base-uri 'none';
   form-action 'self';
