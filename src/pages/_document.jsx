@@ -1,5 +1,4 @@
 import { Head, Html, Main, NextScript } from "next/document";
-import Script from "next/script";
 
 const modeScript = `
   const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -77,11 +76,6 @@ export default function Document() {
       <body className="flex h-full flex-col bg-zinc-50 dark:bg-black">
         <Main />
         <NextScript />
-        <Script
-          src="https://analytics.umami.is/script.js"
-          data-website-id="548597af-a54b-41c5-bcb0-e5b751a5866d"
-          nonce="CaP8BaoISfVL6DizT4v5VA=="
-        />
       </body>
     </Html>
   );

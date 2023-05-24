@@ -10,7 +10,7 @@ const ContentSecurityPolicy = `
   manifest-src 'self';
   base-uri 'none';
   form-action 'self';
-  script-src 'self' 'sha256-COiD90rc+P2uaVVk9/ag5Fkb+hUKuRTCyRoZoyLTnJ0=' 'nonce-CaP8BaoISfVL6DizT4v5VA=='${
+  script-src 'self' 'sha256-COiD90rc+P2uaVVk9/ag5Fkb+hUKuRTCyRoZoyLTnJ0='${
     isDev ? " 'unsafe-eval'" : ""
   };
   style-src 'self' 'unsafe-hashes' 'unsafe-inline';
