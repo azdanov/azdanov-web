@@ -46,8 +46,9 @@ const securityHeaders = [
   },
   {
     key: "Permissions-Policy",
-    value: "camera=(), microphone=(), geolocation=(), interest-cohort=(), payment=(), usb=()",
-  }
+    value:
+      "camera=(), microphone=(), geolocation=(), interest-cohort=(), payment=(), usb=()",
+  },
 ];
 
 /** @type {import('next').NextConfig} */
