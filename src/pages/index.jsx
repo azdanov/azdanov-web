@@ -165,10 +165,10 @@ export default function Home({ articles }) {
   return (
     <>
       <Head>
-        <title>Anton Ždanov - Full-stack developer</title>
+        <title>Anton Ždanov - Software Developer</title>
         <meta
           name="description"
-          content="Hey, I'm Anton, a full-stack developer based in Tallinn. I work with
+          content="Hey, I'm Anton, a software developer based in Tallinn. I work with
             front-end, back-end, database, and infrastructure technologies. In
             my free time, I like to play video games, enjoy doing fitness, read
             books and study to get better at what I do."
@@ -177,10 +177,10 @@ export default function Home({ articles }) {
       <Container className="mt-16 sm:mt-32">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            Full-stack developer, curious learner and fitness enthusiast.
+            Software developer, curious learner and fitness enthusiast.
           </h1>
           <p className="mt-6 text-lg text-zinc-600 dark:text-zinc-400">
-            Hey, I'm Anton, a full-stack developer based in{" "}
+            Hey, I'm Anton, a software developer based in{" "}
             <span title="Tallinn, Estonia">Tallinn</span>. I work with
             front-end, back-end, database, and infrastructure technologies. In
             my free time, I like to play video games, enjoy doing fitness, read

@@ -36,7 +36,7 @@ export default function About() {
             </h1>
             <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
               <p>
-                Hi there! I'm a full-stack developer with over 3 years of
+                Hi there! I'm a software developer with over 3 years of
                 experience in creating web applications.
               </p>
               <p>
@@ -123,7 +123,7 @@ export default function About() {
                 learning HTML, CSS and JavaScript. Then I moved on to Python,
                 PHP, etc. I was learning everything I could get my hands on.
                 Probably not the best approach, but it worked for me. I was able
-                to get a job as a full-stack developer due to my exposure to
+                to get a job as a software developer due to my exposure to
                 various languages and frameworks and I've been working as a
                 developer ever since.
               </p>
