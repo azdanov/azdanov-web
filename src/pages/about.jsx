@@ -89,6 +89,16 @@ export default function About() {
                         Azure Fundamentals (AZ-900)
                       </a>
                     </li>
+                    <li>
+                      <a
+                        className="underline"
+                        href="https://www.credly.com/badges/e746303b-737e-403f-93c5-c17f7a609488/public_url"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Azure Administrator Associate (AZ-104)
+                      </a>
+                    </li>
                   </ul>
                 </section>
                 <p>I'm also familiar with: Python, PHP, Go and C.</p>
