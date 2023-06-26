@@ -16,7 +16,7 @@ import Java from "@/components/snippets/java.mdx";
 import CSharp from "@/components/snippets/csharp.mdx";
 import JavaScript from "@/components/snippets/javascript.mdx";
 import Python from "@/components/snippets/python.mdx";
-import PHP from "@/components/snippets/php.mdx";
+import Php from "@/components/snippets/php.mdx";
 import Ruby from "@/components/snippets/ruby.mdx";
 import Sql from "@/components/snippets/sql.mdx";
 import { Prose } from "@/components/Prose";
@@ -132,7 +132,7 @@ function Code() {
 
   useEffect(() => {
     setLanguages(
-      [Python, Go, CSharp, JavaScript, Java, PHP, Ruby, Sql]
+      [Python, Go, CSharp, JavaScript, Java, Php, Ruby, Sql]
         .map((value) => ({ value, sort: Math.random() }))
         .sort((a, b) => a.sort - b.sort)
         .map(({ value }) => value)
