@@ -68,7 +68,9 @@ export default function About() {
                     <li>Azure, AWS, Terraform, Serverless, Docker</li>
                     <li>Grafana, Prometheus, Jenkins, GitHub Actions, Git</li>
                   </ul>
-                  <p>I'm also familiar with: Python, PHP, Laravel, C.</p>
+                  <p className="mt-2">
+                    I'm also familiar with: Python, PHP, Laravel, C.
+                  </p>
                 </section>
                 <section>
                   <p>Certificates that I have:</p>
