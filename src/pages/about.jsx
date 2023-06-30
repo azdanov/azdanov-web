@@ -47,19 +47,14 @@ export default function About() {
                 customers with real-time support, and an app that is used for
                 reconciling and keeping the balance of financial transactions.
               </p>
-              <p>I'm always eager to learn new skills and improve my craft.</p>
+              <p>
+                I'm always eager to learn new skills and broaden my knowledge.
+              </p>
               <article className="space-y-7">
                 <section>
-                  <p>I'm currently interested in and actively learning:</p>
-                  <ul className="list-inside list-disc">
-                    <li>TypeScript, React.js</li>
-                    <li>C#, .NET. ASP.NET Core, EF Core</li>
-                    <li>Azure, Terraform</li>
-                  </ul>
-                </section>
-                <section>
                   <p>
-                    Some of the technologies I've worked with over the years:
+                    Some of the technologies I've worked with or was interested
+                    in learning over the years:
                   </p>
                   <ul className="list-inside list-disc">
                     <li>HTML, CSS, SCSS, Tailwind CSS</li>
@@ -67,14 +62,13 @@ export default function About() {
                       JavaScript, TypeScript, Node.js, React.js, Vue.js, Angular
                     </li>
                     <li>Java, Spring, JDBC, Hibernate</li>
-                    <li>
-                      SQL, MySQL, RabbitMQ, Redis, Grpc, Grafana, Prometheus
-                    </li>
-                    <li>
-                      AWS, Terraform, Serverless, Docker, Jenkins, GitHub
-                      Actions, Git
-                    </li>
+                    <li>C#, .NET. ASP.NET Core, EF Core</li>
+                    <li>Go, Gorilla Toolkit, Gorm, pgx</li>
+                    <li>SQL, MySQL, PostgreSQL, RabbitMQ, Redis, Grpc,</li>
+                    <li>Azure, AWS, Terraform, Serverless, Docker</li>
+                    <li>Grafana, Prometheus, Jenkins, GitHub Actions, Git</li>
                   </ul>
+                  <p>I'm also familiar with: Python, PHP, Laravel, C.</p>
                 </section>
                 <section>
                   <p>Certificates that I have:</p>
@@ -101,13 +95,6 @@ export default function About() {
                     </li>
                   </ul>
                 </section>
-                <p>I'm also familiar with: Python, PHP, Go and C.</p>
-                <p>
-                  One day I would love to learn Kubernetes, KEDA, Dapr, Envoy
-                  and similar technologies. To have a better understanding of
-                  modern tools and gain Mechanical Sympathy for the solutions I
-                  create.
-                </p>
               </article>
               <h2 className="text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-4xl">
                 My story
