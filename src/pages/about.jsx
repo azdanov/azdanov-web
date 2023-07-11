@@ -95,6 +95,16 @@ export default function About() {
                         Azure Administrator Associate (AZ-104)
                       </a>
                     </li>
+                    <li>
+                      <a
+                        className="underline"
+                        href="https://learn.microsoft.com/api/credentials/share/en-us/azdanov/8A43495F02BE1A3E?sharingId=E18AE6457FBDE5E3"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Azure Developer Associate (AZ-204)
+                      </a>
+                    </li>
                   </ul>
                 </section>
               </article>
