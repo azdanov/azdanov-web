@@ -63,13 +63,12 @@ export default function About() {
                     </li>
                     <li>Java, Spring, JDBC, Hibernate</li>
                     <li>C#, .NET. ASP.NET Core, EF Core</li>
-                    <li>Go, Gorilla Toolkit, Gorm, pgx</li>
                     <li>SQL, MySQL, PostgreSQL, RabbitMQ, Redis, Grpc,</li>
                     <li>Azure, AWS, Terraform, Serverless, Docker</li>
                     <li>Grafana, Prometheus, Jenkins, GitHub Actions, Git</li>
                   </ul>
                   <p className="mt-2">
-                    I'm also familiar with: Python, PHP, Laravel, C.
+                    I'm also familiar with: Go, Python, PHP, C.
                   </p>
                 </section>
                 <section>
