@@ -77,7 +77,7 @@ export default function About() {
                     <li>
                       <a
                         className="underline"
-                        href="https://www.credly.com/badges/ee880635-b5c8-46b2-8d7c-e882b3366fad/public_url"
+                        href="https://learn.microsoft.com/api/credentials/share/en-us/azdanov/294B5745E8FCEC01?sharingId=E18AE6457FBDE5E3"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -87,7 +87,7 @@ export default function About() {
                     <li>
                       <a
                         className="underline"
-                        href="https://www.credly.com/badges/e746303b-737e-403f-93c5-c17f7a609488/public_url"
+                        href="https://learn.microsoft.com/api/credentials/share/en-us/azdanov/7D93516BE16A069?sharingId=E18AE6457FBDE5E3"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
