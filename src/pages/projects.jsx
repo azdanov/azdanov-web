@@ -5,17 +5,24 @@ import { SimpleLayout } from "@/components/SimpleLayout";
 
 const projects = [
   {
+    name: "NeStoReX",
+    initials: "NoX",
+    description:
+      "A store made in .NET and EF Core. UI is made with React.js and Redux Toolkit. Payments are handled by Stripe. Hosting is on Fly.io.",
+    link: { href: "https://github.com/azdanov/NeStoReX", label: "github.com" },
+  },
+  {
     name: "ReactxNet",
     initials: "RxN",
     description:
-      "My first big venture into .NET and EF Core. UI is made with React.js, which I know. It's an app about organizing events. For hosting I used Fly.io.",
+      "An app about organizing events made in .NET and EF Core. UI is made with React.js. For hosting I used Fly.io.",
     link: { href: "https://github.com/azdanov/ReactxNet", label: "github.com" },
   },
   {
     name: "AWS Terraform Static Website Demo",
     initials: "AWS",
     description:
-      "I have wanted to figure out how could I host a static website on AWS with Terraform using S3 and CloudFront. Something similar to Vercel or Netlify.",
+      "Hosting a static website on AWS with Terraform using S3 and CloudFront.",
     link: {
       href: "https://github.com/azdanov/aws-terraform-static-website-demo",
       label: "github.com",
@@ -42,7 +49,7 @@ const projects = [
     name: "CS50",
     initials: "CS50",
     description:
-      "This is where it all started, CS50: an Introduction to Computer Science from Harvard. I even had a chance to program in C.",
+      "CS50: an Introduction to Computer Science from Harvard, this is where I started learning programming. I even had a chance to write in C.",
     link: { href: "https://github.com/azdanov/CS50", label: "github.com" },
   },
 ];
