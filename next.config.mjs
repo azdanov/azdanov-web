@@ -2,6 +2,25 @@ import nextMDX from "@next/mdx";
 import remarkGfm from "remark-gfm";
 import rehypePrism from "@mapbox/rehype-prism";
 
+const isDev = process.env.NODE_ENV !== "production";
+
+const ContentSecurityPolicy = `
+  default-src 'none';
+  connect-src 'self'${isDev ? " webpack://*" : ""};
+  manifest-src 'self';
+  base-uri 'none';
+  form-action 'self';
+  script-src 'self' ${
+    isDev
+      ? "'unsafe-eval' 'unsafe-inline'"
+      : "'sha256-COiD90rc+P2uaVVk9/ag5Fkb+hUKuRTCyRoZoyLTnJ0='"
+  };
+  style-src 'self' 'unsafe-hashes' 'unsafe-inline';
+  font-src 'self';
+  img-src 'self' data: https: blob:;
+  frame-ancestors 'none';
+`;
+
 const securityHeaders = [
   {
     key: "Strict-Transport-Security",
@@ -25,12 +44,15 @@ const securityHeaders = [
   },
   {
     key: "Referrer-Policy",
-    value: "origin-when-cross-origin",
+    value: "no-referrer-when-downgrade",
+  },
+  {
+    key: "Content-Security-Policy",
+    value: ContentSecurityPolicy.replace(/\s{2,}/g, " ").trim(),
   },
   {
     key: "Permissions-Policy",
-    value:
-      "camera=(), microphone=(), geolocation=(), interest-cohort=(), payment=(), usb=(), browsing-topics=()",
+    value: "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
   },
 ];
 
