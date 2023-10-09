@@ -1,0 +1,41 @@
+import Image from "next/image";
+import { ArticleLayout } from "@/components/ArticleLayout";
+import video from "./video.png";
+
+export const article = {
+  author: "Anton Ždanov",
+  date: "2019-04-05T21:31:48.547Z",
+  title: "Must watch videos 1",
+  description: "A series of videos that I found useful.",
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />;
+
+<Image src={video} alt="video" />
+
+I would like to start a collection of useful videos that I've found online.
+
+Although they are centered around Laravel, the ideas are easy to adopt in any other framework.
+
+Here goes the first batch!
+
+## Matt Stauffer - Patterns that pay off
+
+[![Matt Stauffer - Patterns that pay off](https://img.youtube.com/vi/enTb2E4vEos/0.jpg)](https://www.youtube.com/watch?v=enTb2E4vEos)
+
+## Jeffrey Way - Slay the Beast: Nine considerations to get your app back on track
+
+[![Jeffrey Way - Slay the Beast: Nine considerations to get your app back on track](https://img.youtube.com/vi/Npm5LruYA7A/0.jpg)](https://www.youtube.com/watch?v=Npm5LruYA7A)
+
+## Adam Wathan - Resisting Complexity
+
+[![Adam Wathan - Resisting Complexity](https://img.youtube.com/vi/dfgtKb-VpRk/0.jpg)](https://www.youtube.com/watch?v=dfgtKb-VpRk)
+
+## Adam Wathan - Cruddy by design
+
+[![Adam Wathan - Cruddy by design](https://img.youtube.com/vi/MF0jFKvS4SI/0.jpg)](https://www.youtube.com/watch?v=MF0jFKvS4SI)

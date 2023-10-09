@@ -1,0 +1,28 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const article = {
+  author: "Anton Ždanov",
+  date: "2023-05-06T06:51:50.362Z",
+  title: "Free Azure DevOps Parallel Jobs for Public and Private Repositories",
+  description:
+    "How to get free parallel jobs on Azure DevOps for public or private repositories by submitting a request.",
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />;
+
+As someone who started learning Azure DevOps, I encountered a problem with the free tier of Azure DevOps.
+
+When logging in and creating a new organization, I navigated to `Organization Settings > Parallel Jobs` and saw that
+for Microsoft-hosted agents I have zero parallel jobs and for self-hosted agents I have one parallel job.
+Which meant that you can create your own VM and run your own agent on it, but for that you'll need to pay for the VM.
+
+To get the free Microsoft-hosted agent, you'll need to fill out a form and wait for the approval: https://aka.ms/azpipelines-parallelism-request
+
+I had a billing setup for my Azure account, which I also used for Azure DevOps, but maybe it wasn't necessary.
+
+And you can read more about the configuration of parallel jobs here, and current request process for free grant: https://aka.ms/microsofthosted

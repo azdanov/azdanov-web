@@ -1,0 +1,50 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+import certificate from "./microsoft-certified-fundamentals-badge.svg";
+import Image from "next/image";
+
+export const article = {
+  author: "Anton Ždanov",
+  date: "2023-05-03T12:29:08.395Z",
+  title: "Getting Microsoft Certified: Azure Fundamentals (AZ-900)",
+  description:
+    "Sharing my experience of passing the Microsoft Certified: Azure Fundamentals (AZ-900) exam.",
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />;
+
+The first major step on my way to learn and use Azure was to pass the Microsoft Certified: Azure Fundamentals (AZ-900) exam.
+Exam itself is not hard, but it requires a lot of preparations and memorization and luck, since some questions I didn't
+encounter while preparing. I have passed it on the first try, but I wouldn't say that it was a breeze.
+
+I have spent around 10 days to prepare for it, with a final score of 925/1000. I have several years of experience with
+software development, and I have used AWS in production, so I was familiar with the concepts of cloud computing and cloud services.
+
+<aside className="inline-flex flex-col items-center">
+  <Image
+    src={certificate}
+    alt="Microsoft Certified: Azure Fundamentals (AZ-900) certificate."
+  />
+  [Microsoft Certificate](https://learn.microsoft.com/api/credentials/share/en-us/azdanov/294B5745E8FCEC01?sharingId=E18AE6457FBDE5E3)
+</aside>
+
+## Preparation
+
+I have used the following resources:
+
+- [Microsoft Learn: Exam AZ-900: Microsoft Azure Fundamentals](https://learn.microsoft.com/en-us/certifications/exams/az-900/) - Official training material, with free a sandbox to practice hands-on.
+- [YouTube: John Savill's AZ-900 Azure Fundamentals Certification Course](https://www.youtube.com/playlist?list=PLlVtbbG169nED0_vMEniWBQjSoxTsBYS3) - A really amazing course on YouTube by John Savill.
+- [Tutorials Dojo: AZ-900 Microsoft Azure Fundamentals Practice Exams](https://portal.tutorialsdojo.com/courses/az-900-microsoft-azure-fundamentals-practice-exams/) - Very useful practice exams by Tutorials Dojo.
+
+At the same time, I've found an interesting YouTube channel that focuses on Azure, DevOps, Terraform, and other
+related topics — [Azure Terraformer](https://www.youtube.com/@azure-terraformer) by Mark Tinderholt. His videos are very useful and informative,
+for those interested in learning how to use Terraform with Azure ecosystem, and I highly recommend checking them out. Although it
+is about more advanced topics, it is still very helpful in starting to prepare for [AZ-104](https://learn.microsoft.com/en-us/certifications/azure-administrator/)
+and [AZ-400](https://learn.microsoft.com/en-us/certifications/devops-engineer/) exams.
+
+The next step for me is to get the [Microsoft Certified: Azure Administrator
+Associate (AZ-104)](https://learn.microsoft.com/en-us/certifications/azure-administrator/) certificate.
