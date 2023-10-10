@@ -26,6 +26,7 @@ export default function About() {
               priority
               src={portraitImage}
               alt="Anton Ždanov sitting in front of a laptop and smiling."
+              layout="responsive"
               sizes="(min-width: 1024px) 32rem, 20rem"
               className="-rotate-3 rounded-md bg-zinc-100 object-cover dark:bg-zinc-800"
             />
