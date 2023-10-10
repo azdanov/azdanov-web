@@ -2,13 +2,14 @@
 using (var client = new RestClient("https://azdanov.dev/api/login")) {
   JObject json = new JObject();
   json.Add("username", "admin");
-  json.Add("password", "admin");
+  json.Add("password", "secret");
 
   var request = new RestRequest(Method.POST);
   request.AddStringBody(json.ToString(), DataFormat.Json);
 
   var response = client.Execute(request);
 
-  Console.WriteLine(response.Content);
+  var jsonResult = JObject.Parse(response.Content);
+  Console.WriteLine(jsonResult);
 }
 ```

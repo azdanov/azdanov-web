@@ -9,7 +9,7 @@ public class Login {
     connection.setRequestProperty("Accept", "application/json");
 
     try (OutputStream os = connection.getOutputStream()) {
-      byte[] input = "{\"username\":\"admin\",\"password\":\"admin\"}".getBytes("utf-8");
+      byte[] input = "{\"username\":\"admin\",\"password\":\"secret\"}".getBytes("utf-8");
       os.write(input, 0, input.length);
     }
     try (BufferedReader br = new BufferedReader(

@@ -3,8 +3,8 @@ func main() {
   url := "https://azdanov.dev/api/login"
 
   postBody, _ := json.Marshal(map[string]string{
-    "username":  "admin",
-    "password": "admin",
+    "username": "admin",
+    "password": "secret",
   })
   responseBody := bytes.NewBuffer(postBody)
 
