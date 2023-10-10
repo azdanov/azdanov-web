@@ -23,6 +23,7 @@ export default function About() {
         <div className="order-1 lg:pl-20">
           <div className="max-w-xs px-2.5 lg:max-w-none">
             <Image
+              priority
               src={portraitImage}
               alt="Anton Ždanov sitting in front of a laptop and smiling."
               sizes="(min-width: 1024px) 32rem, 20rem"
