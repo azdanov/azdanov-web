@@ -1,6 +1,7 @@
-import Link from "next/link";
 import clsx from "clsx";
+import Link from "next/link";
 import { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
+
 import { ChevronRightIcon } from "@/components/icons/ChevronRightIcon";
 
 export function Card<T extends ElementType = "div">({

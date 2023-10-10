@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { ReactNode } from "react";
 
 import { ContainerInner, ContainerOuter } from "@/components/Container";
-import { ReactNode } from "react";
 
 function NavLink({ href, children }: { href: string; children: ReactNode }) {
   return (
@@ -18,7 +18,7 @@ function NavLink({ href, children }: { href: string; children: ReactNode }) {
 
 export function Footer() {
   return (
-    <footer className="mt-32 flex-none">
+    <footer className="mt-20 flex-none md:mt-32">
       <ContainerOuter>
         <div className="border-t border-zinc-100 pb-16 pt-10 dark:border-zinc-700/40">
           <ContainerInner>
@@ -27,6 +27,7 @@ export function Footer() {
                 <NavLink href="/">Home</NavLink>
                 <NavLink href="/about">About</NavLink>
                 <NavLink href="/articles">Articles</NavLink>
+                <NavLink href="/projects">Projects</NavLink>
               </div>
               <button
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

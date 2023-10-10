@@ -1,25 +1,24 @@
-import Image, { type ImageProps } from "next/image";
 import clsx from "clsx";
+import Image, { type ImageProps } from "next/image";
 
 import { Button } from "@/components/Button";
 import { Card } from "@/components/Card";
 import { Container } from "@/components/Container";
-
+import { IconLink } from "@/components/IconLink";
+import { BriefcaseIcon } from "@/components/icons/BriefcaseIcon";
+import { GitHubIcon } from "@/components/icons/GitHubIcon";
+import { LinkedInIcon } from "@/components/icons/LinkedInIcon";
+import { TwitterIcon } from "@/components/icons/TwitterIcon";
+import { Prose } from "@/components/Prose";
+import { CSharp } from "@/components/snippets/CSharp";
+import { Go } from "@/components/snippets/Go";
+import { Java } from "@/components/snippets/Java";
+import { JavaScript } from "@/components/snippets/JavaScript";
+import { SQL } from "@/components/snippets/SQL";
 import betpawaLogo from "@/images/logos/betpawa.jpeg";
 import pawapayLogo from "@/images/logos/pawapay.jpeg";
 import { type ArticleWithSlug, getAllArticles } from "@/lib/articles";
 import { formatDate } from "@/lib/formatDate";
-import { TwitterIcon } from "@/components/icons/TwitterIcon";
-import { GitHubIcon } from "@/components/icons/GitHubIcon";
-import { LinkedInIcon } from "@/components/icons/LinkedInIcon";
-import { BriefcaseIcon } from "@/components/icons/BriefcaseIcon";
-import { Prose } from "@/components/Prose";
-import { IconLink } from "@/components/IconLink";
-import { Go } from "@/components/snippets/Go";
-import { CSharp } from "@/components/snippets/CSharp";
-import { Java } from "@/components/snippets/Java";
-import { JavaScript } from "@/components/snippets/JavaScript";
-import { SQL } from "@/components/snippets/SQL";
 
 export default async function Home() {
   const articles = (await getAllArticles()).slice(0, 4);

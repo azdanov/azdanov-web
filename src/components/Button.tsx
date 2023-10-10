@@ -1,5 +1,5 @@
-import Link from "next/link";
 import clsx from "clsx";
+import Link from "next/link";
 import { ComponentPropsWithoutRef } from "react";
 
 const variantStyles = {

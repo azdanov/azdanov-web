@@ -1,10 +1,10 @@
+import "@/styles/tailwind.css";
+
 import { type Metadata } from "next";
+import { ReactNode } from "react";
 
 import { Providers } from "@/app/providers";
 import { Layout } from "@/components/Layout";
-
-import "@/styles/tailwind.css";
-import { ReactNode } from "react";
 
 export const metadata: Metadata = {
   title: {

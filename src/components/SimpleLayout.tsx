@@ -1,5 +1,6 @@
-import { Container } from "@/components/Container";
 import { ReactNode } from "react";
+
+import { Container } from "@/components/Container";
 
 export function SimpleLayout({
   title,

@@ -3,18 +3,18 @@ import * as cheerio from "cheerio";
 import { Feed } from "feed";
 
 export async function GET(req: Request) {
-  let siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
   if (!siteUrl) {
     throw Error("Missing NEXT_PUBLIC_SITE_URL environment variable");
   }
 
-  let author = {
+  const author = {
     name: "Anton Ždanov",
     email: "anton@azdanov.dev",
   };
 
-  let feed = new Feed({
+  const feed = new Feed({
     title: author.name,
     description: `Personal website of ${author.name}`,
     author,
@@ -28,14 +28,14 @@ export async function GET(req: Request) {
     },
   });
 
-  let articleIds = require
+  const articleIds = require
     .context("../articles", true, /\/page\.mdx$/)
     .keys()
     .filter((key) => key.startsWith("./"))
     .map((key) => key.slice(2).replace(/\/page\.mdx$/, ""));
 
-  for (let id of articleIds) {
-    let url = String(new URL(`/articles/${id}`, req.url));
+  for (const id of articleIds) {
+    const url = String(new URL(`/articles/${id}`, req.url));
     const html = await (await fetch(url)).text();
     const $ = cheerio.load(html);
 

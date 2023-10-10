@@ -1,8 +1,8 @@
 import { type Metadata } from "next";
 
 import { Card } from "@/components/Card";
-import { SimpleLayout } from "@/components/SimpleLayout";
 import { LinkIcon } from "@/components/icons/LinkIcon";
+import { SimpleLayout } from "@/components/SimpleLayout";
 
 export const metadata: Metadata = {
   title: "Projects",

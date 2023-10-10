@@ -1,5 +1,10 @@
 "use client";
 
+import { Popover, Transition } from "@headlessui/react";
+import clsx from "clsx";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
 import {
   ComponentPropsWithoutRef,
   Fragment,
@@ -7,17 +12,12 @@ import {
   useEffect,
   useState,
 } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useTheme } from "next-themes";
-import { Popover, Transition } from "@headlessui/react";
-import clsx from "clsx";
 
 import { Container } from "@/components/Container";
 import { ChevronDownIcon } from "@/components/icons/ChevronDownIcon";
 import { CloseIcon } from "@/components/icons/CloseIcon";
-import { SunIcon } from "@/components/icons/SunIcon";
 import { MoonIcon } from "@/components/icons/MoonIcon";
+import { SunIcon } from "@/components/icons/SunIcon";
 
 function MobileNavItem({
   href,

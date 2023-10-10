@@ -2,13 +2,12 @@ import { type Metadata } from "next";
 import Image from "next/image";
 
 import { Container } from "@/components/Container";
-
-import portraitImage from "@/images/portrait.jpg";
-import { SocialLink } from "@/components/SocialLink";
-import { TwitterIcon } from "@/components/icons/TwitterIcon";
-import { MailIcon } from "@/components/icons/MailIcon";
 import { GitHubIcon } from "@/components/icons/GitHubIcon";
 import { LinkedInIcon } from "@/components/icons/LinkedInIcon";
+import { MailIcon } from "@/components/icons/MailIcon";
+import { TwitterIcon } from "@/components/icons/TwitterIcon";
+import { SocialLink } from "@/components/SocialLink";
+import portraitImage from "@/images/portrait.jpg";
 
 export const metadata: Metadata = {
   title: "About",

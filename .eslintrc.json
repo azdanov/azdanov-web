@@ -1,6 +1,26 @@
 {
-  "extends": ["next/core-web-vitals", "plugin:prettier/recommended"],
+  "plugins": ["@typescript-eslint", "simple-import-sort", "unused-imports"],
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
   "rules": {
-    "react/no-unescaped-entities": "off"
+    "prefer-const": "error",
+    "react/no-unescaped-entities": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-explicit-any": "error",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ]
   }
 }

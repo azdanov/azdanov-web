@@ -1,14 +1,14 @@
 "use client";
 
-import { ReactNode, useContext } from "react";
 import { useRouter } from "next/navigation";
+import { ReactNode, useContext } from "react";
 
 import { AppContext } from "@/app/providers";
 import { Container } from "@/components/Container";
+import { ArrowLeftIcon } from "@/components/icons/ArrowLeftIcon";
 import { Prose } from "@/components/Prose";
 import { type ArticleWithSlug } from "@/lib/articles";
 import { formatDate } from "@/lib/formatDate";
-import { ArrowLeftIcon } from "@/components/icons/ArrowLeftIcon";
 
 export function ArticleLayout({
   article,
