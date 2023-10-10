@@ -1,4 +1,5 @@
 import Image, { type ImageProps } from "next/image";
+import clsx from "clsx";
 
 import { Button } from "@/components/Button";
 import { Card } from "@/components/Card";
@@ -12,8 +13,16 @@ import { TwitterIcon } from "@/components/icons/TwitterIcon";
 import { GitHubIcon } from "@/components/icons/GitHubIcon";
 import { LinkedInIcon } from "@/components/icons/LinkedInIcon";
 import { BriefcaseIcon } from "@/components/icons/BriefcaseIcon";
+import { Prose } from "@/components/Prose";
 import { IconLink } from "@/components/IconLink";
-import { Code } from "@/components/code";
+import { Go } from "@/components/snippets/Go";
+import { CSharp } from "@/components/snippets/CSharp";
+import { Java } from "@/components/snippets/Java";
+import { JavaScript } from "@/components/snippets/JavaScript";
+import { SQL } from "@/components/snippets/SQL";
+import { Ruby } from "@/components/snippets/Ruby";
+import { Python } from "@/components/snippets/Python";
+import { PHP } from "@/components/snippets/PHP";
 
 export default async function Home() {
   const articles = (await getAllArticles()).slice(0, 4);
@@ -71,6 +80,50 @@ export default async function Home() {
         </div>
       </Container>
     </>
+  );
+}
+
+async function Code() {
+  const rotations = [
+    "rotate-2",
+    "-rotate-2",
+    "rotate-2",
+    "rotate-2",
+    "-rotate-2",
+  ];
+
+  const languages = {
+    Go,
+    Java,
+    SQL,
+    CSharp,
+    JavaScript,
+    Ruby,
+    Python,
+    PHP,
+  };
+
+  return (
+    <div className="mt-16 h-[200px] border border-transparent sm:mt-20 sm:h-[325px]">
+      <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
+        {Object.entries(languages)
+          .sort(() => Math.random() - 0.5)
+          .slice(0, 5)
+          .map(([key, Language], index) => (
+            <div
+              key={key}
+              className={clsx(
+                "languages relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-md bg-zinc-100 dark:bg-zinc-800 sm:w-72",
+                rotations[index % rotations.length],
+              )}
+            >
+              <Prose>
+                <Language />
+              </Prose>
+            </div>
+          ))}
+      </div>
+    </div>
   );
 }
 
