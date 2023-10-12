@@ -31,84 +31,90 @@ export default function About() {
             />
           </div>
         </div>
-        <div className="order-3 md:col-span-2 lg:order-first lg:col-span-1 lg:row-span-2">
-          <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            I'm Anton Ždanov. I live in{" "}
-            <span title="Tallinn, Estonia">Tallinn</span>.
-          </h1>
-          <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
-            <p>
-              I'm a software developer with over 3 years of experience in
-              creating web applications.
-            </p>
-            <p>
-              I have worked with various technologies across the front-end,
-              back-end, database, and infrastructure layers. Some of the
-              projects I'm proud of include a payment widget and a dashboard for
-              a financial company, an app for operators to provide customers
-              with real-time support, and an app that is used for reconciling
-              and keeping the balance of financial transactions.
-            </p>
-            <p>
-              I'm always eager to learn new skills and broaden my knowledge.
-            </p>
-            <article className="space-y-7">
-              <section>
-                <p>
-                  Some of the technologies I've worked with or was interested in
-                  learning over the years:
-                </p>
-                <ul className="list-inside list-disc">
-                  <li>HTML, CSS, SCSS, Tailwind CSS</li>
-                  <li>
-                    JavaScript, TypeScript, Node.js, React.js, Vue.js, Angular
-                  </li>
-                  <li>Java, Spring, JDBC, Hibernate</li>
-                  <li>C#, .NET. ASP.NET Core, EF Core</li>
-                  <li>SQL, MySQL, PostgreSQL, RabbitMQ, Redis, Grpc,</li>
-                  <li>Azure, AWS, Terraform, Serverless, Docker</li>
-                  <li>Grafana, Prometheus, Jenkins, GitHub Actions, Git</li>
-                </ul>
-                <p className="mt-2">
-                  I'm also familiar with: Go, Python, PHP, C.
-                </p>
+        <article className="order-3 space-y-12 text-base text-zinc-600 dark:text-zinc-400 md:col-span-2 lg:order-first lg:col-span-1 lg:row-span-2">
+          <section>
+            <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
+              I'm Anton Ždanov. I live in{" "}
+              <span title="Tallinn, Estonia">Tallinn</span>.
+            </h1>
+            <div className="mt-6 space-y-7">
+              <p>
+                I'm a software developer with over 3 years of experience in
+                creating web applications.
+              </p>
+              <p>
+                I have worked with various technologies across the front-end,
+                back-end, database, and infrastructure layers. Some of the
+                projects I'm proud of include a payment widget and a dashboard
+                for a financial company, an app for operators to provide
+                customers with real-time support, and an app that is used for
+                reconciling and keeping the balance of financial transactions.
+              </p>
+              <p>
+                I'm always eager to learn new skills and broaden my knowledge.
+              </p>
+              <section className="space-y-7">
+                <div>
+                  <p>
+                    Some of the technologies I've worked with or was interested
+                    in learning over the years:
+                  </p>
+                  <ul className="list-inside list-disc">
+                    <li>HTML, CSS, SCSS, Tailwind CSS</li>
+                    <li>
+                      JavaScript, TypeScript, Node.js, React.js, Vue.js, Angular
+                    </li>
+                    <li>Java, Spring, JDBC, Hibernate</li>
+                    <li>C#, .NET. ASP.NET Core, EF Core, Dapper</li>
+                    <li>SQL, MySQL, PostgreSQL, RabbitMQ, Redis, gRPC</li>
+                    <li>Azure, AWS, Terraform, Serverless, Docker</li>
+                    <li>Grafana, Prometheus, Jenkins, GitHub Actions, Git</li>
+                  </ul>
+                  <p className="mt-3">
+                    I'm also familiar with: Go, Python, PHP, C, and a bit of
+                    Kubernetes.
+                  </p>
+                </div>
+                <div>
+                  <p>Certificates that I have:</p>
+                  <ul className="list-inside list-disc">
+                    <li>
+                      <a
+                        className="underline"
+                        href="https://learn.microsoft.com/api/credentials/share/en-us/azdanov/294B5745E8FCEC01?sharingId=E18AE6457FBDE5E3"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Microsoft Certified: Azure Fundamentals (AZ-900)
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        className="underline"
+                        href="https://learn.microsoft.com/api/credentials/share/en-us/azdanov/7D93516BE16A069?sharingId=E18AE6457FBDE5E3"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Microsoft Certified: Azure Administrator Associate
+                        (AZ-104)
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        className="underline"
+                        href="https://learn.microsoft.com/api/credentials/share/en-us/azdanov/8A43495F02BE1A3E?sharingId=E18AE6457FBDE5E3"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Microsoft Certified: Azure Developer Associate (AZ-204)
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </section>
-              <section>
-                <p>Certificates that I have:</p>
-                <ul className="list-inside list-disc">
-                  <li>
-                    <a
-                      className="underline"
-                      href="https://learn.microsoft.com/api/credentials/share/en-us/azdanov/294B5745E8FCEC01?sharingId=E18AE6457FBDE5E3"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Azure Fundamentals (AZ-900)
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="underline"
-                      href="https://learn.microsoft.com/api/credentials/share/en-us/azdanov/7D93516BE16A069?sharingId=E18AE6457FBDE5E3"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Azure Administrator Associate (AZ-104)
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="underline"
-                      href="https://learn.microsoft.com/api/credentials/share/en-us/azdanov/8A43495F02BE1A3E?sharingId=E18AE6457FBDE5E3"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Azure Developer Associate (AZ-204)
-                    </a>
-                  </li>
-                </ul>
-              </section>
-            </article>
+            </div>
+          </section>
+          <section className="space-y-7">
             <h2 className="text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-4xl">
               My story
             </h2>
@@ -152,9 +158,9 @@ export default function About() {
               sounds good I'm happy. With books I prefer fantasy and sci-fi
               genres.
             </p>
-          </div>
-        </div>
-        <div className="order-2 lg:pl-20">
+          </section>
+        </article>
+        <aside className="order-2 lg:pl-20">
           <ul role="list">
             <SocialLink
               href="https://github.com/azdanov"
@@ -192,7 +198,7 @@ export default function About() {
               anton@azdanov.dev
             </SocialLink>
           </ul>
-        </div>
+        </aside>
       </div>
     </Container>
   );
