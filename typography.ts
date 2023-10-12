@@ -18,6 +18,7 @@ export default function typographyStyles({ theme }: PluginUtils) {
         "--tw-prose-captions": "var(--tw-prose-invert-captions)",
         "--tw-prose-code": "var(--tw-prose-invert-code)",
         "--tw-prose-code-bg": "var(--tw-prose-invert-code-bg)",
+        "--tw-prose-mark-bg": "var(--tw-prose-invert-mark-bg)",
         "--tw-prose-pre-code": "var(--tw-prose-invert-pre-code)",
         "--tw-prose-pre-bg": "var(--tw-prose-invert-pre-bg)",
         "--tw-prose-pre-border": "var(--tw-prose-invert-pre-border)",
@@ -41,6 +42,7 @@ export default function typographyStyles({ theme }: PluginUtils) {
         "--tw-prose-captions": theme("colors.zinc.400"),
         "--tw-prose-code": theme("colors.zinc.700"),
         "--tw-prose-code-bg": theme("colors.zinc.300 / 0.2"),
+        "--tw-prose-mark-bg": theme("colors.amber.400 / 0.5"),
         "--tw-prose-pre-code": theme("colors.zinc.100"),
         "--tw-prose-pre-bg": theme("colors.zinc.900"),
         "--tw-prose-pre-border": "transparent",
@@ -61,6 +63,7 @@ export default function typographyStyles({ theme }: PluginUtils) {
         "--tw-prose-invert-captions": theme("colors.zinc.500"),
         "--tw-prose-invert-code": theme("colors.zinc.300"),
         "--tw-prose-invert-code-bg": theme("colors.zinc.200 / 0.05"),
+        "--tw-prose-invert-mark-bg": theme("colors.amber.400 / 0.65"),
         "--tw-prose-invert-pre-code": theme("colors.zinc.100"),
         "--tw-prose-invert-pre-bg": "rgb(0 0 0 / 0.4)",
         "--tw-prose-invert-pre-border": theme("colors.zinc.200 / 0.1"),
@@ -122,6 +125,9 @@ export default function typographyStyles({ theme }: PluginUtils) {
         strong: {
           color: "var(--tw-prose-bold)",
           fontWeight: theme("fontWeight.semibold"),
+        },
+        mark: {
+          backgroundColor: "var(--tw-prose-mark-bg)",
         },
         code: {
           display: "inline-block",
