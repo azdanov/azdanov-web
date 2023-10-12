@@ -1,6 +1,6 @@
 # Personal Website
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/cb85882c-f73c-4447-b3ca-297a6d567dd2/deploy-status)](https://app.netlify.com/sites/azdanov-web/deploys)
+![Vercel deployment](https://img.shields.io/github/deployments/azdanov/azdanov-web/production?style=flat&logo=vercel&logoColor=white&label=vercel)
 
 Personal website azdanov is a based on Spotlight a [Tailwind UI](https://tailwindui.com) site template built using [Tailwind CSS](https://tailwindcss.com) and [Next.js](https://nextjs.org).
 
