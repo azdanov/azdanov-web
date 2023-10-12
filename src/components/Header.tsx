@@ -19,6 +19,33 @@ import { CloseIcon } from "@/components/icons/CloseIcon";
 import { MoonIcon } from "@/components/icons/MoonIcon";
 import { SunIcon } from "@/components/icons/SunIcon";
 
+export function Header() {
+  return (
+    <>
+      <header className="pointer-events-none relative z-50 flex flex-col">
+        <div className="top-0 z-10 h-16 pt-6">
+          <Container className="w-full">
+            <div className="relative flex gap-4">
+              <div className="flex flex-1">
+                <Logo />
+              </div>
+              <div className="flex flex-1 justify-end md:justify-center">
+                <MobileNavigation className="pointer-events-auto sm:hidden" />
+                <DesktopNavigation className="pointer-events-auto hidden sm:block" />
+              </div>
+              <div className="flex justify-end md:flex-1">
+                <div className="pointer-events-auto">
+                  <ModeToggle />
+                </div>
+              </div>
+            </div>
+          </Container>
+        </div>
+      </header>
+    </>
+  );
+}
+
 function MobileNavItem({
   href,
   children,
@@ -168,32 +195,5 @@ function Logo({
         </span>
       </Link>
     </div>
-  );
-}
-
-export function Header() {
-  return (
-    <>
-      <header className="pointer-events-none relative z-50 flex flex-col">
-        <div className="top-0 z-10 h-16 pt-6">
-          <Container className="w-full">
-            <div className="relative flex gap-4">
-              <div className="flex flex-1">
-                <Logo />
-              </div>
-              <div className="flex flex-1 justify-end md:justify-center">
-                <MobileNavigation className="pointer-events-auto md:hidden" />
-                <DesktopNavigation className="pointer-events-auto hidden md:block" />
-              </div>
-              <div className="flex justify-end md:flex-1">
-                <div className="pointer-events-auto">
-                  <ModeToggle />
-                </div>
-              </div>
-            </div>
-          </Container>
-        </div>
-      </header>
-    </>
   );
 }
