@@ -5,7 +5,7 @@ import { Container } from "@/components/Container";
 import { GitHubIcon } from "@/components/icons/GitHubIcon";
 import { LinkedInIcon } from "@/components/icons/LinkedInIcon";
 import { MailIcon } from "@/components/icons/MailIcon";
-import { TwitterIcon } from "@/components/icons/TwitterIcon";
+import { XIcon } from "@/components/icons/XIcon";
 import { SocialLink } from "@/components/SocialLink";
 import portraitImage from "@/images/portrait.jpg";
 
@@ -180,13 +180,13 @@ export default function About() {
               Connect on LinkedIn
             </SocialLink>
             <SocialLink
-              href="https://twitter.com/thezdanov/"
-              icon={TwitterIcon}
+              href="https://x.com/thezdanov/"
+              icon={XIcon}
               className="mt-4"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Connect on Twitter
+              Connect on X (Twitter)
             </SocialLink>
             <SocialLink
               href="mailto:anton@azdanov.dev"

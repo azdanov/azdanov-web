@@ -8,7 +8,7 @@ import { IconLink } from "@/components/IconLink";
 import { BriefcaseIcon } from "@/components/icons/BriefcaseIcon";
 import { GitHubIcon } from "@/components/icons/GitHubIcon";
 import { LinkedInIcon } from "@/components/icons/LinkedInIcon";
-import { TwitterIcon } from "@/components/icons/TwitterIcon";
+import { XIcon } from "@/components/icons/XIcon";
 import { Prose } from "@/components/Prose";
 import { CSharp } from "@/components/snippets/CSharp";
 import { Go } from "@/components/snippets/Go";
@@ -54,9 +54,9 @@ export default async function Home() {
               rel="noopener noreferrer"
             />
             <IconLink
-              href="https://twitter.com/thezdanov/"
-              aria-label="Connect on Twitter"
-              icon={TwitterIcon}
+              href="https://x.com/thezdanov/"
+              aria-label="Connect on X (Twitter)"
+              icon={XIcon}
               target="_blank"
               rel="noopener noreferrer"
             />
