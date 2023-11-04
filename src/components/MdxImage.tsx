@@ -1,6 +1,6 @@
-import Image from "next/image";
+import Image, { ImageProps } from "next/image";
 
-export function MdxImage(props: { src: string; alt: string }) {
+export function MdxImage(props: ImageProps) {
   // eslint-disable-next-line jsx-a11y/alt-text
   return <Image {...props} />;
 }
