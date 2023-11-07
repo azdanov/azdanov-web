@@ -1,0 +1,38 @@
+import { ArticleLayout } from "../../../components/ArticleLayout";
+
+export const article = {
+  author: "Anton Ždanov",
+  date: "2023-11-07T07:40:18.895Z",
+  title:
+    "Starting to learn about AWS CDK with a Spring Boot app",
+  description:
+    "A book called Stratospheric about learning AWS CDK for a Spring Boot app that I'm going through.",
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+};
+
+export default function MDXPage({ children }) {
+  return <ArticleLayout article={article}>{children}</ArticleLayout>;
+}
+
+For a long time, I've been curious about how to host a Spring Boot application in the cloud, such as AWS or Azure.
+I've had some experience with AWS, but it was with the serverless approach, where you don't have to worry about the infrastructure.
+Same with Azure, where App Service is a quick and easy way to host an app, but it abstracts away a lot of things.
+
+## Stratospheric: From Zero to Production with Spring Boot and AWS
+I've found a book called [Stratospheric](https://stratospheric.dev/) about learning [AWS CDK](https://aws.amazon.com/cdk/) for a Spring Boot app.
+It was in my backlog, but I finally started going through it.
+
+This book provides a step-by-step guide on how to build a Spring Boot app and deploy it to AWS. It explains
+the concepts of CloudFormation, and then it shows how to use AWS CDK to create the infrastructure for the app.
+
+I've yet to finish the book, but I've already learned about using AWS CDK and AWS in general.
+I had limited experience with CloudFormation, which I didn't know how to use correctly, and no experience with AWS CDK. Previously, I only used the
+[Serverless Framework](https://www.serverless.com/) and [Terraform](https://www.terraform.io/) to deploy my apps to AWS.
+
+## Next Steps
+
+As I continue reading the book, I'll write more about my experience with AWS CDK, AWS, and Spring Boot.
