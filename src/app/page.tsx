@@ -15,6 +15,7 @@ import { Go } from "@/components/snippets/Go";
 import { Java } from "@/components/snippets/Java";
 import { JavaScript } from "@/components/snippets/JavaScript";
 import { SQL } from "@/components/snippets/SQL";
+import admLogo from "@/images/logos/adm_interactive.jpg";
 import betpawaLogo from "@/images/logos/betpawa.jpeg";
 import pawapayLogo from "@/images/logos/pawapay.jpeg";
 import { type ArticleWithSlug, getAllArticles } from "@/lib/articles";
@@ -144,18 +145,25 @@ interface Role {
 function Resume() {
   const resume: Role[] = [
     {
+      company: "ADM Interactive",
+      title: "Java Developer",
+      logo: admLogo,
+      end: "Present",
+      start: "2023",
+    },
+    {
       company: "pawaPay",
       title: "Software Engineer",
       logo: pawapayLogo,
-      start: "2021",
       end: "2023",
+      start: "2021",
     },
     {
       company: "betPawa",
       title: "Full-Stack Developer",
       logo: betpawaLogo,
-      start: "2019",
       end: "2021",
+      start: "2019",
     },
   ];
 
