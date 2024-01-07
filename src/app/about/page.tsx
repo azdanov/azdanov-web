@@ -39,7 +39,7 @@ export default function About() {
             </h1>
             <div className="mt-6 space-y-7">
               <p>
-                I'm a software developer with over 3 years of experience in
+                I'm a software developer with many years of experience in
                 creating web applications.
               </p>
               <p>
