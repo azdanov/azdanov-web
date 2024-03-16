@@ -18,20 +18,53 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <Container className="mt-16 sm:mt-24">
-      <div className="grid grid-cols-1 gap-y-16 md:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
-        <div className="order-1 lg:pl-20">
-          <div className="max-w-xs px-2.5 lg:max-w-none">
-            <Image
-              priority
-              src={portraitImage}
-              alt="Anton Ždanov sitting in front of a laptop and smiling."
-              layout="responsive"
-              sizes="(min-width: 1024px) 32rem, 20rem"
-              className="-rotate-3 rounded-md bg-zinc-100 object-cover dark:bg-zinc-800"
-            />
-          </div>
-        </div>
-        <article className="order-3 space-y-12 text-base text-zinc-600 dark:text-zinc-400 md:col-span-2 lg:order-first lg:col-span-1 lg:row-span-2">
+      <div className="grid grid-cols-1 gap-y-14 md:grid-flow-col md:grid-rows-[auto_1fr] lg:gap-y-12">
+        <aside className="order-1 grid grid-cols-2 lg:grid-cols-1 lg:pl-20">
+          <Image
+            priority
+            src={portraitImage}
+            alt="Anton Ždanov sitting in front of a laptop and smiling."
+            className="mx-auto max-w-52 rounded-md bg-zinc-100 object-cover dark:bg-zinc-800 sm:max-w-60 sm:-rotate-3 lg:max-w-80"
+          />
+          <ul className="ml-3 mt-12 sm:ml-6 lg:ml-0">
+            <SocialLink
+              href="https://github.com/azdanov"
+              icon={GitHubIcon}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Connect on GitHub
+            </SocialLink>
+            <SocialLink
+              href="https://www.linkedin.com/in/azdanov/"
+              icon={LinkedInIcon}
+              className="mt-4"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Connect on LinkedIn
+            </SocialLink>
+            <SocialLink
+              href="https://x.com/thezdanov/"
+              icon={XIcon}
+              className="mt-4"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Connect on X (Twitter)
+            </SocialLink>
+            <SocialLink
+              href="mailto:anton@azdanov.dev"
+              icon={MailIcon}
+              className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              anton@azdanov.dev
+            </SocialLink>
+          </ul>
+        </aside>
+        <article className="order-2 space-y-12 text-base text-zinc-600 dark:text-zinc-400 md:col-span-2 lg:order-first lg:col-span-1 lg:row-span-2">
           <section>
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
               I'm Anton Ždanov.
@@ -160,45 +193,6 @@ export default function About() {
             </p>
           </section>
         </article>
-        <aside className="order-2 lg:pl-20">
-          <ul role="list">
-            <SocialLink
-              href="https://github.com/azdanov"
-              icon={GitHubIcon}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Connect on GitHub
-            </SocialLink>
-            <SocialLink
-              href="https://www.linkedin.com/in/azdanov/"
-              icon={LinkedInIcon}
-              className="mt-4"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Connect on LinkedIn
-            </SocialLink>
-            <SocialLink
-              href="https://x.com/thezdanov/"
-              icon={XIcon}
-              className="mt-4"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Connect on X (Twitter)
-            </SocialLink>
-            <SocialLink
-              href="mailto:anton@azdanov.dev"
-              icon={MailIcon}
-              className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              anton@azdanov.dev
-            </SocialLink>
-          </ul>
-        </aside>
       </div>
     </Container>
   );
