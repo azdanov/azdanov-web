@@ -19,12 +19,12 @@ export default function About() {
   return (
     <Container className="mt-16 sm:mt-24">
       <div className="grid grid-cols-1 gap-y-14 md:grid-flow-col md:grid-rows-[auto_1fr] lg:gap-y-12">
-        <aside className="order-1 grid grid-cols-2 lg:grid-cols-1 lg:pl-20">
+        <aside className="order-1 grid sm:grid-cols-2 lg:grid-cols-1 lg:pl-20">
           <Image
             priority
             src={portraitImage}
             alt="Anton Ždanov sitting in front of a laptop and smiling."
-            className="mx-auto max-w-52 rounded-md bg-zinc-100 object-cover dark:bg-zinc-800 sm:max-w-60 sm:-rotate-3 lg:max-w-80"
+            className="mx-auto max-w-52 -rotate-3 rounded-md bg-zinc-100 object-cover dark:bg-zinc-800 sm:max-w-60 lg:max-w-80"
           />
           <ul className="ml-3 mt-12 sm:ml-6 lg:ml-0">
             <SocialLink
