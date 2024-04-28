@@ -27,7 +27,7 @@ async function importArticle(
 }
 
 export async function getAllArticles() {
-  const articleFilenames = await glob("*/page.mdx", {
+  const articleFilenames = await glob("**/page.mdx", {
     cwd: "./src/app/articles",
   });
 

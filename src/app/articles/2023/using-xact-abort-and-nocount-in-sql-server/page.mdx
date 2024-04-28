@@ -1,0 +1,38 @@
+import { ArticleLayout } from "../../../../components/ArticleLayout";
+
+export const article = {
+  author: "Anton Ždanov",
+  date: "2023-03-07T13:39:09.447Z",
+  title: "Using XACT_ABORT and NOCOUNT in SQL Server Procedures",
+  description:
+    "Important statements to include in your SQL Server stored procedures.",
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+While learning about SQL Server stored procedures, I came across two statements that I had never seen before: XACT_ABORT and NOCOUNT.
+I was curious about what they do, so I decided to learn more and to share my findings.
+
+Generally speaking, XACT_ABORT is a transaction option that determines whether the transaction is rolled back when certain additional errors occur which isn't turned on for backwards compatibility and
+NOCOUNT is a session option that determines whether the number of rows affected by a statement is returned to the client.
+
+- **XACT_ABORT** - Good for avoiding unexpected behavior connected to rolling back a transactions
+- **NOCOUNT** - Good for performance if the procedure is used in a loop by eliminating a network call
+
+Here's a small example:
+
+```sql
+CREATE PROCEDURE insert
+  @a int,
+  @b int
+AS
+  SET XACT_ABORT, NOCOUNT ON;
+  INSERT INTO table (a, b) VALUES (@a, @b);
+```
+
+Main resource that I used to learn more about these statements were from an article by [Erland Sommarskog - Error and Transaction Handling in SQL Server](https://www.sommarskog.se/error_handling/Part1.html).

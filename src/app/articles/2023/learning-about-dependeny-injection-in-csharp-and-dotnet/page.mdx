@@ -1,0 +1,58 @@
+import { MdxImage as Image } from "../../../../components/MdxImage";
+import { ArticleLayout } from "../../../../components/ArticleLayout";
+import dependencyInjection from "./dependency-injection-csharp-certificate.png";
+
+export const article = {
+  author: "Anton Ždanov",
+  date: "2023-04-12T10:28:57.547Z",
+  title: "Learning about dependency injection in C# and .NET",
+  description:
+    "Another course finished about learning how to use dependency injection in C# and .NET",
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />;
+
+Another course finished on my journey in learning C# and .NET. It was about one of the most important things in
+modern software development - dependency injection. I've learned how to use it in C# and .NET, and how to
+implement it in a real-world application. One chapter was about more advanced topics, such as using
+[Scrutor](https://github.com/khellang/Scrutor) to automatically register services.
+
+> Scrutor — Assembly scanning and decoration extensions for Microsoft.Extensions.DependencyInjection
+
+It reminded me of the Spring Framework in Java, which has a similar feature called
+[@ComponentScan](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-scanning-autodetection).
+It allows you to automatically register services in the container, which is very useful when you have a lot of
+services and don't want to register them manually. Although one of the downsides of this approach is that it
+can be hard to understand what services are registered in the container. And there is no quick way to find out
+just by looking at the code as in `Program.cs` or `Startup.cs`.
+
+As a side note, in Spring Boot, you don't have to explicitly specify this annotation because it's automatically
+enabled when using [@SpringBootApplication](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.using-the-springbootapplication-annotation).
+
+The course I took was from [Nick Chapsas - From Zero to Hero:
+Dependency injection in .NET with C#](https://nickchapsas.com/p/from-zero-to-hero-dependency-injection-in-net), a well-known YouTube instructor with many years of experience building production APIs in .NET.
+I already finished his course about [REST APIs in .NET](https://azdanov.dev/articles/first-steps-restful-api-dotnet), and I wasn't disappointed in the new course also.
+
+The course covered some topics, including:
+
+- Basic dependency injection and use cases
+- How to use ServiceCollection and ServiceProvider with different lifetimes
+- Resolving dependencies in different scenarios and projects
+- Advanced topics, such as using ServiceDescriptor, Add vs. TryAdd, Open Generics, and deep dive into lifetime scopes, etc.
+- Advanced techniques about custom scopes, decorators, avoiding service locator, and more
+- Introduction to Scrutor and ways it can simplify service registration with potential pitfalls
+- Creating your own minimal dependency injection framework by using a Dictionary
+
+After completing the course, I got another certificate. Here it is:
+
+<Image
+  src={dependencyInjection}
+  alt="Certificate for completing From Zero to Hero: Dependency injection in .NET with C#"
+/>
+
+It was a valuable investment to learn more about dependency injection in .NET and C#. If you have any questions or feedback, feel free to contact me.
