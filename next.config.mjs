@@ -37,7 +37,7 @@ const securityHeaders = [
 const nextConfig = {
   pageExtensions: ["js", "jsx", "ts", "tsx", "mdx"],
   images: {
-    formats: ["image/webp"],
+    formats: ["image/avif", "image/webp"],
   },
   async headers() {
     return [
