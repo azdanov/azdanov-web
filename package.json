@@ -13,7 +13,6 @@
     "lint:fix": "next lint --fix",
     "format": "prettier --write ."
   },
-  "packageManager": "pnpm@8.15.4",
   "browserslist": [
     "defaults",
     "not ie <= 11"
