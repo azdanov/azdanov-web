@@ -8,7 +8,6 @@ import { IconLink } from "@/components/IconLink";
 import { BriefcaseIcon } from "@/components/icons/BriefcaseIcon";
 import { GitHubIcon } from "@/components/icons/GitHubIcon";
 import { LinkedInIcon } from "@/components/icons/LinkedInIcon";
-import { XIcon } from "@/components/icons/XIcon";
 import { Prose } from "@/components/Prose";
 import { CSharp } from "@/components/snippets/CSharp";
 import { Go } from "@/components/snippets/Go";
@@ -51,13 +50,6 @@ export default async function Home() {
               href="https://www.linkedin.com/in/azdanov/"
               aria-label="Connect on LinkedIn"
               icon={LinkedInIcon}
-              target="_blank"
-              rel="noopener noreferrer"
-            />
-            <IconLink
-              href="https://x.com/thezdanov/"
-              aria-label="Connect on X (Twitter)"
-              icon={XIcon}
               target="_blank"
               rel="noopener noreferrer"
             />
