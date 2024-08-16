@@ -1,0 +1,383 @@
+import { ArticleLayout } from "../../../../components/ArticleLayout";
+import { MdxImage as Image } from "../../../../components/MdxImage";
+
+import pagination from "./pagination.png";
+import paginationBoth from "./pagination-both.png";
+import Link from "next/link";
+
+export const article = {
+  author: "Anton Ždanov",
+  date: "2024-08-16T15:44:25.808Z",
+  title:
+    "Implementing a Fixed Width Pagination in a Spring Boot App with Thymeleaf",
+  description:
+    "How to implement a fixed width offset-based pagination in Spring Boot. Step by step walkthrough including a demo project.",
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+};
+
+export default function MDXPage({ children }) {
+  return <ArticleLayout article={article}>{children}</ArticleLayout>;
+}
+
+I encountered this issue while working on a Spring Boot project that required pagination support for large datasets. I found the problem non-trivial and required a lot of research and bug-fixing to get it right. Here are the results of my work.
+
+I found several solutions which implemented a varying width pagination, but I didn't like that the pagination panel was changing its size during use.
+
+So, here is an implementation of a fixed width pagination in a Spring Boot project that uses Thymeleaf.
+
+|Pagination with an ellipsis|Pagination with an ellipsis on both sides|
+|---|---|
+|<Link href={pagination.src}><Image src={pagination} alt="Pagination with an ellipsis" /></Link>|<Link href={paginationBoth.src}><Image src={paginationBoth} alt="Pagination on with ellipsis on both sides" /></Link>|
+
+## Project
+
+You can find the project on [https://github.com/azdanov/spring-pagination](https://github.com/azdanov/spring-pagination).
+
+These parts are covered in the current article:
+
+```plaintext
+src/main/java/dev/azdanov/pagination/user
+├── UserController.java
+├── UserService.java
+├── UserRepository.java
+src/main/resources/templates
+├── users.html
+├── fragments
+│   └── pagination.html
+src/main/java/dev/azdanov/pagination/util
+├── PaginationUtils.java
+├── PageItem.java
+```
+
+## UserController
+
+The `UserController` handles HTTP requests and interacts with the `UserService` to fetch paginated data. It uses [Pageable](https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/domain/Pageable.html) to pass pagination information, such as page size and current page number, to the service for an offset based pagination. A [PagedModel](https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/web/PagedModel.html) is returned to the view, because Page is not stable and can change its implementation between Spring versions.
+
+```java
+package dev.azdanov.pagination.user;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PagedModel;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/users")
+@RequiredArgsConstructor
+public class UserController {
+
+    private final UserService userService;
+
+    @GetMapping
+    public String listUsers(Pageable pageable, Model model) {
+        PagedModel<UserDto> users = userService.getUsers(pageable);
+
+        model.addAttribute("users", users);
+        model.addAttribute("pageable", pageable);
+
+        return "users";
+    }
+}
+```
+
+## UserService
+
+The `UserService` fetches paginated user data from the repository and maps it to DTOs.
+
+```java
+package dev.azdanov.pagination.user;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PagedModel;
+import org.springframework.stereotype.Service;
+
+@Service
+@RequiredArgsConstructor
+public class UserService {
+
+    private final UserRepository userRepository;
+
+    public PagedModel<UserDto> getUsers(Pageable pageable) {
+        Page<UserDto> users = userRepository.findAll(pageable)
+            .map(user -> new UserDto(user.getId(), user.getName(), user.getEmail()));
+
+        return new PagedModel<>(users);
+    }
+}
+```
+
+## UserRepository
+
+The `UserRepository` extends `JpaRepository` to provide CRUD operations and pagination support.
+Default methods like `findAll(Pageable pageable)` are used to fetch paginated data, so it's quite easy to implement pagination in Spring Data JPA.
+
+```java
+package dev.azdanov.pagination.user;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+}
+```
+
+## Thymeleaf Template
+
+The `users.html` template displays the list of users and includes the pagination controls.
+
+As a side note, I use the [Thymeleaf Layout Dialect](https://ultraq.github.io/thymeleaf-layout-dialect/) to create a layout structure with a main layout and separate pages. The `layout:decorate` attribute is used to apply the layout to the current template.
+
+And Bootstrap 5.3 is used for styling.
+
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main}" lang="en">
+<head>
+    <title>Users</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h1 class="mb-4">Users</h1>
+    <p>This table's pagination uses Spring Data JPA Pageable offset based pagination: <a
+            href="https://docs.spring.io/spring-data/jpa/reference/repositories/query-methods-details.html#repositories.special-parameters">Spring
+        Data JPA - Paging, Iterating Large Results, Sorting & Limiting</a></p>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users.content}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.email}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:replace="~{fragments/pagination :: offset-pagination(${users}, ${pageable})}"></div>
+</div>
+</body>
+</html>
+```
+
+## Pagination Fragment
+
+The `pagination.html` fragment handles the pagination controls and navigation. There are a lot of stuff going on, so let's break it down:
+
+- The `pagedModel` and `pageable` objects are passed to the fragment.
+- Various helper variables are created to simplify the code with `th:with`.
+- An info text is displayed with the current page range and total elements.
+- It generates the pagination structure where the `PaginationUtils` class is used to calculate the page items.
+- It includes a select element to change the page size and some JavaScript to handle the page size change event (currentUrl is globally set).
+
+```html
+<nav th:fragment="offset-pagination(pagedModel, pageable)"
+     th:with="page=${pagedModel.getMetadata()}" id="pagination" aria-label="Page navigation"
+     class="mt-2 mb-5">
+    <div class="d-flex justify-content-between align-items-center">
+
+        <div class="text-muted d-none d-sm-block text-nowrap"
+             th:with="start=${page.number * page.size + 1}, end=${T(java.lang.Math).min((page.number + 1) * page.size, page.totalElements)}">
+            <span th:text="|${start}-${end} of ${page.totalElements}|"></span>
+        </div>
+
+        <ul class="pagination mb-0"
+            th:if="${!pagedModel.getContent().isEmpty() && page.totalPages > 1}"
+            th:with="currentPage = ${page.number}, totalPages = ${page.totalPages}">
+
+            <li class="page-item" th:classappend="${currentPage == 0} ? 'disabled'">
+                <a class="page-link"
+                   th:tabindex="${currentPage == 0} ? '-1' : '0'"
+                   th:href="@{${currentUrl}(page=${currentPage - 1}, size=${pageable.pageSize})}"
+                   aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+
+            <li class="page-item"
+                th:each="pageItem : ${T(dev.azdanov.pagination.util.PaginationUtils).getPageItems(page)}"
+                th:classappend="${pageItem.pageNumber == currentPage + 1} ? 'active'">
+                <a class="page-link"
+                   th:href="@{${currentUrl}(page=${pageItem.pageNumber - 1}, size=${pageable.pageSize})}"
+                   th:text="${pageItem.isEllipsis() ? '&hellip;' : pageItem.pageNumber}"
+                   th:aria-label="${'Page ' + pageItem.pageNumber}"></a>
+            </li>
+
+            <li class="page-item" th:classappend="${currentPage == totalPages - 1} ? 'disabled'">
+                <a class="page-link"
+                   th:tabindex="${currentPage == totalPages - 1} ? '-1' : '0'"
+                   th:href="@{${currentUrl}(page=${currentPage + 1}, size=${pageable.pageSize})}"
+                   aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="d-flex align-items-center">
+            <label class="text-muted pe-2 d-none d-sm-block text-nowrap" for="paginationSize">
+                Page size
+            </label>
+            <select class="form-select form-select text-center w-auto" name="paginationSize" id="paginationSize">
+                <option th:each="size : ${ { 5, 10, 20, 50} }" th:value="${size}" th:text="${size}"
+                        th:selected="${page.size == size}"></option>
+            </select>
+        </div>
+    </div>
+
+    <script th:inline="javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            const paginationSizeSelect = document.getElementById('paginationSize');
+            const currentUrl = /*[[${currentUrl}]]*/ '';
+
+            paginationSizeSelect.addEventListener('change', function () {
+                const newSize = this.value;
+                const url = new URL(window.location.origin + currentUrl);
+
+                url.searchParams.set('page', '0');
+                url.searchParams.set('size', newSize);
+
+                window.location.href = url.toString();
+            });
+        });
+    </script>
+</nav>
+```
+
+## PaginationUtils
+
+The `PaginationUtils` class generates the pagination structure, including ellipses for large datasets.
+
+I found an algorithm online: https://gist.github.com/kottenator/9d936eb3e4e3c3e02598?permalink_comment_id=5146730#gistcomment-5146730
+
+Credits to the author: [Piyush Kumar - ](https://gist.github.com/pk936). I modified it to fit my needs.
+
+Although it had a small bug, where for smaller page sizes it showed the ellipsis on the right side, even though it could display all the pages. I added some additional checks to fix the issue.
+
+I liked this implementation because it has fixed width and doesn't expand or shrink as you navigate through the pages, compared to other solutions I found.
+
+```java
+package dev.azdanov.pagination.util;
+
+import org.springframework.data.web.PagedModel;
+import org.springframework.lang.NonNull;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.IntStream;
+
+public final class PaginationUtils {
+
+    private static final int CENTER_PAGES = 3;
+    private static final int ELLIPSIS_THRESHOLD = 2;
+
+    private PaginationUtils() {
+    }
+
+    public static List<PageItem> getPageItems(@NonNull PagedModel.PageMetadata metadata) {
+        int currentPage = (int) (metadata.number() + 1);
+        int totalPages = (int) metadata.totalPages();
+
+        return calculatePagination(currentPage, totalPages);
+    }
+
+    private static List<PageItem> calculatePagination(int currentPage, int totalPages) {
+        if (totalPages <= CENTER_PAGES + ELLIPSIS_THRESHOLD * 2) {
+            return createFullPagination(totalPages);
+        }
+
+        int startPage = Math.max(currentPage - 1, 1);
+        int endPage = Math.min(currentPage + 1, totalPages);
+
+        boolean showLeftEllipsis = startPage > ELLIPSIS_THRESHOLD;
+        boolean showRightEllipsis = endPage < totalPages - ELLIPSIS_THRESHOLD;
+
+        if (!showLeftEllipsis && showRightEllipsis) {
+            return createLeftPagination(totalPages);
+        }
+        if (showLeftEllipsis && !showRightEllipsis) {
+            return createRightPagination(totalPages);
+        }
+        if (showLeftEllipsis && showRightEllipsis) {
+            return createCenterPagination(startPage, endPage, totalPages);
+        }
+
+        return createFullPagination(totalPages);
+    }
+
+    private static List<PageItem> createLeftPagination(int lastPage) {
+        int end = CENTER_PAGES + ELLIPSIS_THRESHOLD;
+
+        List<PageItem> pages = new ArrayList<>(range(1, end));
+        pages.add(new PageItem(end + 1, true));
+        pages.add(new PageItem(lastPage, false));
+
+        return pages;
+    }
+
+    private static List<PageItem> createRightPagination(int lastPage) {
+        int start = lastPage - CENTER_PAGES - 1;
+
+        List<PageItem> pages = new ArrayList<>();
+        pages.add(new PageItem(1, false));
+        pages.add(new PageItem(start - 1, true));
+        pages.addAll(range(start, lastPage));
+
+        return pages;
+    }
+
+    private static List<PageItem> createCenterPagination(int startPage, int endPage, int lastPage) {
+        List<PageItem> pages = new ArrayList<>();
+        pages.add(new PageItem(1, false));
+        pages.add(new PageItem(startPage - 1, true));
+        pages.addAll(range(startPage, endPage));
+        pages.add(new PageItem(endPage + 1, true));
+        pages.add(new PageItem(lastPage, false));
+
+        return pages;
+    }
+
+    private static List<PageItem> createFullPagination(int lastPage) {
+        return range(1, lastPage);
+    }
+
+    private static List<PageItem> range(int start, int end) {
+        return IntStream.rangeClosed(start, end)
+            .mapToObj(i -> new PageItem(i, false))
+            .toList();
+    }
+}
+```
+
+## PageItem
+
+The `PageItem` class represents a single page in the pagination component. It helps us to distinguish between regular pages and ellipses. Another way is to return `-1` instead of creating a new class, but then in the Thymeleaf fragment it is impossible to distinguish between a regular page and an ellipsis to make it a navigable link.
+
+```java
+package dev.azdanov.pagination.util;
+
+public record PageItem(int pageNumber, boolean isEllipsis) {}
+```
+
+## Conclusion
+
+I hope this article helps you with implementing a pagination in your projects. If you have any questions or suggestions, feel free to contact me.
+
+Thank you for reading!
