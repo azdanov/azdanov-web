@@ -20,8 +20,7 @@ function getStaticPageInfo(dir: string): PageInfo[] {
     } else if (entry.name === "page.tsx") {
       const filePath = path.join(pagesDir, entry.name);
       const stats = fs.statSync(filePath);
-      const route =
-        dir === "src/app" ? "" : `/${path.relative("src/app", dir)}`;
+      const route = dir === "src/app" ? "" : `${path.relative("src/app", dir)}`;
       pageInfo.push({
         route,
         lastModified: stats.mtime,
@@ -78,10 +77,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Static pages
   const staticPageInfo = getStaticPageInfo("src/app");
   const staticPages = staticPageInfo.map((info) => ({
-    url: `${baseUrl}${info.route}`,
+    url: `${baseUrl}/${info.route}`,
     lastModified: info.lastModified,
     changeFrequency: "monthly" as const,
-    priority: info.route === "" ? 1 : 0.8,
+    priority: info.route === "" ? 1.0 : 0.8,
   }));
 
   // Blog posts
