@@ -2,42 +2,93 @@ import fs from "fs";
 import { MetadataRoute } from "next";
 import path from "path";
 
-function getArticleSlugs(dir: string): string[] {
-  const articlesDir = path.join(process.cwd(), dir);
-  const entries = fs.readdirSync(articlesDir, { withFileTypes: true });
+interface PageInfo {
+  route: string;
+  lastModified: Date;
+}
 
-  let slugs: string[] = [];
+function getStaticPageInfo(dir: string): PageInfo[] {
+  const pagesDir = path.join(process.cwd(), dir);
+  const entries = fs.readdirSync(pagesDir, { withFileTypes: true });
+
+  let pageInfo: PageInfo[] = [];
 
   for (const entry of entries) {
     if (entry.isDirectory()) {
-      const yearSlugs = getArticleSlugs(path.join(dir, entry.name));
-      slugs = slugs.concat(yearSlugs.map((slug) => `${entry.name}/${slug}`));
-    } else if (entry.name === "page.mdx") {
-      slugs.push(
-        path.dirname(path.join(dir, entry.name)).split(path.sep).pop() || "",
-      );
+      const subDirInfo = getStaticPageInfo(path.join(dir, entry.name));
+      pageInfo = pageInfo.concat(subDirInfo);
+    } else if (entry.name === "page.tsx") {
+      const filePath = path.join(pagesDir, entry.name);
+      const stats = fs.statSync(filePath);
+      const route =
+        dir === "src/app" ? "" : `/${path.relative("src/app", dir)}`;
+      pageInfo.push({
+        route,
+        lastModified: stats.mtime,
+      });
     }
   }
 
-  return slugs;
+  return pageInfo;
+}
+
+function extractDateFromMdx(content: string): Date | null {
+  const dateMatch = RegExp(
+    /date:\s*"(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z)"/,
+  ).exec(content);
+  if (dateMatch?.[1]) {
+    return new Date(dateMatch[1]);
+  }
+  return null;
+}
+
+function getArticleInfo(dir: string, baseRoute: string = ""): PageInfo[] {
+  const articlesDir = path.join(process.cwd(), dir);
+  const entries = fs.readdirSync(articlesDir, { withFileTypes: true });
+
+  let articleInfo: PageInfo[] = [];
+
+  for (const entry of entries) {
+    if (entry.isDirectory()) {
+      const subDir = path.join(dir, entry.name);
+      const subRoute = path.join(baseRoute, entry.name);
+      const subDirInfo = getArticleInfo(subDir, subRoute);
+      articleInfo = articleInfo.concat(subDirInfo);
+    } else if (entry.name === "page.mdx") {
+      const filePath = path.join(articlesDir, entry.name);
+      const fileContents = fs.readFileSync(filePath, "utf8");
+      const extractedDate = extractDateFromMdx(fileContents);
+      const route = path.join(
+        baseRoute,
+        path.dirname(entry.name).split(path.sep).pop() ?? "",
+      );
+      articleInfo.push({
+        route,
+        lastModified: extractedDate ?? fs.statSync(filePath).mtime,
+      });
+    }
+  }
+
+  return articleInfo;
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
   // Static pages
-  const staticPages = ["", "/about", "/projects", "/articles"].map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date(),
+  const staticPageInfo = getStaticPageInfo("src/app");
+  const staticPages = staticPageInfo.map((info) => ({
+    url: `${baseUrl}${info.route}`,
+    lastModified: info.lastModified,
     changeFrequency: "monthly" as const,
-    priority: route === "" ? 1 : 0.8,
+    priority: info.route === "" ? 1 : 0.8,
   }));
 
   // Blog posts
-  const articleSlugs = getArticleSlugs("src/app/articles");
-  const blogPosts = articleSlugs.map((slug) => ({
-    url: `${baseUrl}/articles/${slug}`,
-    lastModified: new Date(),
+  const articleInfo = getArticleInfo("src/app/articles");
+  const blogPosts = articleInfo.map((info) => ({
+    url: `${baseUrl}/articles/${info.route}`,
+    lastModified: info.lastModified,
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }));
