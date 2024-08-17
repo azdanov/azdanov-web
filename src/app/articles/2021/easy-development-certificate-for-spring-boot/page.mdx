@@ -13,7 +13,9 @@ export const metadata = {
   description: article.description,
 }
 
-export default (props) => <ArticleLayout article={article} {...props} />;
+export default function MDXPage({ children }) {
+  return <ArticleLayout article={article}>{children}</ArticleLayout>;
+}
 
 Lately I've been digging into Spring Security by reading a book "Spring Security in Action" by Laurentiu Spilca.
 

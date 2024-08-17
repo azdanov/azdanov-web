@@ -15,7 +15,9 @@ export const metadata = {
   description: article.description,
 }
 
-export default (props) => <ArticleLayout article={article} {...props} />;
+export default function MDXPage({ children }) {
+  return <ArticleLayout article={article}>{children}</ArticleLayout>;
+}
 
 Another course finished on my journey in learning C# and .NET. It was about one of the most important things in
 modern software development - dependency injection. I've learned how to use it in C# and .NET, and how to

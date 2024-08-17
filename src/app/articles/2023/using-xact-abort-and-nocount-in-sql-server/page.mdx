@@ -13,7 +13,9 @@ export const metadata = {
   description: article.description,
 }
 
-export default (props) => <ArticleLayout article={article} {...props} />
+export default function MDXPage({ children }) {
+  return <ArticleLayout article={article}>{children}</ArticleLayout>;
+}
 
 While learning about SQL Server stored procedures, I came across two statements that I had never seen before: XACT_ABORT and NOCOUNT.
 I was curious about what they do, so I decided to learn more and to share my findings.

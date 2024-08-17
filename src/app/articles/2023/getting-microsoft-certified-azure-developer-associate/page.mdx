@@ -15,7 +15,9 @@ export const metadata = {
   description: article.description,
 }
 
-export default (props) => <ArticleLayout article={article} {...props} />;
+export default function MDXPage({ children }) {
+  return <ArticleLayout article={article}>{children}</ArticleLayout>;
+}
 
 This exam proved to be much more difficult than AZ-104. Even though I am a developer and already passed AZ-104 beforehand, some questions were very tricky. I had to read them multiple times to understand what they are asking for.
 Often enough, I just had to randomly guess the answer, because I didn't know the correct one. I was very surprised to see that I passed the exam with a score of 820/1000.

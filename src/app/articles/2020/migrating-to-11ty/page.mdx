@@ -12,7 +12,9 @@ export const metadata = {
   description: article.description,
 }
 
-export default (props) => <ArticleLayout article={article} {...props} />;
+export default function MDXPage({ children }) {
+  return <ArticleLayout article={article}>{children}</ArticleLayout>;
+}
 
 After getting hired I have been busy at work. Learning all the new things to become productive and productive team member.
 

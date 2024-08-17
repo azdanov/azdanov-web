@@ -12,7 +12,9 @@ export const metadata = {
   description: article.description,
 }
 
-export default (props) => <ArticleLayout article={article} {...props} />;
+export default function MDXPage({ children }) {
+  return <ArticleLayout article={article}>{children}</ArticleLayout>;
+}
 
 After a long time of using [Hugo](https://gohugo.io/), I decided to migrate my blog to [Next.js](https://nextjs.org/). There was nothing particularly wrong with Hugo,
 but I wanted to try something new, and I was curious about Next.js. I also wanted to try out [Tailwind CSS](https://tailwindcss.com/), which I had heard a lot about.

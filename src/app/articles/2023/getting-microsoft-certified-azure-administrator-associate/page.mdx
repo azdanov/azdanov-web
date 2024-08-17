@@ -15,7 +15,9 @@ export const metadata = {
   description: article.description,
 }
 
-export default (props) => <ArticleLayout article={article} {...props} />;
+export default function MDXPage({ children }) {
+  return <ArticleLayout article={article}>{children}</ArticleLayout>;
+}
 
 Next step accomplished, the Microsoft Certified: Azure Administrator Associate (AZ-104) exam has been successfully passed.
 The exam itself was a mixed experience, with some questions being very easy, and some being very tricky. I have spent around

@@ -13,7 +13,9 @@ export const metadata = {
   description: article.description,
 }
 
-export default (props) => <ArticleLayout article={article} {...props} />;
+export default function MDXPage({ children }) {
+  return <ArticleLayout article={article}>{children}</ArticleLayout>;
+}
 
 When using Postgres in docker-compose sometimes I have a need to create multiple databases for a demo project, but sadly only a `POSTGRES_DB` environment variable is available for a single database.
 

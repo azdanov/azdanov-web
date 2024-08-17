@@ -15,7 +15,9 @@ export const metadata = {
   description: article.description,
 }
 
-export default (props) => <ArticleLayout article={article} {...props} />;
+export default function MDXPage({ children }) {
+  return <ArticleLayout article={article}>{children}</ArticleLayout>;
+}
 
 I started learning C# and .NET a few weeks ago and finished a course on building a modern RESTful API. I would like to share that I've finished a GitHub project and have a certificate from the website.
 

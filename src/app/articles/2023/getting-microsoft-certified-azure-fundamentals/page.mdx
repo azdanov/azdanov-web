@@ -15,7 +15,9 @@ export const metadata = {
   description: article.description,
 }
 
-export default (props) => <ArticleLayout article={article} {...props} />;
+export default function MDXPage({ children }) {
+  return <ArticleLayout article={article}>{children}</ArticleLayout>;
+}
 
 The first major step on my way to learn and use Azure was to pass the Microsoft Certified: Azure Fundamentals (AZ-900) exam.
 Exam itself is not hard, but it requires a lot of preparations and memorization and luck, since some questions I didn't

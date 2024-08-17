@@ -12,7 +12,9 @@ export const metadata = {
   description: article.description,
 }
 
-export default (props) => <ArticleLayout article={article} {...props} />;
+export default function MDXPage({ children }) {
+  return <ArticleLayout article={article}>{children}</ArticleLayout>;
+}
 
 My last update to this website was a migration from [Gatsby](https://www.gatsbyjs.com/) with a custom made theme to [11ty](https://www.11ty.dev/) with modified [eleventy-high-performance-blog](https://github.com/google/eleventy-high-performance-blog) theme. And while it was very educational and inspiring to see what kind of performance improvements were possible the theme itself became a bit difficult to manage, requiring a lot of maintenance.
 
