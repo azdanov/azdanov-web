@@ -13,6 +13,7 @@ export const viewport: Viewport = {
     { media: "(prefers-color-scheme: light)", color: "#3777E1" },
     { media: "(prefers-color-scheme: dark)", color: "#18181b" },
   ],
+  colorScheme: "light dark",
 };
 
 export const metadata: Metadata = {
@@ -31,7 +32,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  readonly children: ReactNode;
+}) {
   return (
     <html lang="en" className="antialiased" suppressHydrationWarning>
       <body className="flex bg-white dark:bg-zinc-900 sm:bg-zinc-50 sm:dark:bg-black">
