@@ -9,14 +9,14 @@ export function SocialLink({
   target,
   rel,
   icon: Icon,
-}: {
+}: Readonly<{
   className?: string;
   href: string;
   icon: ComponentType<{ className?: string }>;
   children: ReactNode;
   target?: string;
   rel?: string;
-}) {
+}>) {
   return (
     <li className={clsx(className, "flex")}>
       <Link

@@ -6,11 +6,11 @@ export function SimpleLayout({
   title,
   intro,
   children,
-}: {
+}: Readonly<{
   title: string;
   intro: string;
   children?: ReactNode;
-}) {
+}>) {
   return (
     <Container className="mt-16 sm:mt-24">
       <header className="max-w-2xl">

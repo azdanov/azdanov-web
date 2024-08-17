@@ -3,10 +3,10 @@ import { ReactNode, useId } from "react";
 export function Section({
   title,
   children,
-}: {
+}: Readonly<{
   title: string;
   children: ReactNode;
-}) {
+}>) {
   const id = useId();
 
   return (

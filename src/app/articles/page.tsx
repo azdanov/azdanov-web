@@ -30,7 +30,7 @@ export default async function ArticlesIndex() {
   );
 }
 
-function Article({ article }: { readonly article: ArticleWithSlug }) {
+function Article({ article }: Readonly<{ article: ArticleWithSlug }>) {
   return (
     <article className="md:grid md:grid-cols-4 md:items-baseline">
       <Card className="md:col-span-3">

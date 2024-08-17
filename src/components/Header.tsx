@@ -21,38 +21,36 @@ import { SunIcon } from "@/components/icons/SunIcon";
 
 export function Header() {
   return (
-    <>
-      <header className="pointer-events-none relative z-50 flex flex-col">
-        <div className="top-0 z-10 h-16 pt-6">
-          <Container className="w-full">
-            <div className="relative flex gap-4">
-              <div className="flex flex-1">
-                <Logo />
-              </div>
-              <div className="flex flex-1 justify-end md:justify-center">
-                <MobileNavigation className="pointer-events-auto sm:hidden" />
-                <DesktopNavigation className="pointer-events-auto hidden sm:block" />
-              </div>
-              <div className="flex justify-end md:flex-1">
-                <div className="pointer-events-auto">
-                  <ModeToggle />
-                </div>
+    <header className="pointer-events-none relative z-50 flex flex-col">
+      <div className="top-0 z-10 h-16 pt-6">
+        <Container className="w-full">
+          <div className="relative flex gap-4">
+            <div className="flex flex-1">
+              <Logo />
+            </div>
+            <div className="flex flex-1 justify-end md:justify-center">
+              <MobileNavigation className="pointer-events-auto sm:hidden" />
+              <DesktopNavigation className="pointer-events-auto hidden sm:block" />
+            </div>
+            <div className="flex justify-end md:flex-1">
+              <div className="pointer-events-auto">
+                <ModeToggle />
               </div>
             </div>
-          </Container>
-        </div>
-      </header>
-    </>
+          </div>
+        </Container>
+      </div>
+    </header>
   );
 }
 
 function MobileNavItem({
   href,
   children,
-}: {
+}: Readonly<{
   href: string;
   children: ReactNode;
-}) {
+}>) {
   return (
     <li>
       <Popover.Button as={Link} href={href} className="block py-2">
@@ -62,7 +60,9 @@ function MobileNavItem({
   );
 }
 
-function MobileNavigation(props: ComponentPropsWithoutRef<typeof Popover>) {
+function MobileNavigation(
+  props: Readonly<ComponentPropsWithoutRef<typeof Popover>>,
+) {
   return (
     <Popover {...props}>
       <Popover.Button className="group flex items-center rounded-sm bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 backdrop-blur dark:bg-zinc-900 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20">
@@ -117,7 +117,13 @@ function MobileNavigation(props: ComponentPropsWithoutRef<typeof Popover>) {
   );
 }
 
-function NavItem({ href, children }: { href: string; children: ReactNode }) {
+function NavItem({
+  href,
+  children,
+}: Readonly<{
+  href: string;
+  children: ReactNode;
+}>) {
   const isActive = usePathname() === href;
 
   return (
@@ -140,7 +146,7 @@ function NavItem({ href, children }: { href: string; children: ReactNode }) {
   );
 }
 
-function DesktopNavigation(props: ComponentPropsWithoutRef<"nav">) {
+function DesktopNavigation(props: Readonly<ComponentPropsWithoutRef<"nav">>) {
   return (
     <nav {...props}>
       <ul className="flex bg-white/90 px-3 text-sm font-medium text-zinc-800 backdrop-blur dark:bg-zinc-900 dark:text-zinc-200 dark:ring-white/10">
@@ -178,7 +184,7 @@ function ModeToggle() {
 function Logo({
   className,
   ...props
-}: Omit<ComponentPropsWithoutRef<typeof Link>, "href">) {
+}: Readonly<Omit<ComponentPropsWithoutRef<typeof Link>, "href">>) {
   return (
     <div className="relative">
       <Link

@@ -5,7 +5,13 @@ import { ReactNode } from "react";
 
 import { ContainerInner, ContainerOuter } from "@/components/Container";
 
-function NavLink({ href, children }: { href: string; children: ReactNode }) {
+function NavLink({
+  href,
+  children,
+}: Readonly<{
+  href: string;
+  children: ReactNode;
+}>) {
   return (
     <Link
       href={href}

@@ -34,9 +34,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: {
-  readonly children: ReactNode;
-}) {
+}: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en" className="antialiased" suppressHydrationWarning>
       <body className="flex bg-white dark:bg-zinc-900 sm:bg-zinc-50 sm:dark:bg-black">

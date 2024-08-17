@@ -13,10 +13,10 @@ import { formatDate } from "@/lib/formatDate";
 export function ArticleLayout({
   article,
   children,
-}: {
+}: Readonly<{
   article: ArticleWithSlug;
   children: ReactNode;
-}) {
+}>) {
   const router = useRouter();
   const { previousPathname } = useContext(AppContext);
 

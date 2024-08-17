@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 
-export function Layout({ children }: { children: ReactNode }) {
+export function Layout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <>
       <div className="fixed inset-0 hidden justify-center sm:flex sm:px-8">
