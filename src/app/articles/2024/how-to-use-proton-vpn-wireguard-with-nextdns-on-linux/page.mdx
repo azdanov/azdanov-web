@@ -20,6 +20,8 @@ export default function MDXPage({ children }) {
 
 If you're using Linux and want to combine the security of Proton VPN with the advanced DNS features of NextDNS, here's a quick guide to set it up.
 
+## Steps for updating the Proton VPN WireGuard configuration
+
 1. Download your Proton VPN WireGuard config from the [Proton VPN WireGuard configuration](https://account.proton.me/u/0/vpn/WireGuard).
 2. Get your NextDNS configuration ID and Endpoints from the [NextDNS dashboard](https://my.nextdns.io).
 4. In the downloaded wireguard config remove the `DNS =` line from the `[Interface]` section.
@@ -51,6 +53,69 @@ Endpoint = <Address>
 This setup leverages `systemd-resolved`, which some Linux distributions use by default. The `PostUp` command configures NextDNS when the WireGuard connection is established.
 
 Now you can enjoy the combined benefits of Proton VPN's security and NextDNS's advanced filtering and analytics!
+
+## Managing WireGuard Configuration and Connection
+
+### Configuration File Location
+
+After modifying your WireGuard configuration file, you should place it in the appropriate directory:
+
+1. Save the configuration file with a .conf extension (e.g., `wg0.conf`).
+2. Move the file to `/etc/wireguard/`. You may need root privileges for this:
+    ```text
+    sudo mv wg0.conf /etc/wireguard/
+    ```
+
+### WireGuard CLI Commands
+
+Here are some useful WireGuard CLI commands to manage your VPN connection:
+
+1. Start the WireGuard connection:
+    ```text
+    sudo wg-quick up wg0
+    ```
+
+2. Stop the WireGuard connection:
+    ```text
+    sudo wg-quick down wg0
+    ```
+
+3. Check the status of your WireGuard interfaces:
+    ```text
+    sudo wg show
+    ```
+
+### Enabling/Disabling Autostart on System Boot
+To enable autostart of your WireGuard connection on system boot:
+
+1. Enable the WireGuard service:
+    ```text
+    sudo systemctl enable wg-quick@wg0.service
+    ```
+
+2. Start the service immediately:
+    ```text
+    sudo systemctl start wg-quick@wg0.service
+    ```
+
+To disable autostart:
+
+1. Disable the WireGuard service:
+    ```text
+    sudo systemctl disable wg-quick@wg0.service
+    ```
+
+2. Stop the service if it's currently running:
+    ```text
+    sudo systemctl stop wg-quick@wg0.service
+    ```
+
+Remember to replace wg0 in these commands with the actual name of your configuration file (without the .conf extension) if it's different.
+
+And that's about it. You're all set up to use Proton VPN WireGuard with NextDNS on Linux.
+
+You can use [https://ip.me](https://ip.me) to verify that your IP address is now that of the Proton VPN server you're connected to.
+And [https://test.nextdns.io](https://test.nextdns.io) to verify that your DNS queries are now going through NextDNS.
 
 ---
 
