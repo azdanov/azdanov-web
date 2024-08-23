@@ -1,4 +1,4 @@
-import { type PluginUtils } from "tailwindcss/types/config";
+import type { PluginUtils } from "tailwindcss/types/config";
 
 export default function typographyStyles({ theme }: PluginUtils) {
   return {
@@ -223,8 +223,8 @@ export default function typographyStyles({ theme }: PluginUtils) {
 
         // Horizontal rules
         hr: {
-          marginTop: theme("spacing.20"),
-          marginBottom: theme("spacing.20"),
+          marginTop: theme("spacing.10"),
+          marginBottom: theme("spacing.10"),
           borderTopWidth: "1px",
           borderColor: "var(--tw-prose-hr)",
           "@screen lg": {
