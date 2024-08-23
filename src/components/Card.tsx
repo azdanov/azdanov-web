@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import Link from "next/link";
-import { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
+import type { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
 
 import { ChevronRightIcon } from "@/components/icons/ChevronRightIcon";
 

@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
 export function LinkedInIcon(props: ComponentPropsWithoutRef<"svg">) {
   return (

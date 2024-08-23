@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ComponentPropsWithoutRef, ComponentType } from "react";
+import type { ComponentPropsWithoutRef, ComponentType } from "react";
 
 export function IconLink({
   icon: Icon,

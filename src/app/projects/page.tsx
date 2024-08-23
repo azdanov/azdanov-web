@@ -1,4 +1,4 @@
-import { type Metadata } from "next";
+import type { Metadata } from "next";
 
 import { Card } from "@/components/Card";
 import { LinkIcon } from "@/components/icons/LinkIcon";
@@ -16,10 +16,7 @@ export default function Projects() {
       intro="Over the years, I have worked on various small projects that helped me learn new things. It's difficult to choose which ones I like most, but here are some of them.
         They are all open-source, so feel free to explore the code and get some inspiration or insights for your learning or projects."
     >
-      <ul
-        role="list"
-        className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
-      >
+      <ul className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
           <Card as="li" key={project.name}>
             <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">

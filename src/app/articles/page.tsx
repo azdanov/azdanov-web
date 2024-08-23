@@ -1,4 +1,4 @@
-import { type Metadata } from "next";
+import type { Metadata } from "next";
 
 import { Card } from "@/components/Card";
 import { SimpleLayout } from "@/components/SimpleLayout";

@@ -1,5 +1,9 @@
 import clsx from "clsx";
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+import {
+  type ComponentPropsWithoutRef,
+  type ElementRef,
+  forwardRef,
+} from "react";
 
 export const ContainerOuter = forwardRef<
   ElementRef<"div">,

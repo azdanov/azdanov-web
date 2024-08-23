@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import Link from "next/link";
-import { ComponentType, ReactNode } from "react";
+import type { ComponentType, ReactNode } from "react";
 
 export function SocialLink({
   className,

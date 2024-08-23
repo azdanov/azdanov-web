@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import { ContainerInner, ContainerOuter } from "@/components/Container";
 
@@ -36,6 +36,7 @@ export function Footer() {
                 <NavLink href="/projects">Projects</NavLink>
               </div>
               <button
+                type="button"
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                 className="transition hover:text-blue-500 dark:hover:text-blue-400"
               >

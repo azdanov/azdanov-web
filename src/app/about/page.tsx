@@ -1,4 +1,4 @@
-import { type Metadata } from "next";
+import type { Metadata } from "next";
 import Image from "next/image";
 
 import { Container } from "@/components/Container";

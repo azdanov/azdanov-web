@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
 export function ArrowLeftIcon(props: ComponentPropsWithoutRef<"svg">) {
   return (

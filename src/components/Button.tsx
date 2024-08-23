@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import Link from "next/link";
-import { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
 const variantStyles = {
   primary:

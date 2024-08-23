@@ -1,5 +1,5 @@
 import glob from "fast-glob";
-import { ComponentType } from "react";
+import type { ComponentType } from "react";
 
 interface Article {
   title: string;

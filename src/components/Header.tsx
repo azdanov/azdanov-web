@@ -11,8 +11,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import {
-  ComponentPropsWithoutRef,
-  ReactNode,
+  type ComponentPropsWithoutRef,
+  type ReactNode,
   useEffect,
   useState,
 } from "react";

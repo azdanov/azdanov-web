@@ -1,6 +1,7 @@
-import fs from "fs";
-import { MetadataRoute } from "next";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
+
+import type { MetadataRoute } from "next";
 
 interface PageInfo {
   route: string;
@@ -41,7 +42,7 @@ function extractDateFromMdx(content: string): Date | null {
   return null;
 }
 
-function getArticleInfo(dir: string, baseRoute: string = ""): PageInfo[] {
+function getArticleInfo(dir: string, baseRoute = ""): PageInfo[] {
   const articlesDir = path.join(process.cwd(), dir);
   const entries = fs.readdirSync(articlesDir, { withFileTypes: true });
 
