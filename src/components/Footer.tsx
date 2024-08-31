@@ -34,6 +34,7 @@ export function Footer() {
                 <NavLink href="/about">About</NavLink>
                 <NavLink href="/articles">Articles</NavLink>
                 <NavLink href="/projects">Projects</NavLink>
+                <NavLink href="/privacy">Privacy</NavLink>
               </div>
               <button
                 type="button"
