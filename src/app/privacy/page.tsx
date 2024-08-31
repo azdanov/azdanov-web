@@ -5,14 +5,14 @@ import { SimpleLayout } from "@/components/SimpleLayout";
 export const metadata: Metadata = {
   title: "Privacy Policy | azdanov.dev",
   description:
-    "Privacy Policy for https://www.azdanov.dev. Learn about our data collection, usage, and protection practices.",
+    "Privacy Policy for https://www.azdanov.dev. Learn about data collection, usage, and protection practices on the website.",
 };
 
 export default function PrivacyPolicy() {
   return (
     <SimpleLayout
       title="Privacy Policy"
-      intro="Learn about our policies regarding the collection, use, and disclosure of information we receive from users of our site."
+      intro="I want to be transparent about how I handle information on my website."
     >
       <article className="prose dark:prose-invert">
         <p>
@@ -20,85 +20,89 @@ export default function PrivacyPolicy() {
         </p>
 
         <section>
-          <h2 id="introduction">1. Introduction</h2>
+          <h2 id="introduction">Hello there!</h2>
           <p>
-            Welcome to <a href="https://www.azdanov.dev/">azdanov.dev</a> ("we",
-            "us", or "our"). We are committed to protecting your personal
-            information and your right to privacy. This Privacy Policy explains
-            how we collect, use, and share information about you when you visit
-            our website.
+            I'm Anton, the person behind{" "}
+            <a href="https://www.azdanov.dev">azdanov.dev</a>. Your privacy
+            matters to me, and I want to explain how I handle information when
+            you visit my website.
           </p>
         </section>
 
         <section>
-          <h2 id="information-collected">2. Information We Collect</h2>
+          <h2 id="information-collected">What is collected</h2>
           <p>
-            We use Vercel Web Analytics and Vercel Speed Insights to collect
-            anonymous usage and performance data. These services do not use
-            cookies and do not collect any personal information. The data
-            collected includes:
+            I use Vercel Web Analytics and Vercel Speed Insights to gather
+            anonymous data about website usage and performance. These tools
+            don't use cookies or collect personal information. Here's what they
+            do track:
           </p>
           <ul>
-            <li>Pages visited</li>
-            <li>Referring website</li>
-            <li>Device information</li>
-            <li>Browser information</li>
-            <li>Network speed</li>
-            <li>Geographic location (country level only)</li>
-            <li>Website performance metrics</li>
+            <li>Pages you visit</li>
+            <li>Where you came from (referring website)</li>
+            <li>Your device and browser info</li>
+            <li>Your network speed</li>
+            <li>Your country (but not specific location)</li>
+            <li>How well my website is performing</li>
           </ul>
         </section>
 
         <section>
-          <h2 id="information-usage">3. How We Use Your Information</h2>
+          <h2 id="information-usage">How this information is used</h2>
           <p>
-            The information collected is used solely for the purpose of
-            analyzing website traffic, improving user experience, and optimizing
-            website performance. We do not sell or share this information with
-            third parties.
+            I only use this data to understand website traffic, improve your
+            experience, and make my website faster. I don't sell or share this
+            with anyone else.
           </p>
         </section>
 
         <section>
-          <h2 id="data-storage">4. Data Storage and Security</h2>
+          <h2 id="data-storage">Keeping data safe</h2>
           <p>
-            All data collected is anonymized and stored securely by Vercel. We
-            do not have access to any personally identifiable information
-            through these analytics and performance monitoring services. Please
-            refer to the{" "}
+            All the data is anonymized and securely stored by Vercel. I can't
+            access any information that could identify you personally. For more
+            details on how Vercel handles data, check out their{" "}
             <a href="https://vercel.com/docs/analytics/privacy-policy">
-              Vercel Web Analytics Privacy & Compliance
+              Web Analytics
             </a>{" "}
             and{" "}
             <a href="https://vercel.com/docs/speed-insights/privacy-policy">
-              Vercel Speed Insights Privacy & Compliance
+              Speed Insights
             </a>{" "}
-            for information on how Vercel handles data.
+            privacy policies.
           </p>
         </section>
 
         <section>
-          <h2 id="your-rights">5. Your Rights</h2>
+          <h2 id="your-rights">Your rights</h2>
           <p>
-            As we do not collect personal data, there is no personal information
-            for you to access, change, or delete.
+            Since I don't collect personal data, there's no personal information
+            for you to access, change, or delete. And Vercel doesn't offer any
+            functionality to do so either.
           </p>
         </section>
 
         <section>
-          <h2 id="policy-changes">6. Changes to This Privacy Policy</h2>
+          <h2 id="policy-changes">If I change this policy</h2>
           <p>
-            We may update our Privacy Policy from time to time. We will notify
-            you of any changes by posting the new Privacy Policy on this page
-            and updating the "Last updated" date.
+            I might update this policy sometimes. If I do, I'll post the new
+            version here and update the "Last updated" date.
           </p>
         </section>
 
         <section>
-          <h2 id="contact">7. Contact Us</h2>
+          <h2 id="contact">Questions?</h2>
           <p>
-            If you have any questions about this Privacy Policy, please contact
-            us at: <a href="mailto:anton@azdanov.dev">anton@azdanov.dev</a>
+            If you have any questions about how I handle privacy, just write to
+            me at <a href="mailto:anton@azdanov.dev">anton@azdanov.dev</a>.
+          </p>
+        </section>
+
+        <section>
+          <h2 id="thanks">Thank you for reading!</h2>
+          <p>
+            Thanks for taking the time to learn about the privacy policy. I hope
+            you enjoy your visit to my website!
           </p>
         </section>
       </article>
