@@ -15,11 +15,11 @@
     "> 0.2% and not dead"
   ],
   "dependencies": {
-    "@headlessui/react": "2.1.4",
+    "@headlessui/react": "2.1.5",
     "@mapbox/rehype-prism": "^0.9.0",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
-    "@next/mdx": "^14.2.7",
+    "@next/mdx": "^14.2.8",
     "@tailwindcss/typography": "^0.5.15",
     "@vercel/analytics": "^1.3.1",
     "@vercel/speed-insights": "^1.0.12",
@@ -28,7 +28,7 @@
     "clsx": "^2.1.1",
     "fast-glob": "^3.3.2",
     "feed": "^4.2.2",
-    "next": "^14.2.7",
+    "next": "^14.2.8",
     "next-themes": "^0.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -37,13 +37,13 @@
   },
   "devDependencies": {
     "@types/mdx": "^2.0.13",
-    "@types/node": "^22.5.2",
+    "@types/node": "^22.5.4",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "@types/webpack-env": "^1.18.5",
-    "@typescript-eslint/eslint-plugin": "^8.4.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
     "eslint": "^8.57.0",
-    "eslint-config-next": "^14.2.7",
+    "eslint-config-next": "^14.2.8",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-simple-import-sort": "^12.1.1",
@@ -52,5 +52,6 @@
     "prettier-plugin-tailwindcss": "^0.6.6",
     "sharp": "^0.33.5",
     "typescript": "^5.5.4"
-  }
+  },
+  "packageManager": "pnpm@9.9.0+sha512.60c18acd138bff695d339be6ad13f7e936eea6745660d4cc4a776d5247c540d0edee1a563695c183a66eb917ef88f2b4feb1fc25f32a7adcadc7aaf3438e99c1"
 }
