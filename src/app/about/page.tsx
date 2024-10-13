@@ -88,14 +88,14 @@ export default function About() {
                       JavaScript, TypeScript, Node.js, React.js, Vue.js, Angular
                     </li>
                     <li>Java, Spring, JDBC, Hibernate</li>
-                    <li>C#, .NET. ASP.NET Core, EF Core, Dapper</li>
-                    <li>SQL, MySQL, PostgreSQL, RabbitMQ, Redis, gRPC</li>
-                    <li>Azure, AWS, Terraform, Serverless, Docker</li>
-                    <li>Grafana, Prometheus, Jenkins, GitHub Actions, Git</li>
+                    <li>SQL, MySQL, Vault, Keycloak, RabbitMQ</li>
+                    <li>Kubernetes, Docker, Terraform, Helm</li>
+                    <li>Grafana, Prometheus, Gitlab Actions, Git</li>
+                    <li>REST, gRPC, OpenAPI, SOAP</li>
                   </ul>
                   <p className="mt-3">
-                    I'm also familiar with: Go, Python, PHP, C, and a bit of
-                    Kubernetes.
+                    I'm also familiar with: Go, Python, PHP. And at the moment
+                    I'm learning Rust.
                   </p>
                 </div>
                 <div>
