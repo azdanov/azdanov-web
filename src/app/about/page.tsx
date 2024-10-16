@@ -104,11 +104,11 @@ export default function About() {
                     <li>
                       <a
                         className="underline"
-                        href="https://learn.microsoft.com/api/credentials/share/en-us/azdanov/294B5745E8FCEC01?sharingId=E18AE6457FBDE5E3"
+                        href="https://www.credly.com/badges/991bf428-28a3-42ee-b3bf-c6857b8e0392"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        Microsoft Certified: Azure Fundamentals (AZ-900)
+                        CKAD: Certified Kubernetes Application Developer
                       </a>
                     </li>
                     <li>
@@ -130,6 +130,16 @@ export default function About() {
                         rel="noopener noreferrer"
                       >
                         Microsoft Certified: Azure Developer Associate (AZ-204)
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        className="underline"
+                        href="https://learn.microsoft.com/api/credentials/share/en-us/azdanov/294B5745E8FCEC01?sharingId=E18AE6457FBDE5E3"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Microsoft Certified: Azure Fundamentals (AZ-900)
                       </a>
                     </li>
                   </ul>
