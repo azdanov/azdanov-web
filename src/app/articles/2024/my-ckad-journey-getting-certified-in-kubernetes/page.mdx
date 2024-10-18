@@ -1,0 +1,67 @@
+import { ArticleLayout } from "../../../../components/ArticleLayout";
+import Image from "next/image";
+import ckad from "./ckad.png";
+
+export const article = {
+  author: "Anton Ždanov",
+  date: "2024-10-18T02:30:29.397Z",
+  title: "My CKAD Journey: Getting Certified in Kubernetes",
+  description:
+    "Here's my journey to becoming a Certified Kubernetes Application Developer (CKAD), sharing the challenges, preparation tips, and how it's boosted my cloud-native skills.",
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+};
+
+export default function MDXPage({ children }) {
+  return <ArticleLayout article={article}>{children}</ArticleLayout>;
+}
+
+## What is CKAD?
+
+The CKAD is a certificate from the Cloud Native Computing Foundation (CNCF). It checks if you can design, build, and manage applications for Kubernetes, which is a tool for running apps in a cloud environment. What's cool about this exam is it's all about doing, not just answering questions. You have to show you can actually work with Kubernetes.
+
+<aside className="inline-flex flex-col items-center">
+  <Image src={ckad} alt="CKAD: Certified Kubernetes Application Developer" />
+  [CKAD: Certified Kubernetes Application
+  Developer](https://www.credly.com/badges/991bf428-28a3-42ee-b3bf-c6857b8e0392)
+</aside>
+
+## The Exam
+
+- Time: The exam lasts 2 hours.
+- You'll work on tasks like:
+  - Building container images
+  - Deploying apps
+  - Keeping an eye on apps and fixing them if needed
+  - Setting up the environment
+  - Managing services and networks
+
+I really liked that the exam is practical. Instead of choosing from answers, you work on tasks like you would at work. It's challenging because you're under time pressure.
+
+## How I Prepared
+
+Here are some things that helped me get ready:
+
+- GitHub: There are lots of free study materials and practice tasks from other developers on GitHub.
+  - https://github.com/dgkanatsios/CKAD-exercises
+  - https://github.com/bmuschko/ckad-crash-course
+- Courses: I took some courses on Udemy that went through everything I needed to know. They had practice exercises too.
+  - https://www.udemy.com/course/certified-kubernetes-application-developer/
+  - https://www.udemy.com/course/kubernetes-microservices/
+- Practice: I set up Kubernetes on my computer using minikube and practiced. You need to be comfortable with `kubectl` and learn tricks on how to speed up your workflow to be able to do the exam in 2 hours.
+  - https://killer.sh is a good resource for a practice exam, but it is much more difficult than the real one. Good way to see how well you're doing under time pressure.
+
+I might have prepared more than I needed to, but it was worth it. I learned a lot about Kubernetes, which will definitely help me in the future.
+
+## What’s Next?
+
+I'd like to get CKA: Certified Kubernetes Administrator and CKS: Certified Kubernetes Security Specialist next. We'll see how it goes.
+
+---
+
+If you have any further questions, feel free to reach out to me.
+
+Thank you for reading.
