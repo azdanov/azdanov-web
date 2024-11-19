@@ -5,6 +5,7 @@ import { Container } from "@/components/Container";
 import { GitHubIcon } from "@/components/icons/GitHubIcon";
 import { LinkedInIcon } from "@/components/icons/LinkedInIcon";
 import { MailIcon } from "@/components/icons/MailIcon";
+import { MastodonIcon } from "@/components/icons/MastodonIcon";
 import { SocialLink } from "@/components/SocialLink";
 import portraitImage from "@/images/portrait.jpg";
 
@@ -42,6 +43,15 @@ export default function About() {
               rel="noopener noreferrer"
             >
               Connect on LinkedIn
+            </SocialLink>
+            <SocialLink
+              href="https://mastodon.social/@azdanov"
+              icon={MastodonIcon}
+              className="mt-4"
+              target="_blank"
+              rel="me noopener noreferrer"
+            >
+              Connect on Mastodon
             </SocialLink>
             <SocialLink
               href="mailto:anton@azdanov.dev"

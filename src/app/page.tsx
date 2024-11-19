@@ -8,6 +8,7 @@ import { IconLink } from "@/components/IconLink";
 import { BriefcaseIcon } from "@/components/icons/BriefcaseIcon";
 import { GitHubIcon } from "@/components/icons/GitHubIcon";
 import { LinkedInIcon } from "@/components/icons/LinkedInIcon";
+import { MastodonIcon } from "@/components/icons/MastodonIcon";
 import { Prose } from "@/components/Prose";
 import { CSharp } from "@/components/snippets/CSharp";
 import { Go } from "@/components/snippets/Go";
@@ -52,6 +53,13 @@ export default async function Home() {
               icon={LinkedInIcon}
               target="_blank"
               rel="noopener noreferrer"
+            />
+            <IconLink
+              href="https://mastodon.social/@azdanov"
+              aria-label="Connect on Mastodon"
+              icon={MastodonIcon}
+              target="_blank"
+              rel="me noopener noreferrer"
             />
           </div>
         </div>
