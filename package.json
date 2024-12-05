@@ -29,33 +29,29 @@
     "fast-glob": "^3.3.2",
     "feed": "^4.2.2",
     "next": "^15.0.3",
-    "next-themes": "^0.4.3",
-    "react": "19.0.0-rc-2ec26bc4-20241111",
-    "react-dom": "19.0.0-rc-2ec26bc4-20241111",
+    "next-themes": "^0.4.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "remark-gfm": "^4.0.0",
-    "tailwindcss": "^3.4.15"
+    "tailwindcss": "^3.4.16"
   },
   "devDependencies": {
     "@types/mdx": "^2.0.13",
-    "@types/node": "^22.10.0",
-    "@types/react": "npm:types-react@rc",
-    "@types/react-dom": "npm:types-react-dom@rc",
+    "@types/node": "^22.10.1",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
     "@types/webpack-env": "^1.18.5",
-    "@typescript-eslint/eslint-plugin": "^8.16.0",
-    "eslint": "^9.15.0",
+    "@typescript-eslint/eslint-plugin": "^8.17.0",
+    "eslint": "^9.16.0",
     "eslint-config-next": "^15.0.3",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-unused-imports": "^4.1.4",
-    "prettier": "^3.4.1",
+    "prettier": "^3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.9",
     "sharp": "^0.33.5",
     "typescript": "^5.7.2"
-  },
-  "overrides": {
-    "@types/react": "npm:types-react@rc",
-    "@types/react-dom": "npm:types-react-dom@rc"
   },
   "packageManager": "pnpm@9.13.1+sha512.5ac37545851c55ec58521b6c285db6f848f93ca70889beb4145f5b40fe234e4ea4faee4dad12ac5c139e494374c65d9c3a6ec9a25954378fa286a250e68d2f20"
 }
