@@ -104,8 +104,7 @@ export default function About() {
                     <li>REST, gRPC, OpenAPI, SOAP</li>
                   </ul>
                   <p className="mt-3">
-                    I'm also familiar with: Go, Python, PHP. And at the moment
-                    I'm learning Rust.
+                    I'm also familiar with: Go, Python, PHP.
                   </p>
                 </div>
                 <div>
