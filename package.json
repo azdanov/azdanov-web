@@ -53,5 +53,5 @@
     "sharp": "^0.33.5",
     "typescript": "^5.7.2"
   },
-  "packageManager": "pnpm@9.13.1+sha512.5ac37545851c55ec58521b6c285db6f848f93ca70889beb4145f5b40fe234e4ea4faee4dad12ac5c139e494374c65d9c3a6ec9a25954378fa286a250e68d2f20"
+  "packageManager": "pnpm@9.15.3+sha512.1f79bc245a66eb0b07c5d4d83131240774642caaa86ef7d0434ab47c0d16f66b04e21e0c086eb61e62c77efc4d7f7ec071afad3796af64892fae66509173893a"
 }
