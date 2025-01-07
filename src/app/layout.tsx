@@ -36,7 +36,11 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en" className="antialiased" suppressHydrationWarning>
+    <html
+      lang="en"
+      className="overflow-y-scroll antialiased"
+      suppressHydrationWarning
+    >
       <body className="flex bg-white dark:bg-zinc-900 sm:bg-zinc-50 sm:dark:bg-black">
         <Providers>
           <div className="flex w-full">
