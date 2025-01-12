@@ -44,15 +44,17 @@ export default function About() {
             >
               Connect on LinkedIn
             </SocialLink>
-            <SocialLink
-              href="https://mastodon.social/@azdanov"
-              icon={MastodonIcon}
-              className="mt-4"
-              target="_blank"
-              rel="me noopener noreferrer"
-            >
-              Connect on Mastodon
-            </SocialLink>
+            <span className="sr-only">
+              <SocialLink
+                href="https://mastodon.social/@azdanov"
+                icon={MastodonIcon}
+                className="mt-4"
+                target="_blank"
+                rel="me noopener noreferrer"
+              >
+                Connect on Mastodon
+              </SocialLink>
+            </span>
             <SocialLink
               href="mailto:anton@azdanov.dev"
               icon={MailIcon}

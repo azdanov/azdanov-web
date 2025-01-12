@@ -54,13 +54,15 @@ export default async function Home() {
               target="_blank"
               rel="noopener noreferrer"
             />
-            <IconLink
-              href="https://mastodon.social/@azdanov"
-              aria-label="Connect on Mastodon"
-              icon={MastodonIcon}
-              target="_blank"
-              rel="me noopener noreferrer"
-            />
+            <span className="sr-only">
+              <IconLink
+                href="https://mastodon.social/@azdanov"
+                aria-label="Connect on Mastodon"
+                icon={MastodonIcon}
+                target="_blank"
+                rel="me noopener noreferrer"
+              />
+            </span>
           </div>
         </div>
       </Container>
