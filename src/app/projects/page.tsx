@@ -73,11 +73,11 @@ const projects = [
     },
   },
   {
-    name: "Film API",
-    initials: "API",
+    name: "Imago",
+    initials: "IGO",
     description:
-      "Exploring Go and PostgreSQL to create a minimal REST API for movies. Caddy is used as a reverse proxy and for automatic HTTPS.",
-    link: { href: "https://github.com/azdanov/filmapi", label: "github.com" },
+      "Exploring Go and PostgreSQL to create a simple image gallery app. It's still a work in progress.",
+    link: { href: "https://github.com/azdanov/imago", label: "github.com" },
   },
   {
     name: "Spring Fresh Ads",
