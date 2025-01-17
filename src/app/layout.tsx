@@ -3,6 +3,7 @@ import "@/styles/tailwind.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
+import { Atkinson_Hyperlegible } from "next/font/google";
 import type { ReactNode } from "react";
 
 import { Providers } from "@/app/providers";
@@ -32,13 +33,21 @@ export const metadata: Metadata = {
   },
 };
 
+const atkinson = Atkinson_Hyperlegible({
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  subsets: ["latin", "latin-ext"],
+  display: "auto",
+  variable: "--font-atkinson",
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: ReactNode }>) {
   return (
     <html
       lang="en"
-      className="overflow-y-scroll antialiased"
+      className={`${atkinson.className} overflow-y-scroll antialiased`}
       suppressHydrationWarning
     >
       <body className="flex bg-white dark:bg-zinc-900 sm:bg-zinc-50 sm:dark:bg-black">
