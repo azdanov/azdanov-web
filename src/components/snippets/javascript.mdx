@@ -5,13 +5,14 @@ const data = { username: "admin", password: "secret" };
 fetch(url, {
   method: "POST",
   headers: {
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
   },
-  body: JSON.stringify(data)
+  body: JSON.stringify(data),
 })
   .then((response) => response.json())
   .then((data) => {
-    console.log("Success:", data);
+    const result = data.payload;
+    console.log("Success:", result);
   })
   .catch((error) => {
     console.error("Error:", error);

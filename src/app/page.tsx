@@ -93,11 +93,11 @@ async function Code() {
   ];
 
   const languages = {
+    CSharp,
+    Java,
     Go,
     JavaScript,
-    CSharp,
     SQL,
-    Java,
   };
 
   return (

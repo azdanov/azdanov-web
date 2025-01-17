@@ -1,25 +1,20 @@
 ```java
 public class Login {
-  private final static URL login = new URL("https://azdanov.dev/api/login");
+  private static final Logger logger = Logger.getLogger(Login.class.getName());
 
   public static void main(String[] args) {
-    URLConnection connection = login.openConnection();
-    connection.setDoOutput(true);
-    connection.setRequestProperty("Content-Type", "application/json");
-    connection.setRequestProperty("Accept", "application/json");
+    HttpClient client = HttpClient.newHttpClient();
+    HttpRequest request = HttpRequest.newBuilder()
+      .uri(URI.create("https://azdanov.dev/api/login"))
+      .header("Content-Type", "application/json")
+      .POST(BodyPublishers.ofString("{\"username\":\"admin\",\"password\":\"secret\"}", StandardCharsets.UTF_8))
+      .build();
 
-    try (OutputStream os = connection.getOutputStream()) {
-      byte[] input = "{\"username\":\"admin\",\"password\":\"secret\"}".getBytes("utf-8");
-      os.write(input, 0, input.length);
-    }
-    try (BufferedReader br = new BufferedReader(
-        new InputStreamReader(connection.getInputStream(), "utf-8"))) {
-      StringBuilder response = new StringBuilder();
-      String responseLine = null;
-      while ((responseLine = br.readLine()) != null) {
-          response.append(responseLine.trim());
-      }
-      System.out.println(response.toString());
+    try {
+      HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+      logger.info(response.body());
+    } catch (Exception e) {
+      logger.severe(e.getMessage());
     }
   }
 }
