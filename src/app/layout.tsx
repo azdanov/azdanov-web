@@ -3,7 +3,8 @@ import "@/styles/tailwind.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
-import { Atkinson_Hyperlegible } from "next/font/google";
+import { Atkinson_Hyperlegible as Sans } from "next/font/google";
+import { Geist_Mono as Mono } from "next/font/google";
 import type { ReactNode } from "react";
 
 import { Providers } from "@/app/providers";
@@ -33,12 +34,17 @@ export const metadata: Metadata = {
   },
 };
 
-const atkinson = Atkinson_Hyperlegible({
+export const sans = Sans({
   weight: ["400", "700"],
   style: ["normal", "italic"],
   subsets: ["latin", "latin-ext"],
   display: "auto",
-  variable: "--font-atkinson",
+  variable: "--font-sans",
+});
+
+export const mono = Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
 });
 
 export default function RootLayout({
@@ -47,7 +53,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${atkinson.className} overflow-y-scroll antialiased`}
+      className={`${sans.variable} ${mono.variable} overflow-y-scroll font-sans antialiased`}
       suppressHydrationWarning
     >
       <body className="flex bg-white dark:bg-zinc-900 sm:bg-zinc-50 sm:dark:bg-black">

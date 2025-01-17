@@ -1,8 +1,10 @@
 import typographyPlugin from "@tailwindcss/typography";
 import type { Config } from "tailwindcss";
+import { fontFamily } from "tailwindcss/defaultTheme";
 
 import typographyStyles from "./typography";
 
+/** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   darkMode: "class",
@@ -10,7 +12,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-atkinson)"],
+        sans: ["var(--font-sans)", ...fontFamily.sans],
+        mono: ["var(--font-mono)", ...fontFamily.mono],
       },
     },
     fontSize: {
