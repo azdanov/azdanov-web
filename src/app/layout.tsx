@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
 };
 
-export const sans = Sans({
+const sans = Sans({
   weight: ["400", "700"],
   style: ["normal", "italic"],
   subsets: ["latin", "latin-ext"],
@@ -42,7 +42,7 @@ export const sans = Sans({
   variable: "--font-sans",
 });
 
-export const mono = Mono({
+const mono = Mono({
   subsets: ["latin"],
   variable: "--font-mono",
 });
