@@ -78,128 +78,129 @@ export default function About() {
                 creating web applications.
               </p>
               <p>
-                I have worked with various technologies across the front-end,
-                back-end, database, and infrastructure layers. Some of the
+                I have worked with various technologies across the front end,
+                back end, database, and infrastructure layers. Some of the
                 projects I'm proud of include a payment widget and a dashboard
                 for a financial company, an app for operators to provide
                 customers with real-time support, and an app that is used for
-                reconciling and keeping the balance of financial transactions.
+                reconciling and maintaining the balance of financial
+                transactions.
               </p>
               <p>
                 I'm always eager to learn new skills and broaden my knowledge.
               </p>
-              <section className="space-y-7">
-                <div>
-                  <p>
-                    Some of the technologies I've worked with or was interested
-                    in learning over the years:
-                  </p>
-                  <ul className="list-inside list-disc">
-                    <li>HTML, CSS, SCSS, Tailwind CSS</li>
-                    <li>
-                      JavaScript, TypeScript, Node.js, React.js, Vue.js, Angular
-                    </li>
-                    <li>Java, Spring, JDBC, Hibernate</li>
-                    <li>SQL, MySQL, Vault, Keycloak, RabbitMQ</li>
-                    <li>Kubernetes, Docker, Terraform, Helm</li>
-                    <li>Grafana, Prometheus, Gitlab Actions, Git</li>
-                    <li>REST, gRPC, OpenAPI, SOAP</li>
-                  </ul>
-                  <p className="mt-3">
-                    I'm also familiar with: Go, Python, PHP.
-                  </p>
-                </div>
-                <div>
-                  <p>Certificates that I have:</p>
-                  <ul className="list-inside list-disc">
-                    <li>
-                      <a
-                        className="underline"
-                        href="https://www.credly.com/badges/991bf428-28a3-42ee-b3bf-c6857b8e0392"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        CKAD: Certified Kubernetes Application Developer
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="underline"
-                        href="https://learn.microsoft.com/api/credentials/share/en-us/azdanov/7D93516BE16A069?sharingId=E18AE6457FBDE5E3"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Microsoft Certified: Azure Administrator Associate
-                        (AZ-104)
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="underline"
-                        href="https://learn.microsoft.com/api/credentials/share/en-us/azdanov/8A43495F02BE1A3E?sharingId=E18AE6457FBDE5E3"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Microsoft Certified: Azure Developer Associate (AZ-204)
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="underline"
-                        href="https://learn.microsoft.com/api/credentials/share/en-us/azdanov/294B5745E8FCEC01?sharingId=E18AE6457FBDE5E3"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Microsoft Certified: Azure Fundamentals (AZ-900)
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </section>
+            </div>
+          </section>
+          <section className="space-y-7">
+            <div>
+              <p>
+                Some of the technologies I've worked with or have been
+                interested in learning over the years:
+              </p>
+              <ul className="list-inside list-disc">
+                <li>HTML, CSS, SCSS, Tailwind CSS</li>
+                <li>
+                  JavaScript, TypeScript, Node.js, React.js, Vue.js, Angular
+                </li>
+                <li>Java, Spring, JDBC, Hibernate</li>
+                <li>SQL, MySQL, Vault, Keycloak, RabbitMQ</li>
+                <li>Kubernetes, Docker, Terraform, Helm</li>
+                <li>Grafana, Prometheus, GitLab Actions, Git</li>
+                <li>REST, gRPC, OpenAPI, SOAP</li>
+              </ul>
+              <p className="mt-3">
+                I'm also familiar with Go, Python, and PHP.
+              </p>
+            </div>
+            <div>
+              <p>Certificates that I have:</p>
+              <ul className="list-inside list-disc">
+                <li>
+                  <a
+                    className="underline"
+                    href="https://www.credly.com/badges/991bf428-28a3-42ee-b3bf-c6857b8e0392"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    CKAD: Certified Kubernetes Application Developer
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="underline"
+                    href="https://learn.microsoft.com/api/credentials/share/en-us/azdanov/7D93516BE16A069?sharingId=E18AE6457FBDE5E3"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Microsoft Certified: Azure Administrator Associate (AZ-104)
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="underline"
+                    href="https://learn.microsoft.com/api/credentials/share/en-us/azdanov/8A43495F02BE1A3E?sharingId=E18AE6457FBDE5E3"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Microsoft Certified: Azure Developer Associate (AZ-204)
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="underline"
+                    href="https://learn.microsoft.com/api/credentials/share/en-us/azdanov/294B5745E8FCEC01?sharingId=E18AE6457FBDE5E3"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Microsoft Certified: Azure Fundamentals (AZ-900)
+                  </a>
+                </li>
+              </ul>
             </div>
           </section>
           <section className="space-y-7">
             <h2 className="text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-4xl">
-              My story
+              My Story
             </h2>
             <p>
-              Ever since I was a kid, I was fascinated by video games. I would
-              spend hours playing them and submerging myself in their worlds.
-              Later on I started learning how to make 3D models, photoshop
-              images and create computer music. I really enjoyed experimenting
-              and trying out new things.
+              Ever since I was a kid, I have been fascinated by video games. I
+              would spend hours playing them and immersing myself in their
+              worlds. Later on, I started learning how to make 3D models,
+              Photoshop images, and create computer music. I really enjoyed
+              experimenting and trying out new things.
             </p>
             <p>
-              As I got older, I started to learn how to code. Trying to make
-              simple websites. Modify a theme for WordPress for a friend. At
-              that time it felt very difficult and I didn't really understand
-              what I was doing. Often than not I would get stuck and not know
-              how to continue.
+              As I got older, I started to learn how to code, trying to make
+              simple websites and modify a theme for WordPress for a friend. At
+              that time, it felt very difficult, and I didn't really understand
+              what I was doing. More often than not, I would get stuck and not
+              know how to continue.
             </p>
             <p>
-              After doing non-IT related jobs for a few years, I decided to
+              After doing non-IT-related jobs for a few years, I decided to
               change my career path and start learning how to code again. This
-              time I was determined to learn it properly. I started with
-              learning HTML, CSS and JavaScript. Then I moved on to Python, PHP,
-              etc. I was learning everything I could get my hands on. Probably
+              time, I was determined to learn it properly. I started with HTML,
+              CSS, and JavaScript. Then I moved on to Python, PHP, and more. I
+              was learning everything I could get my hands on. It was probably
               not the best approach, but it worked for me. I was able to get a
               job as a software developer due to my exposure to various
-              languages and frameworks and I've been working as a developer ever
-              since.
+              languages and frameworks, and I've been working as a developer
+              ever since.
             </p>
             <p>
               I have experience working with various technologies and
-              frameworks, different sized teams and different types of projects.
-              With teams that follow agile methodologies and teams that don't.
-              I've worked on projects that were built from scratch and projects
-              that were about maintaining, extending and improving legacy code.
+              frameworks, different-sized teams, and different types of
+              projects, with teams that follow agile methodologies and teams
+              that don't. I've worked on projects that were built from scratch
+              and projects that involved maintaining, extending, and improving
+              legacy code.
             </p>
             <p>
-              In my free time I like to play video games, enjoy doing fitness,
-              listen to music, read books and study. I do kettlebell training
-              and Brazilian Jiu-Jitsu. I enjoy playing all sorts of games
-              without specific preferences. Same about music, as long as it
-              sounds good I'm happy. With books I prefer fantasy and sci-fi
+              In my free time, I like to play video games, enjoy fitness, listen
+              to music, read books, and study. I do kettlebell training and
+              Brazilian Jiu-Jitsu. I enjoy playing all sorts of games without
+              specific preferences. The same goes for music; as long as it
+              sounds good, I'm happy. With books, I prefer fantasy and sci-fi
               genres.
             </p>
           </section>
