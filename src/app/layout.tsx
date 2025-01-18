@@ -4,7 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
 import { Atkinson_Hyperlegible as Sans } from "next/font/google";
-import { Geist_Mono as Mono } from "next/font/google";
+import { JetBrains_Mono as Mono } from "next/font/google";
 import type { ReactNode } from "react";
 
 import { Providers } from "@/app/providers";
@@ -38,12 +38,11 @@ const sans = Sans({
   weight: ["400", "700"],
   style: ["normal", "italic"],
   subsets: ["latin", "latin-ext"],
-  display: "auto",
   variable: "--font-sans",
 });
 
 const mono = Mono({
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   variable: "--font-mono",
 });
 

@@ -135,7 +135,7 @@ function NavItem({
 function DesktopNavigation(props: Readonly<ComponentPropsWithoutRef<"nav">>) {
   return (
     <nav {...props}>
-      <ul className="flex bg-white/90 px-3 text-sm font-medium text-zinc-800 backdrop-blur dark:bg-zinc-900 dark:text-zinc-200 dark:ring-white/10">
+      <ul className="flex bg-white/90 px-3 font-medium text-zinc-800 backdrop-blur dark:bg-zinc-900 dark:text-zinc-200 dark:ring-white/10">
         <NavItem href="/">Home</NavItem>
         <NavItem href="/about">About</NavItem>
         <NavItem href="/articles">Articles</NavItem>

@@ -94,9 +94,9 @@ async function Code() {
 
   const languages = {
     CSharp,
-    Java,
-    Go,
     JavaScript,
+    Go,
+    Java,
     SQL,
   };
 
