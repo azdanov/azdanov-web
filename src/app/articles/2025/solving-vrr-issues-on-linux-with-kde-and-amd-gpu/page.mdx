@@ -1,0 +1,69 @@
+import { ArticleLayout } from "../../../../components/ArticleLayout";
+
+export const article = {
+  author: "Anton Ždanov",
+  date: "2025-01-23T19:00:01.448Z",
+  title: "Solving VRR Issue on Linux with KDE and AMD GPU",
+  description:
+    "How disabling MST on my Dell monitor solved the variable refresh rate issue on Linux for my DisplayPort AMD GPU connection.",
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+};
+
+export default function MDXPage({ children }) {
+  return <ArticleLayout article={article}>{children}</ArticleLayout>;
+}
+
+Recently, I ran into an issue with enabling Variable Refresh Rate (VRR) on my Linux setup. My monitor, a Dell U2724DE, is supposed to support VRR, but the option for Adaptive Sync simply wasn’t available in the KDE Plasma 6 settings. After a lot of troubleshooting, I finally resolved it, and I’m sharing my experience here to help others who might face the same problem.
+
+## My Setup
+
+| Component   | Details                   |
+| ----------- | ------------------------- |
+| **OS**      | Endeavour OS (Arch Linux) |
+| **Desktop** | KDE Plasma 6 (Wayland)    |
+| **GPU**     | AMD Radeon 7900 XTX       |
+| **Monitor** | Dell U2724DE              |
+| **Kernel**  | Linux 6.12.10-arch1-1     |
+
+## The Problem
+
+Despite my monitor advertising VRR support, the option to enable it in KDE was missing. I tried several things, including:
+
+- Verifying VRR support in the monitor's EDID file.
+
+  ```bash
+  # 1. Install the read-edid package
+  sudo pacman -S read-edid
+  # 2. Use get-edid and parse-edid to read and decode the monitor's EDID
+  sudo get-edid | parse-edid
+  ```
+
+- Updating drivers and ensuring my system was fully up-to-date.
+- Tweaking various settings in KDE and the AMD GPU configuration. And even trying the [CableMatters DisplayPort to HDMI Adapter](https://www.cablematters.com/pc-1398-154-cable-matters-8k-displayport-14-to-hdmi-cable-6ft-18m-with-4k-120hz-8k-60hz-unidirectional-324gbps-display-port-14-to-hdmi-8k-cable-in-black-for-rtx-40804090-rx-78007900-and-more-upc818707024515.aspx) to no avail.
+
+The EDID file confirmed that my monitor does support VRR (`VertRefresh 48-120`), but nothing I tried worked. And the `kscreen-doctor --outputs` command was showing `Vrr: incapable` output.
+
+## The Solution: Disabling MST
+
+After much trial and error, I discovered the culprit: **MST (Multi-Stream Transport)**. My monitor had MST enabled by default, which is typically used for [daisy-chaining multiple displays](https://www.cablematters.com/Blog/DisplayPort/what-is-multi-stream-transport), which I wasn't using. Disabling MST in the monitor’s settings immediately resolved the issue, and the VRR option became available in KDE.
+
+### Steps to Disable MST
+
+1. Open your monitor’s on-screen display (OSD) menu.
+2. Navigate to the settings related to MST or DisplayPort configuration.
+3. Disable MST (it might be labeled as "Dualport" or "Multi-Stream Transport").
+4. Save the changes and restart your system (just to be sure).
+
+## Possible Cause
+
+This issue might be related to a bug in the AMD Radeon drivers or how MST interacts with VRR on Linux. MST can sometimes interfere with certain features, and it seems VRR is one of them in this case.
+
+## Final Thoughts
+
+If you’re struggling to enable VRR on Linux and have a similar setup, check your monitor’s MST setting. Disabling it worked for me, and I hope it helps you too. While the root cause might be driver-related, I’m just happy to have VRR working now.
+
+If you’ve encountered similar issues or have additional insights, feel free to [share them with me](mailto:anton@azdanov.dev)!
