@@ -1,0 +1,108 @@
+import { ArticleLayout } from "../../../../components/ArticleLayout";
+
+export const article = {
+  author: "Anton Ždanov",
+  date: "2025-01-24T19:11:52.766Z",
+  title: "How to Create a Virtual Display for Sunshine on Arch Linux",
+  description:
+    "Using EDID files to create a fake virtual display on linux for sunshine and moonlight remote gaming without a dummy plug.",
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+};
+
+export default function MDXPage({ children }) {
+  return <ArticleLayout article={article}>{children}</ArticleLayout>;
+}
+
+If you're using Sunshine for remote game streaming and want to keep your monitor off while playing, creating a virtual display is a cost-effective alternative to using dummy HDMI or DP dongles. This guide will walk you through setting up a virtual display using an EDID file and enhancing your Sunshine setup with custom scripts.
+
+See the original posts that inspired me to combine the found information:
+
+- https://www.reddit.com/r/linux_gaming/comments/199ylqz/streaming_with_sunshine_from_virtual_screens/
+- https://www.reddit.com/r/linuxmasterrace/comments/eraedc/after_an_evening_of_furious_googling_i_figured/
+- https://www.reddit.com/r/pop_os/comments/soo7eh/how_to_permanently_load_custom_edid_from_boot_to/
+
+---
+
+## Why Use a Virtual Display?
+
+- **Cost-effective**: No need to buy dummy plugs.
+- **Customizable resolutions**: Stream in resolutions your physical monitor may not support.
+- **Convenience**: Keep your monitor off while streaming.
+
+---
+
+## Step 1: Get an EDID File
+
+An EDID (Extended Display Identification Data) file simulates a monitor. You can download pre-made EDID files from the [v4l-utils repository](https://git.linuxtv.org/v4l-utils.git/tree/utils/edid-decode/data). Choose one that matches your desired resolution and features (e.g., 4K, HDR).
+
+---
+
+## Step 2: Place the EDID File
+
+1. Create a directory for EDID files:
+   ```bash
+   sudo mkdir -p /usr/lib/firmware/edid
+   ```
+2. Copy your chosen EDID file to this directory. For example:
+   ```bash
+   sudo cp samsung-q800t-hdmi2.1 /usr/lib/firmware/edid/
+   ```
+
+---
+
+## Step 3: Configure Kernel Parameters
+
+1. Identify your GPU's free HDMI or DP output:
+
+   ```bash
+   for p in /sys/class/drm/*/status; do con=${p%/status}; echo -n "${con#*/card?-}: "; cat $p; done
+   ```
+
+   Replace `HDMI-A-1` in the next step with the appropriate output.
+
+2. Add the following kernel parameters (see [arch wiki](https://wiki.archlinux.org/title/Kernel_parameters) or [endeavour os discovery](https://discovery.endeavouros.com/installation/systemd-boot/2022/12/)):
+
+   ```bash
+   drm.edid_firmware=HDMI-A-1:edid/samsung-q800t-hdmi2.1 video=HDMI-A-1:e
+   ```
+
+3. Update your `mkinitcpio.conf` file to include the EDID file:
+
+   ```bash
+   FILES=(/usr/lib/firmware/edid/samsung-q800t-hdmi2.1)
+   ```
+
+4. Regenerate the initramfs:
+
+   ```bash
+   sudo mkinitcpio -P
+   ```
+
+5. Reboot your system.
+
+---
+
+## Step 4: Use Sunshine for Streaming
+
+After rebooting, Sunshine can use the virtual display for streaming. Ensure you configure Sunshine to capture the virtual display using KMS or wlroots capture.
+
+---
+
+## Step 5: Automate with Custom Scripts
+
+You can enhance your setup by adding scripts to Sunshine. These scripts can improve your experience with sunshine by automating the resolution set up and toggling off and on of the main monitor display. Examples are available in [this GitHub Gist](https://gist.github.com/MrHighVoltage/78ca58218a569d253433fd4be883c6c3).
+
+### Example Script Workflow:
+
+- **On Connect**: Disable physical monitors and enable the virtual display.
+- **On Disconnect**: Re-enable physical monitors and disable the virtual display.
+
+---
+
+## Conclusion
+
+By following these steps, you can create a virtual display for Sunshine on Arch Linux without spending extra money on dummy plugs. This setup is flexible, allowing you to stream in higher resolutions or HDR, and can be further automated with custom scripts for a seamless experience. For bonus points you can install and use wxedid to modify the edid file and adjust the display parameters such as hz or resolutions, but that is outside the scope of this article.

@@ -117,6 +117,7 @@ export default function typographyStyles({ theme }: PluginUtils) {
           transitionProperty: "color, text-decoration-color",
           transitionDuration: theme("transitionDuration.150"),
           transitionTimingFunction: theme("transitionTimingFunction.in-out"),
+          overflowWrap: "break-word",
         },
         "a:hover": {
           color: "var(--tw-prose-links-hover)",
