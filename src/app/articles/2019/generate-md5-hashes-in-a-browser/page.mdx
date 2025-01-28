@@ -12,7 +12,7 @@ export const article = {
 export const metadata = {
   title: article.title,
   description: article.description,
-}
+};
 
 export default function MDXPage({ children }) {
   return <ArticleLayout article={article}>{children}</ArticleLayout>;
@@ -68,7 +68,7 @@ var getData = (url) =>
           reader.onloadend = () => resolve(reader.result);
           reader.onerror = reject;
           reader.readAsArrayBuffer(blob);
-        })
+        }),
     );
 ```
 
@@ -117,7 +117,7 @@ var getData = (url) =>
           reader.onloadend = () => resolve(reader.result);
           reader.onerror = reject;
           reader.readAsArrayBuffer(blob);
-        })
+        }),
     );
 
 // Get image sources

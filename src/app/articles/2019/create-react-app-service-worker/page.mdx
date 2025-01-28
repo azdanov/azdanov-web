@@ -14,7 +14,7 @@ export const article = {
 export const metadata = {
   title: article.title,
   description: article.description,
-}
+};
 
 export default function MDXPage({ children }) {
   return <ArticleLayout article={article}>{children}</ArticleLayout>;
@@ -54,7 +54,7 @@ After running `npm build` a `build/service-worker.js` will be created:
 
 ```js
 importScripts(
-  "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js"
+  "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js",
 );
 
 importScripts("/precache-manifest.1627229ec6fca0a0029e621a9027a2fd.js");
@@ -90,7 +90,7 @@ self.addEventListener('install', event => {
 
   const result = data.replace(
     "workbox.clientsClaim();",
-    `workbox.clientsClaim();\n${snippet}`
+    `workbox.clientsClaim();\n${snippet}`,
   );
 
   fs.writeFile("build/service-worker.js", result, "utf8", (readError) => {
@@ -137,7 +137,7 @@ fs.readFile("build/service-worker.js", "utf8", (err, data) => {
 
   const result = data.replace(
     "workbox.clientsClaim();",
-    `workbox.clientsClaim();\n${snippet}`
+    `workbox.clientsClaim();\n${snippet}`,
   );
 
   fs.writeFile("build/service-worker.js", result, "utf8", (readError) => {
@@ -150,13 +150,11 @@ fs.readFile("build/service-worker.js", "utf8", (err, data) => {
 
 ```js
 function registerValidSW(swUrl, config) {
-  navigator.serviceWorker
-  .register(swUrl)
-  .then(registration => {
+  navigator.serviceWorker.register(swUrl).then((registration) => {
     if (registration.waiting) {
       // Prompt user to update service workers
       if (config && config.onUpdate) {
-        config.onUpdate(registration)
+        config.onUpdate(registration);
       }
     }
 
@@ -164,9 +162,9 @@ function registerValidSW(swUrl, config) {
       // ...
       installing.onstatechange = () => {
         // ...
-      }
-    }
-  })
+      };
+    };
+  });
 }
 ```
 
@@ -184,7 +182,7 @@ serviceWorker.register({
     if (registration.waiting) {
       ReactDOM.render(
         <ServiceWorkerMessage registration={registration} />,
-        document.querySelector("#worker-message")
+        document.querySelector("#worker-message"),
       );
     }
   },

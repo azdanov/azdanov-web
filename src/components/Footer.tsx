@@ -26,9 +26,9 @@ export function Footer() {
   return (
     <footer className="mt-20 flex-none md:mt-32">
       <ContainerOuter>
-        <div className="border-t border-zinc-100 pb-10 pt-10 dark:border-zinc-700/40">
+        <div className="border-t border-zinc-100 pt-10 pb-10 dark:border-zinc-700/40">
           <ContainerInner>
-            <div className="flex flex-col items-center justify-between gap-6 text-sm font-medium text-zinc-800 dark:text-zinc-200 sm:flex-row">
+            <div className="flex flex-col items-center justify-between gap-6 text-sm font-medium text-zinc-800 sm:flex-row dark:text-zinc-200">
               <div className="flex gap-6">
                 <NavLink href="/">Home</NavLink>
                 <NavLink href="/about">About</NavLink>
@@ -38,12 +38,12 @@ export function Footer() {
               <button
                 type="button"
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                className="hidden transition hover:text-blue-500 dark:hover:text-blue-400 sm:block"
+                className="hidden transition hover:text-blue-500 sm:block dark:hover:text-blue-400"
               >
                 Back to top
               </button>
             </div>
-            <div className="mt-6 text-center text-xs text-zinc-500 dark:text-zinc-400 sm:text-left">
+            <div className="mt-6 text-center text-xs text-zinc-500 sm:text-left dark:text-zinc-400">
               <NavLink href="/privacy">Privacy Policy</NavLink>
             </div>
           </ContainerInner>

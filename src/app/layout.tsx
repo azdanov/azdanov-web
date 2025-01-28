@@ -38,12 +38,12 @@ const sans = Sans({
   weight: ["400", "700"],
   style: ["normal", "italic"],
   subsets: ["latin", "latin-ext"],
-  variable: "--font-sans",
+  variable: "--sans",
 });
 
 const mono = Mono({
   subsets: ["latin", "latin-ext"],
-  variable: "--font-mono",
+  variable: "--mono",
 });
 
 export default function RootLayout({
@@ -55,7 +55,7 @@ export default function RootLayout({
       className={`${sans.variable} ${mono.variable} overflow-y-scroll font-sans antialiased`}
       suppressHydrationWarning
     >
-      <body className="flex bg-white dark:bg-zinc-900 sm:bg-zinc-50 sm:dark:bg-black">
+      <body className="flex bg-white sm:bg-zinc-50 dark:bg-zinc-900 sm:dark:bg-black">
         <Providers>
           <div className="flex w-full">
             <Layout>{children}</Layout>

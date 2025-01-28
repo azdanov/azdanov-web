@@ -24,9 +24,9 @@ export default function About() {
             priority
             src={portraitImage}
             alt="Anton Ždanov sitting in front of a laptop and smiling."
-            className="mx-auto max-w-52 -rotate-3 rounded-md bg-zinc-100 object-cover dark:bg-zinc-800 sm:max-w-60 lg:max-w-80"
+            className="mx-auto max-w-52 -rotate-3 rounded-md bg-zinc-100 object-cover sm:max-w-60 lg:max-w-80 dark:bg-zinc-800"
           />
-          <ul className="ml-3 mt-12 sm:ml-6 lg:ml-0">
+          <ul className="mt-12 ml-3 sm:ml-6 lg:ml-0">
             <SocialLink
               href="https://github.com/azdanov"
               icon={GitHubIcon}
@@ -66,9 +66,9 @@ export default function About() {
             </SocialLink>
           </ul>
         </aside>
-        <article className="order-2 space-y-12 text-base text-zinc-600 dark:text-zinc-400 md:col-span-2 lg:order-first lg:col-span-1 lg:row-span-2">
+        <article className="order-2 space-y-12 text-base text-zinc-600 md:col-span-2 lg:order-first lg:col-span-1 lg:row-span-2 dark:text-zinc-400">
           <section>
-            <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
+            <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
               I'm Anton Ždanov.
               <br />I live in <span title="Tallinn, Estonia">Tallinn</span>.
             </h1>
@@ -159,7 +159,7 @@ export default function About() {
             </div>
           </section>
           <section className="space-y-7">
-            <h2 className="text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-100">
               My Story
             </h2>
             <p>

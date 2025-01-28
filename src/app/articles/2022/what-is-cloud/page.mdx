@@ -5,13 +5,13 @@ export const article = {
   date: "2022-10-16T20:30:00+03:00",
   title: "What is Cloud?",
   description:
-    "Essential characteristics of a cloud according to NIST Special Publication 800-145."
-}
+    "Essential characteristics of a cloud according to NIST Special Publication 800-145.",
+};
 
 export const metadata = {
   title: article.title,
   description: article.description,
-}
+};
 
 export default function MDXPage({ children }) {
   return <ArticleLayout article={article}>{children}</ArticleLayout>;

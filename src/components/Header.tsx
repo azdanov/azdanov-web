@@ -69,18 +69,18 @@ function MobileNavigation(
 ) {
   return (
     <Popover {...props}>
-      <PopoverButton className="group flex items-center rounded-sm bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 backdrop-blur dark:bg-zinc-900 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20">
+      <PopoverButton className="group flex items-center rounded-xs bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 backdrop-blur-sm dark:bg-zinc-900 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20">
         Menu
         <ChevronDownIcon className="ml-3 h-auto w-2 stroke-zinc-500 group-hover:stroke-zinc-700 dark:group-hover:stroke-zinc-400" />
       </PopoverButton>
       <PopoverBackdrop
         transition
-        className="fixed inset-0 z-50 bg-zinc-800/40 backdrop-blur-sm duration-150 data-[closed]:opacity-0 data-[enter]:ease-out data-[leave]:ease-in dark:bg-black/80"
+        className="fixed inset-0 z-50 bg-zinc-800/40 backdrop-blur-xs duration-150 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in dark:bg-black/80"
       />
       <PopoverPanel
         focus
         transition
-        className="fixed inset-x-4 top-8 z-50 origin-top rounded-sm bg-white p-8 ring-1 ring-zinc-900/5 duration-150 data-[closed]:scale-95 data-[closed]:opacity-0 data-[enter]:ease-out data-[leave]:ease-in dark:bg-zinc-900 dark:ring-zinc-800"
+        className="fixed inset-x-4 top-8 z-50 origin-top rounded-xs bg-white p-8 ring-1 ring-zinc-900/5 duration-150 data-closed:scale-95 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in dark:bg-zinc-900 dark:ring-zinc-800"
       >
         <div className="flex flex-row-reverse items-center justify-between">
           <PopoverButton aria-label="Close menu" className="-m-1 p-1">
@@ -135,7 +135,7 @@ function NavItem({
 function DesktopNavigation(props: Readonly<ComponentPropsWithoutRef<"nav">>) {
   return (
     <nav {...props}>
-      <ul className="flex bg-white/90 px-3 font-medium text-zinc-800 backdrop-blur dark:bg-zinc-900 dark:text-zinc-200 dark:ring-white/10">
+      <ul className="flex bg-white/90 px-3 font-medium text-zinc-800 backdrop-blur-sm dark:bg-zinc-900 dark:text-zinc-200 dark:ring-white/10">
         <NavItem href="/">Home</NavItem>
         <NavItem href="/about">About</NavItem>
         <NavItem href="/articles">Articles</NavItem>
@@ -158,11 +158,11 @@ function ModeToggle() {
     <button
       type="button"
       aria-label={mounted ? `Switch to ${otherTheme} theme` : "Toggle theme"}
-      className="group bg-white/90 px-3 py-2 backdrop-blur transition dark:bg-zinc-900 dark:ring-white/10 dark:hover:ring-white/20"
+      className="group bg-white/90 px-3 py-2 backdrop-blur-sm transition dark:bg-zinc-900 dark:ring-white/10 dark:hover:ring-white/20"
       onClick={() => setTheme(otherTheme)}
     >
       <SunIcon className="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-blue-50 [@media(prefers-color-scheme:dark)]:stroke-blue-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-blue-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-blue-600" />
-      <MoonIcon className="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400 [@media_not_(prefers-color-scheme:dark)]:fill-blue-400/10 [@media_not_(prefers-color-scheme:dark)]:stroke-blue-500" />
+      <MoonIcon className="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block [@media_not_(prefers-color-scheme:dark)]:fill-blue-400/10 [@media_not_(prefers-color-scheme:dark)]:stroke-blue-500 [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400" />
     </button>
   );
 }
@@ -178,11 +178,11 @@ function Logo({
         aria-label="Home"
         className={clsx(
           className,
-          "pointer-events-auto block h-10 w-11 rounded-sm bg-blue-500 text-center font-medium text-white dark:bg-blue-500/90",
+          "pointer-events-auto block h-10 w-11 rounded-xs bg-blue-500 text-center font-medium text-white dark:bg-blue-500/90",
         )}
         {...props}
       >
-        <span className="absolute bottom-1 right-1 text-2xl leading-[1.5rem]">
+        <span className="absolute right-1 bottom-1 text-2xl leading-[1.5rem]">
           AZ
         </span>
       </Link>
