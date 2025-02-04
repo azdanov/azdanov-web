@@ -20,7 +20,7 @@
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
     "@next/mdx": "^15.1.6",
-    "@tailwindcss/postcss": "^4.0.0",
+    "@tailwindcss/postcss": "^4.0.3",
     "@tailwindcss/typography": "^0.5.16",
     "@vercel/analytics": "^1.4.1",
     "@vercel/speed-insights": "^1.1.0",
@@ -33,15 +33,15 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "remark-gfm": "^4.0.0",
-    "tailwindcss": "^4.0.0"
+    "tailwindcss": "^4.0.3"
   },
   "devDependencies": {
     "@types/mdx": "^2.0.13",
-    "@types/node": "^22.12.0",
+    "@types/node": "^22.13.1",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
-    "@types/webpack-env": "^1.18.7",
-    "@typescript-eslint/eslint-plugin": "^8.22.0",
+    "@types/webpack-env": "^1.18.8",
+    "@typescript-eslint/eslint-plugin": "^8.23.0",
     "eslint": "^9.19.0",
     "eslint-config-next": "^15.1.6",
     "eslint-plugin-simple-import-sort": "^12.1.1",
