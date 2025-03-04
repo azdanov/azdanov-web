@@ -1,0 +1,110 @@
+import { ArticleLayout } from "../../../../components/ArticleLayout";
+
+export const article = {
+  author: "Anton Ždanov",
+  date: "2025-03-04T05:38:00.566Z",
+  title:
+    "Automatically Restarting Your WiFi 5GHz Channel on Asus Merlin Routers",
+  description:
+    "Learn how to automatically restart your WiFi 5GHz channel using a script and cron jobs on an Asus Merlin router.",
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+};
+
+export default function MDXPage({ children }) {
+  return <ArticleLayout article={article}>{children}</ArticleLayout>;
+}
+
+Dynamic Frequency Selection (DFS) is a feature used in 5GHz WiFi networks to avoid interference with radar systems. However, this can cause your router to switch to a lower channel.
+
+DFS channels are part of the 5GHz band and are shared with radar systems. When a radar signal is detected, the router must switch to a non-DFS channel to avoid interference. This can lead to a decrease in network performance, especially if the new channel is crowded. [^1] [^2]
+
+From personal experience, I've noticed that my Asus router sometimes switches to a non-DFS channel, but very rarely, since I don't live near an airport or a military base and I'm not entirely sure what triggers the switch.
+
+## Setting Up Automatic Channel Checking
+
+To automate the process of checking and restarting the WiFi channel, you can use a script that periodically checks if the channel has changed and restarts the WiFi if necessary. Here's how you can set it up:
+
+### Step 1: Create the `channel-ck.sh` Script
+
+First, SSH into your router and navigate to the `/jffs/scripts/` directory. Create a new script file named `channel-ck.sh`:
+
+```bash
+asus@RT-AX88U_Pro:/tmp/home/root# cd /jffs/scripts/
+asus@RT-AX88U_Pro:/jffs/scripts# vi channel-ck.sh
+```
+
+Add the following content to the script:
+
+```bash
+#!/bin/sh
+
+logger -t "channel_check" "Checking..."
+
+ifname="$(nvram get wl1_ifname)"
+targchanspec="$(nvram get wl1_chanspec)"
+targchan=${targchanspec%/*}
+currchanspec="$(wl -i $ifname chanspec | awk '{print $1}')"
+currchan=${currchanspec%/*}
+
+if [ "$targchan" != "0" ] && [ "$currchan" != "$targchan" ]; then
+    logger -t "channel_check" "Channel has changed from ${targchan} to ${currchan}. Restarting WiFi."
+    service restart_wireless
+fi
+
+logger -t "channel_check" "Done."
+```
+
+Make the script executable:
+
+```bash
+chmod a+rx /jffs/scripts/channel-ck.sh
+```
+
+### Step 2: Schedule the Script with `cru`
+
+You can use the `cru` command to schedule the script to run at specific intervals. This can be done by updating the `services-start` file or directly using the `cru` command.
+
+**Option 1: Update `services-start` File**
+
+Edit the `services-start` file in the `/jffs/scripts/` directory:
+
+```bash
+asus@RT-AX88U_Pro:/jffs/scripts# vi services-start
+```
+
+Add the following lines to schedule the script:
+
+```bash
+#!/bin/sh
+
+# Workdays (Monday to Friday) at 20 minutes past every hour from 0-8 AM and 7-11 PM
+/usr/sbin/cru a channel_ck_weekdays "20 0-8,19-23 * * 1-5 sh /jffs/scripts/channel-ck.sh"
+
+# Weekends (Saturday and Sunday) at 20 minutes past every hour
+/usr/sbin/cru a channel_ck_weekends "20 * * * 6,0 sh /jffs/scripts/channel-ck.sh"
+```
+
+**Option 2: Use `cru` Command Directly**
+
+Alternatively, you can use the `cru` command directly in the terminal to set up the cron jobs:
+
+```bash
+/usr/sbin/cru a channel_ck_weekdays "20 0-8,19-23 * * 1-5 sh /jffs/scripts/channel-ck.sh"
+/usr/sbin/cru a channel_ck_weekends "20 * * * 6,0 sh /jffs/scripts/channel-ck.sh"
+```
+
+## End
+
+By setting up this script and scheduling it with `cru`, you can ensure that your router automatically checks and restarts the WiFi 5GHz if it switches due to DFS. [^3] [^4]
+
+[^1]: [[Wireless Router] What is DFS (Dynamic Frequency Selection)](https://www.asus.com/support/faq/1045936/#:~:text=DFS%20is,for%20radar.)
+
+[^2]: [RT-AX86U doesn't switch back to DFS channel - SNBForums](https://www.snbforums.com/threads/rt-ax86u-doesnt-switch-back-to-dfs-channel.77728/#:~:text=So%20I,detected%20radar.)
+
+[^3]: [User scripts](https://github.com/RMerl/asuswrt-merlin.ng/wiki/User-scripts#:~:text=Full%20document,more%20information.)
+
+[^4]: [Scheduled tasks (cron jobs)](<https://github.com/RMerl/asuswrt-merlin.ng/wiki/Scheduled-tasks-(cron-jobs)#:~:text=Full%20document,more%20information.>)
