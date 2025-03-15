@@ -92,24 +92,46 @@ export default function About() {
             </div>
           </section>
           <section className="space-y-7">
-            <div>
+            <div className="space-y-4">
+              <p>Technologies I've worked with or am actively exploring:</p>
+
+              <div className="space-y-3">
+                <div>
+                  <h3 className="mb-1 font-bold">Frontend</h3>
+                  <p>
+                    HTML, CSS, Tailwind CSS, JavaScript, TypeScript, React.js,
+                    Vue.js
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="mb-1 font-bold">Backend</h3>
+                  <p>Java, Spring, JDBC, Hibernate, Go, Node.js</p>
+                </div>
+
+                <div>
+                  <h3 className="mb-1 font-bold">Data & Integration</h3>
+                  <p>
+                    SQL, MySQL, PostgreSQL, Hashicorp Vault, Keycloak, RabbitMQ,
+                    REST, gRPC, OpenAPI, SOAP
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="mb-1 font-bold">DevOps & Infrastructure</h3>
+                  <p>
+                    Kubernetes, Docker, Terraform, Helm, Grafana, Prometheus,
+                    GitLab Actions, Jenkins, Git
+                  </p>
+                </div>
+              </div>
+
               <p>
-                Some of the technologies I've worked with or have been
-                interested in learning over the years:
-              </p>
-              <ul className="list-inside list-disc">
-                <li>HTML, CSS, SCSS, Tailwind CSS</li>
-                <li>
-                  JavaScript, TypeScript, Node.js, React.js, Vue.js, Angular
-                </li>
-                <li>Java, Spring, JDBC, Hibernate</li>
-                <li>SQL, MySQL, Vault, Keycloak, RabbitMQ</li>
-                <li>Kubernetes, Docker, Terraform, Helm</li>
-                <li>Grafana, Prometheus, GitLab Actions, Git</li>
-                <li>REST, gRPC, OpenAPI, SOAP</li>
-              </ul>
-              <p className="mt-3">
-                I'm also familiar with Go, Python, and PHP.
+                My favorite programming language is Go, which I'm actively
+                getting better at. I appreciate its simplicity, performance, and
+                natural fit with the Kubernetes ecosystem for developing
+                cloud-native applications, and its flexibility for building CLI
+                tools.
               </p>
             </div>
             <div>
