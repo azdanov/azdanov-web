@@ -3,8 +3,7 @@ import "@/styles/tailwind.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
-import { Atkinson_Hyperlegible as Sans } from "next/font/google";
-import { JetBrains_Mono as Mono } from "next/font/google";
+import localFont from "next/font/local";
 import type { ReactNode } from "react";
 
 import { Providers } from "@/app/providers";
@@ -34,15 +33,13 @@ export const metadata: Metadata = {
   },
 };
 
-const sans = Sans({
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
-  subsets: ["latin", "latin-ext"],
+const sans = localFont({
+  src: "../fonts/AtkinsonHyperlegibleNextVF-Variable.woff2",
   variable: "--sans",
 });
 
-const mono = Mono({
-  subsets: ["latin", "latin-ext"],
+const mono = localFont({
+  src: "../fonts/AtkinsonHyperlegibleMonoVF-Variable.woff2",
   variable: "--mono",
 });
 
