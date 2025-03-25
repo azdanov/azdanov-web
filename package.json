@@ -16,12 +16,12 @@
     "> 0.2% and not dead"
   ],
   "dependencies": {
-    "@headlessui/react": "^2.2.0",
+    "@headlessui/react": "^2.2.1",
     "@mapbox/rehype-prism": "^0.9.0",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
-    "@next/mdx": "^15.2.3",
-    "@tailwindcss/postcss": "^4.0.15",
+    "@next/mdx": "^15.2.5",
+    "@tailwindcss/postcss": "^4.1.3",
     "@tailwindcss/typography": "^0.5.16",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
@@ -29,29 +29,39 @@
     "clsx": "^2.1.1",
     "fast-glob": "^3.3.3",
     "feed": "^4.2.2",
-    "next": "^15.2.3",
+    "next": "^15.2.5",
     "next-themes": "^0.4.6",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "remark-gfm": "^4.0.1",
-    "tailwindcss": "^4.0.15"
+    "tailwindcss": "^4.1.3"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.24.0",
+    "@next/eslint-plugin-next": "^15.2.5",
     "@types/mdx": "^2.0.13",
-    "@types/node": "^22.13.11",
-    "@types/react": "^19.0.12",
-    "@types/react-dom": "^19.0.4",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.2",
     "@types/webpack-env": "^1.18.8",
-    "@typescript-eslint/eslint-plugin": "^8.27.0",
-    "eslint": "^9.23.0",
-    "eslint-config-next": "^15.2.3",
+    "@typescript-eslint/eslint-plugin": "^8.29.1",
+    "eslint": "^9.24.0",
+    "eslint-config-next": "^15.2.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-unused-imports": "^4.1.4",
     "husky": "^9.1.7",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "sharp": "^0.33.5",
-    "typescript": "^5.8.2"
+    "sharp": "^0.34.1",
+    "typescript": "^5.8.3"
   },
-  "packageManager": "pnpm@10.5.1+sha512.c424c076bd25c1a5b188c37bb1ca56cc1e136fbf530d98bcb3289982a08fd25527b8c9c4ec113be5e3393c39af04521dd647bcf1d0801eaf8ac6a7b14da313af"
+  "packageManager": "pnpm@10.8.0+sha512.0e82714d1b5b43c74610193cb20734897c1d00de89d0e18420aebc5977fa13d780a9cb05734624e81ebd81cc876cd464794850641c48b9544326b5622ca29971",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@vercel/speed-insights",
+      "sharp"
+    ]
+  }
 }
