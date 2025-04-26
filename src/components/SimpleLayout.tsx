@@ -7,8 +7,8 @@ export function SimpleLayout({
   intro,
   children,
 }: Readonly<{
-  title: string;
-  intro: string;
+  title: ReactNode;
+  intro: ReactNode;
   children?: ReactNode;
 }>) {
   return (
