@@ -67,24 +67,17 @@ export default function About() {
           </ul>
         </aside>
         <article className="order-2 space-y-12 text-base text-zinc-600 md:col-span-2 lg:order-first lg:col-span-1 lg:row-span-2 dark:text-zinc-400">
-          <section>
+          <section className="mb-6">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
               I'm Anton Ždanov.
               <br />I live in <span title="Tallinn, Estonia">Tallinn</span>.
             </h1>
-            <div className="mt-6 space-y-7">
+            <div className="mt-6 space-y-6">
               <p>
                 I'm a software developer with many years of experience in
-                creating web applications.
-              </p>
-              <p>
-                I have worked with various technologies across the front end,
-                back end, database, and infrastructure layers. Some of the
-                projects I'm proud of include a payment widget and a dashboard
-                for a financial company, an app for operators to provide
-                customers with real-time support, and an app that is used for
-                reconciling and maintaining the balance of financial
-                transactions.
+                creating web applications. I have worked with various
+                technologies across the front end, back end, database, and
+                infrastructure layers.
               </p>
               <p>
                 I'm always eager to learn new skills and broaden my knowledge.
