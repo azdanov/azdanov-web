@@ -93,7 +93,7 @@ export default function About() {
                   <h3 className="mb-1 font-bold">Frontend</h3>
                   <p>
                     HTML, CSS, Tailwind CSS, JavaScript, TypeScript, React.js,
-                    Next.js, Vue.js
+                    Next.js, shadcn/ui
                   </p>
                 </div>
 
