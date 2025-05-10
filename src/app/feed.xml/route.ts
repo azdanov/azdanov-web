@@ -61,6 +61,8 @@ export async function GET(req: Request) {
     });
   }
 
+  feed.items.sort((a, b) => b.date.getTime() - a.date.getTime());
+
   return new Response(feed.rss2(), {
     status: 200,
     headers: {
