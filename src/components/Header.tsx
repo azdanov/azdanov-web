@@ -125,7 +125,7 @@ function NavItem({
       >
         {children}
         {isActive && (
-          <span className="absolute inset-x-2 bottom-1 h-px bg-blue-500/80 dark:bg-blue-400/80" />
+          <span className="absolute inset-x-2 bottom-[6px] h-px rounded bg-blue-500/80 dark:bg-blue-400/80" />
         )}
       </Link>
     </li>
