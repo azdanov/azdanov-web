@@ -99,7 +99,7 @@ export default function About() {
 
                 <div>
                   <h3 className="mb-1 font-bold">Backend</h3>
-                  <p>Java, Spring, JDBC, Hibernate, Go, Node.js</p>
+                  <p>Java, Spring, Spring Boot, JDBC, Hibernate, Node.js</p>
                 </div>
 
                 <div>
@@ -118,14 +118,6 @@ export default function About() {
                   </p>
                 </div>
               </div>
-
-              <p>
-                My favorite programming language is Go, which I'm actively
-                getting better at. I appreciate its simplicity, performance, and
-                natural fit with the Kubernetes ecosystem for developing
-                cloud-native applications, and its flexibility for building CLI
-                tools.
-              </p>
             </div>
             <div>
               <p>Certificates that I have:</p>
