@@ -27,7 +27,7 @@ type Repository = {
 };
 
 async function getGitHubRepos() {
-  const username = process.env.GITHUB_USERNAME || "azdanov";
+  const username = process.env.GITHUB_USERNAME ?? "azdanov";
   const token = process.env.GITHUB_TOKEN;
 
   try {
@@ -49,7 +49,7 @@ async function getGitHubRepos() {
     const repos: Repository[] = await response.json();
 
     const sortedRepos = repos
-      .sort((a, b) => {
+      .toSorted((a, b) => {
         const dateA = new Date(a.updated_at).getTime();
         const dateB = new Date(b.updated_at).getTime();
         const dateDiff = dateB - dateA;
