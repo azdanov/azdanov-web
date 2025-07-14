@@ -1,12 +1,12 @@
 import clsx from "clsx";
 import {
   type ComponentPropsWithoutRef,
-  type ElementRef,
+  type ComponentRef,
   forwardRef,
 } from "react";
 
 export const ContainerOuter = forwardRef<
-  ElementRef<"div">,
+  ComponentRef<"div">,
   ComponentPropsWithoutRef<"div">
 >(function OuterContainer({ className, children, ...props }, ref) {
   return (
@@ -17,7 +17,7 @@ export const ContainerOuter = forwardRef<
 });
 
 export const ContainerInner = forwardRef<
-  ElementRef<"div">,
+  ComponentRef<"div">,
   ComponentPropsWithoutRef<"div">
 >(function InnerContainer({ className, children, ...props }, ref) {
   return (
@@ -32,7 +32,7 @@ export const ContainerInner = forwardRef<
 });
 
 export const Container = forwardRef<
-  ElementRef<typeof ContainerOuter>,
+  ComponentRef<typeof ContainerOuter>,
   ComponentPropsWithoutRef<typeof ContainerOuter>
 >(function Container({ children, ...props }, ref) {
   return (
