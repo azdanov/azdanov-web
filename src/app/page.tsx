@@ -150,7 +150,7 @@ function Resume() {
       company: "ADM Interactive",
       title: "Java Developer",
       logo: admLogo,
-      end: "Present",
+      end: "2025",
       start: "2023",
     },
     {
