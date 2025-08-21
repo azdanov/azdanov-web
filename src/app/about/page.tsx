@@ -75,7 +75,7 @@ export default function About() {
             <div className="mt-6 space-y-6">
               <p>
                 I'm a software developer with many years of experience in
-                creating web applications. I have worked with various
+                creating web applications. <br /> I have worked with various
                 technologies across the front end, back end, database, and
                 infrastructure layers.
               </p>

@@ -28,12 +28,13 @@ const config = [
     },
 
     rules: {
+      "@typescript-eslint/no-explicit-any": "error",
+      "@typescript-eslint/no-unused-vars": "error",
+      "@typescript-eslint/triple-slash-reference": "warn",
       "prefer-const": "error",
       "react/no-unescaped-entities": "off",
-      "@typescript-eslint/no-unused-vars": "error",
-      "@typescript-eslint/no-explicit-any": "error",
-      "simple-import-sort/imports": "error",
       "simple-import-sort/exports": "error",
+      "simple-import-sort/imports": "error",
       "unused-imports/no-unused-imports": "error",
 
       "unused-imports/no-unused-vars": [
