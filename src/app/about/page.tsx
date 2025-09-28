@@ -88,35 +88,53 @@ export default function About() {
             <div className="space-y-4">
               <p>Technologies I've worked with or am actively exploring:</p>
 
-              <div className="space-y-3">
-                <div>
-                  <h3 className="mb-1 font-bold">Frontend</h3>
-                  <p>
-                    HTML, CSS, Tailwind CSS, JavaScript, TypeScript, React.js,
-                    Next.js, shadcn/ui
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="mb-1 font-bold">Backend</h3>
-                  <p>Java, Spring, Spring Boot, JDBC, Hibernate, Node.js</p>
-                </div>
-
-                <div>
-                  <h3 className="mb-1 font-bold">Data & Integration</h3>
-                  <p>
-                    SQL, MySQL, PostgreSQL, Hashicorp Vault, Keycloak, RabbitMQ,
-                    REST, gRPC, OpenAPI, SOAP
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="mb-1 font-bold">DevOps & Infrastructure</h3>
-                  <p>
-                    Kubernetes, Docker, Terraform, Helm, Grafana, Prometheus,
-                    GitLab Actions, Jenkins, Git
-                  </p>
-                </div>
+              <div className="overflow-x-auto">
+                <table className="table-auto divide-y divide-zinc-100 dark:divide-zinc-700/40">
+                  <thead>
+                    <tr className="divide-x divide-zinc-100 dark:divide-zinc-700/40">
+                      <th className="pr-3 pb-2 pl-0 text-left font-bold">
+                        Category
+                      </th>
+                      <th className="pb-2 pl-3 text-left font-bold">
+                        Technologies
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-zinc-100 dark:divide-zinc-700/40">
+                    <tr className="divide-x divide-zinc-100 dark:divide-zinc-700/40">
+                      <td className="py-2 pr-3 pl-0 font-semibold">Frontend</td>
+                      <td className="py-2 pl-3">
+                        HTML, CSS, JavaScript, TypeScript, React.js, Next.js,
+                        Tailwind CSS, shadcn/ui
+                      </td>
+                    </tr>
+                    <tr className="divide-x divide-zinc-100 dark:divide-zinc-700/40">
+                      <td className="py-2 pl-0 font-semibold">Backend</td>
+                      <td className="py-2 pl-3">
+                        Java, Spring, Spring Boot, Quarkus, JDBC, Hibernate,
+                        Node.js, Bun
+                      </td>
+                    </tr>
+                    <tr className="divide-x divide-zinc-100 dark:divide-zinc-700/40">
+                      <td className="py-2 pr-3 pl-0 font-semibold">
+                        Data &<br /> Integration
+                      </td>
+                      <td className="py-2 pl-3">
+                        SQL, MySQL, PostgreSQL, Hashicorp Vault, Keycloak,
+                        RabbitMQ, REST, gRPC, OpenAPI, SOAP
+                      </td>
+                    </tr>
+                    <tr className="divide-x divide-zinc-100 dark:divide-zinc-700/40">
+                      <td className="pt-2 pr-3 pl-0 font-semibold">
+                        DevOps &<br /> Infrastructure
+                      </td>
+                      <td className="pt-2 pl-3">
+                        Kubernetes, Docker, Terraform, Helm, Grafana,
+                        Prometheus, GitLab/GitHub Actions, Jenkins, Git
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
             <div>
