@@ -1,8 +1,8 @@
 @import "tailwindcss";
 @import "./prism.css" layer(components);
 
-@plugin '@tailwindcss/typography';
-@config '../../typography.ts';
+@plugin "@tailwindcss/typography";
+@config "../../typography.ts";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
