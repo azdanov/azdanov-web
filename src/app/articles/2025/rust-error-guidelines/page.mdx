@@ -1,0 +1,426 @@
+import { ArticleLayout } from "../../../../components/ArticleLayout";
+
+export const article = {
+  author: "Anton Ždanov",
+  date: "2025-10-31T12:34:39.977Z",
+  title: "Rust Error Guidelines",
+  description:
+    "Personal notes on Rust error guidelines, handling, and tips for library and application errors.",
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+};
+
+export default function MDXPage({ children }) {
+  return <ArticleLayout article={article}>{children}</ArticleLayout>;
+}
+
+> Personal notes on Rust error guidelines, handling, and tips for library and application errors.
+
+## Recommendations for Creating Error Types
+
+### 1. Use an `enum` for Your Error Type
+
+Define errors as [`enum`](https://doc.rust-lang.org/reference/items/enumerations.html) to represent multiple distinct error conditions:
+
+```rust
+pub enum MyError {
+    IoError(std::io::Error),
+    ParseError(String),
+    ValidationError { field: String, reason: String },
+}
+```
+
+**Why?** Enums provide type-safe error handling and enable exhaustive pattern matching.
+
+### 2. Group Related Error Conditions
+
+Organize error variants logically within as few enums as necessary:
+
+```rust
+pub enum DatabaseError {
+    ConnectionFailed(String),
+    QueryFailed { query: String, cause: String },
+    RecordNotFound { id: u64 },
+    Timeout,
+}
+```
+
+**Why?** This improves maintainability and keeps error types focused on a single domain.
+
+### 3. Encapsulate Third-Party Errors
+
+Don't expose error types from external dependencies directly:
+
+```rust
+// Bad: Exposes implementation details
+pub fn read_config() -> Result<Config, std::io::Error> { }
+
+// Good: Wraps external error
+pub fn read_config() -> Result<Config, ConfigError> { }
+
+pub enum ConfigError {
+    Io(std::io::Error),
+    Parse(serde_json::Error),
+}
+```
+
+**Why?** This decouples your API from implementation details and allows error type evolution.
+
+### 4. Make Your Enum Non-Exhaustive
+
+Use [`#[non_exhaustive]`](https://doc.rust-lang.org/reference/attributes/type_system.html#r-attributes.type-system.non_exhaustive) to allow adding variants without breaking changes:
+
+```rust
+#[non_exhaustive]
+pub enum ApiError {
+    Unauthorized,
+    NotFound,
+    ServerError,
+}
+```
+
+**Why?** This maintains backward compatibility when adding new error variants in future releases.
+
+### 5. Implement Required Traits
+
+#### 5a. Manual Implementation
+
+Will require implementing [`std::fmt::Display`](https://doc.rust-lang.org/std/fmt/trait.Display.html) and [`std::error::Error`](https://doc.rust-lang.org/std/fmt/struct.Error.html):
+
+```rust
+use std::fmt;
+use std::error::Error;
+
+impl fmt::Display for MyError {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match self {
+            MyError::IoError(e) => write!(f, "IO error: {}", e),
+            MyError::ParseError(msg) => write!(f, "Parse error: {}", msg),
+        }
+    }
+}
+
+// Implementing source will enable error chaining
+// https://doc.rust-lang.org/std/error/trait.Error.html#method.source
+impl Error for MyError {
+    fn source(&self) -> Option<&(dyn Error + 'static)> {
+        match self {
+            MyError::IoError(e) => Some(e),
+            _ => None,
+        }
+    }
+}
+```
+
+#### 5b. Using `thiserror` (Recommended)
+
+An alternative is to use the [`thiserror`](https://crates.io/crates/thiserror) package to reduce boilerplate:
+
+```rust
+use thiserror::Error;
+
+#[derive(Error, Debug)]
+#[non_exhaustive]
+pub enum MyError {
+    #[error("IO error: {0}")]
+    IoError(#[from] std::io::Error),
+
+    #[error("Parse error: {0}")]
+    ParseError(String),
+
+    #[error("Validation failed for field '{field}': {reason}")]
+    ValidationError { field: String, reason: String },
+}
+```
+
+**Why?** The `Error` trait enables compatibility with `?` operator and error handling libraries. `thiserror` reduces boilerplate significantly.
+
+---
+
+## Additional Tips
+
+### Use `Result` Type Aliases
+
+Create type aliases using [`Result`](https://doc.rust-lang.org/std/result/) for cleaner and more consistent function signatures:
+
+```rust
+pub type Result<T> = std::result::Result<T, UserServiceError>;
+
+pub fn get_user(id: u64) -> Result<User> {
+    // ...
+}
+```
+
+**Why?** This reduces repetition and makes refactoring easier if you need to change the error type.
+
+### Implement `From` Trait for Error Conversion
+
+The [`From`](https://doc.rust-lang.org/std/convert/trait.From.html) trait helps with automatic error conversion:
+
+```rust
+// Manual implementation
+impl From<std::io::Error> for MyError {
+    fn from(error: std::io::Error) -> Self {
+        MyError::Io(error)
+    }
+}
+
+impl From<serde_json::Error> for MyError {
+    fn from(error: serde_json::Error) -> Self {
+        MyError::Parse(error.to_string())
+    }
+}
+
+// Or use thiserror's #[from] attribute
+#[derive(Error, Debug)]
+pub enum MyError {
+    #[error("IO error: {0}")]
+    Io(#[from] std::io::Error),
+
+    #[error("Parse error: {0}")]
+    Parse(#[from] serde_json::Error),
+}
+
+// Now you can use ? operator with automatic conversion
+fn read_and_parse() -> Result<Config, MyError> {
+    let content = std::fs::read_to_string("config.json")?; // auto-converts io::Error
+    let config = serde_json::from_str(&content)?; // auto-converts serde_json::Error
+    Ok(config)
+}
+```
+
+**Why?** Automatic conversion eliminates manual `map_err()` calls and makes error propagation seamless.
+
+### Add Context with Error Chaining
+
+```rust
+fn load_config(path: &str) -> Result<Config, ConfigError> {
+    let content = std::fs::read_to_string(path)
+        .map_err(|source| ConfigError::ReadFailed {
+            path: path.to_string(),
+            source,
+        })?;
+
+    let config = serde_json::from_str(&content)
+        .map_err(|source| ConfigError::ParseFailed {
+            path: path.to_string(),
+            source,
+        })?;
+
+    Ok(config)
+}
+```
+
+**Why?** Context-rich errors make debugging significantly easier by preserving the error chain.
+
+### Consider Error Codes for APIs
+
+```rust
+#[derive(Error, Debug)]
+#[non_exhaustive]
+pub enum ApiError {
+    #[error("[AUTH001] Unauthorized: {0}")]
+    Unauthorized(String),
+
+    #[error("[RES404] Resource not found: {resource_type} with id {id}")]
+    NotFound { resource_type: String, id: String },
+}
+
+impl ApiError {
+    pub fn error_code(&self) -> &str {
+        match self {
+            ApiError::Unauthorized(_) => "AUTH001",
+            ApiError::NotFound { .. } => "RES404",
+        }
+    }
+}
+```
+
+**Why?** Error codes enable clients to handle errors programmatically and support internationalization.
+
+### Document Error Conditions
+
+```rust
+/// Fetches a user by their ID from the database.
+///
+/// # Errors
+///
+/// This function will return an error if:
+/// - [`UserServiceError::Database`] - Database connection or query fails
+/// - [`UserServiceError::UserNotFound`] - No user exists with the given ID
+/// - [`UserServiceError::PermissionDenied`] - Caller lacks read permissions
+pub fn get_user(id: u64) -> Result<User, UserServiceError> {
+    // ...
+}
+```
+
+**Why?** Documentation helps users understand and handle errors correctly without reading the source code.
+
+### Use `#[must_use]` for Result Types
+
+When necessary use [`#[must_use]`](https://doc.rust-lang.org/reference/attributes/diagnostics.html#the-must_use-attribute) to enforce handling of results:
+
+```rust
+#[must_use = "this function returns a Result that should be handled"]
+pub fn save_user(user: &User) -> Result<()> {
+    // ...
+}
+```
+
+**Why?** This prevents accidentally ignoring errors, which is a common source of bugs.
+
+### Create Helper Methods for Common Patterns
+
+```rust
+use thiserror::Error;
+
+#[derive(Error, Debug)]
+#[non_exhaustive]
+pub enum ValidationError {
+    #[error("Field '{field}' is required")]
+    Required { field: String },
+
+    #[error("Field '{field}' has invalid format: {reason}")]
+    InvalidFormat { field: String, reason: String },
+}
+
+// Helper methods
+impl ValidationError {
+    pub fn required(field: impl Into<String>) -> Self {
+        Self::Required { field: field.into() }
+    }
+
+    pub fn invalid_format(field: impl Into<String>, reason: impl Into<String>) -> Self {
+        Self::InvalidFormat {
+            field: field.into(),
+            reason: reason.into(),
+        }
+    }
+}
+
+// Usage
+fn validate_email(email: &str) -> Result<(), ValidationError> {
+    if email.is_empty() {
+        return Err(ValidationError::required("email"));
+    }
+    if !email.contains('@') {
+        return Err(ValidationError::invalid_format("email", "missing @ symbol"));
+    }
+    Ok(())
+}
+```
+
+**Why?** Helper methods reduce boilerplate and ensure consistent error construction.
+
+### Separate Recoverable from Unrecoverable Errors
+
+Use `Result` for recoverable errors and [`panic!`](https://doc.rust-lang.org/std/macro.panic.html) for unrecoverable ones:
+
+```rust
+// Recoverable: User might fix the input
+pub fn parse_age(input: &str) -> Result<u32, ParseError> {
+    input.parse().map_err(|_| ParseError::InvalidAge(input.to_string()))
+}
+
+// Unrecoverable: Programming error
+pub fn get_config_value(key: &str) -> String {
+    CONFIG.get(key)
+        .unwrap_or_else(|| panic!("Config key '{}' must be set", key))
+}
+```
+
+**Why?** This distinction clarifies error handling strategies and improves code readability.
+
+---
+
+## Additional Libraries and Tools
+
+### Use `anyhow` for Application-Level Error Handling
+
+For applications (not libraries), consider using [`anyhow`](https://crates.io/crates/anyhow):
+
+```rust
+use anyhow::{Context, Result};
+
+fn load_config(path: &str) -> Result<Config> {
+    let content = std::fs::read_to_string(path)
+        .context(format!("Failed to read config from '{}'", path))?;
+
+    let config: Config = serde_json::from_str(&content)
+        .context(format!("Failed to parse config from '{}'", path))?;
+
+    Ok(config)
+}
+```
+
+**Why?** `anyhow` simplifies error handling by providing a generic error type that can wrap any error, along with context.
+
+### Enhanced Error Reporting with `miette`
+
+For applications that need rich diagnostic error reporting try [`miette`](https://crates.io/crates/miette):
+
+```rust
+use miette::{Diagnostic, Result};
+use thiserror::Error;
+
+#[derive(Error, Debug, Diagnostic)]
+#[error("Configuration validation failed")]
+#[diagnostic(
+    code(config::validation_failed),
+    help("Check your configuration file syntax and required fields")
+)]
+pub struct ConfigValidationError {
+    #[source_code]
+    src: String,
+
+    #[label("This field is invalid")]
+    invalid_field: miette::SourceSpan,
+}
+
+fn validate_config(config_content: &str) -> Result<Config> {
+    // ... validation logic
+    Err(ConfigValidationError {
+        src: config_content.to_string(),
+        invalid_field: (42, 10).into(), // byte offset and length
+    })?
+}
+```
+
+**Why?** `miette` provides beautiful, IDE-like error reports with source code snippets, suggestions, and structured diagnostic information. Useful for CLI tools and developer-facing applications.
+
+### Error Tracing Integration
+
+Integrate errors with structured logging using [`tracing-error`](https://crates.io/crates/tracing-error):
+
+```rust
+use tracing_error::ErrorLayer;
+use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
+
+fn main() -> Result<()> {
+    tracing_subscriber::registry()
+        .with(ErrorLayer::default())
+        .with(tracing_subscriber::fmt::layer())
+        .init();
+
+    // Your application code
+    Ok(())
+}
+
+// In your error handling code
+match operation() {
+    Ok(result) => result,
+    Err(e) => {
+        tracing::error!(
+            error = ?e,
+            operation = "daily_backup",
+            "Operation failed"
+        );
+        return Err(e.into());
+    }
+}
+```
+
+**Why?** This allows capturing rich context about errors in logs, facilitating debugging and monitoring in production environments.
