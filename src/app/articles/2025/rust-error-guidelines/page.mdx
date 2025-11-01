@@ -19,6 +19,29 @@ export default function MDXPage({ children }) {
 
 > Personal notes on Rust error guidelines, handling, and tips for library and application errors.
 
+## TL;DR
+
+**Core Principles:**
+
+- Use `enum` types with `#[non_exhaustive]` for error definitions
+- Wrap third-party errors—never expose them directly in your public API
+- Implement `Display` and `Error` traits (or use `thiserror` to reduce boilerplate)
+- Create `Result<T>` type aliases for cleaner function signatures
+
+**Key Decisions:**
+
+- **Libraries:** Use `thiserror` for custom error types with minimal boilerplate
+- **Applications:** Use `anyhow` for flexible error handling with context
+- **CLI Tools:** Consider `miette` or `eyre` for rich, user-friendly error diagnostics
+- **Recoverable vs Unrecoverable:** Use `Result` for recoverable errors, `panic!` for programming errors
+
+**Essential Patterns:**
+
+- Implement `From` trait for automatic error conversion with `?` operator
+- Add context to errors using `map_err()` or `.context()` (with `anyhow`)
+- Document error conditions in function docs with `# Errors` section
+- Use helper methods for common error construction patterns
+
 ## Recommendations for Creating Error Types
 
 ### 1. Use an `enum` for Your Error Type
