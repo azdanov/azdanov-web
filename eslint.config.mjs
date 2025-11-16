@@ -1,19 +1,19 @@
-import typescriptEslint from "@typescript-eslint/eslint-plugin";
+import { defineConfig } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
+import prettier from "eslint-config-prettier/flat";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 import unusedImports from "eslint-plugin-unused-imports";
 
-const config = [
+const config = defineConfig([
   ...nextVitals,
   ...nextTs,
+  prettier,
   {
     plugins: {
-      "@typescript-eslint": typescriptEslint,
       "simple-import-sort": simpleImportSort,
       "unused-imports": unusedImports,
     },
-
     rules: {
       "@typescript-eslint/no-explicit-any": "error",
       "@typescript-eslint/no-unused-vars": "error",
@@ -23,7 +23,6 @@ const config = [
       "simple-import-sort/exports": "error",
       "simple-import-sort/imports": "error",
       "unused-imports/no-unused-imports": "error",
-
       "unused-imports/no-unused-vars": [
         "warn",
         {
@@ -35,6 +34,6 @@ const config = [
       ],
     },
   },
-];
+]);
 
 export default config;
