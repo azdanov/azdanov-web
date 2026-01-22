@@ -5,7 +5,7 @@ export async function GET() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
   if (!siteUrl) {
-    throw Error("Missing NEXT_PUBLIC_SITE_URL environment variable");
+    throw new Error("Missing NEXT_PUBLIC_SITE_URL environment variable");
   }
 
   const author = {
