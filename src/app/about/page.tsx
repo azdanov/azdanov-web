@@ -12,7 +12,7 @@ import portraitImage from "@/images/portrait.jpg";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "I'm Anton Ždanov. I live in Tallinn. I'm a software engineer, and I'm passionate about building products that make people's lives better.",
+    "I'm Anton Ždanov. I live in Tallinn. I'm a software developer, and I'm passionate about building products that make people's lives better.",
 };
 
 export default function About() {
