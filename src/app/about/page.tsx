@@ -111,8 +111,8 @@ export default function About() {
                     <tr className="divide-x divide-zinc-100 dark:divide-zinc-700/40">
                       <td className="py-2 pl-0 font-semibold">Backend</td>
                       <td className="py-2 pl-3">
-                        Java, Spring, Spring Boot, Quarkus, JDBC, Hibernate,
-                        Node.js, Bun
+                        Java, Spring, Spring Boot, JDBC, Hibernate, Node.js,
+                        Bun, Go
                       </td>
                     </tr>
                     <tr className="divide-x divide-zinc-100 dark:divide-zinc-700/40">
