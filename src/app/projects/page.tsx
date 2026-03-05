@@ -162,9 +162,9 @@ export default async function ProjectsPage() {
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {repositories.map((repo) => {
             const languagePercentages = getLanguagePercentages(repo.languages);
-            const sortedLanguages = Object.entries(languagePercentages).sort(
-              ([, pctA], [, pctB]) => pctB - pctA,
-            );
+            const sortedLanguages = Object.entries(
+              languagePercentages,
+            ).toSorted(([, pctA], [, pctB]) => pctB - pctA);
 
             return (
               <div

@@ -88,7 +88,7 @@ export async function GET() {
 
   items
     .filter((x): x is NonNullable<typeof x> => Boolean(x))
-    .sort((a, b) => b.date.getTime() - a.date.getTime())
+    .toSorted((a, b) => b.date.getTime() - a.date.getTime())
     .forEach((item) => feed.addItem(item));
 
   return new Response(feed.rss2(), {
