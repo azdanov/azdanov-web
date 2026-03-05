@@ -1,4 +1,4 @@
 # .husky/pre-commit
-prettier $(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g') --write --ignore-unknown
-eslint $(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g') --fix
+oxfmt $(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g') --no-error-on-unmatched-pattern
+oxlint $(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g') --fix
 git update-index --again

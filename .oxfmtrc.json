@@ -1,0 +1,7 @@
+{
+  "sortTailwindcss": {
+    "stylesheet": "./src/styles/tailwind.css"
+  },
+  "printWidth": 80,
+  "sortPackageJson": true
+}
