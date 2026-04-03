@@ -21,7 +21,8 @@
     ],
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "types": ["mdx"]
   },
   "include": [
     "next-env.d.ts",

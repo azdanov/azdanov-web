@@ -49,7 +49,7 @@ const nextConfig = {
 };
 
 const withMDX = nextMDX({
-  extension: /\.mdx?$/,
+  extension: /\.(md|mdx)$/,
   options: {
     remarkPlugins: ["remark-gfm"],
     rehypePlugins: ["@mapbox/rehype-prism"],
