@@ -104,15 +104,15 @@ export default function About() {
                     <tr className="divide-x divide-zinc-100 dark:divide-zinc-700/40">
                       <td className="py-2 pr-3 pl-0 font-semibold">Frontend</td>
                       <td className="py-2 pl-3">
-                        HTML, CSS, JavaScript, TypeScript, React.js, Next.js,
-                        Tailwind CSS, shadcn/ui
+                        HTML, CSS, JavaScript, TypeScript, React.js, Astro.js,
+                        Tailwind CSS
                       </td>
                     </tr>
                     <tr className="divide-x divide-zinc-100 dark:divide-zinc-700/40">
                       <td className="py-2 pl-0 font-semibold">Backend</td>
                       <td className="py-2 pl-3">
-                        Java, Spring, Spring Boot, JDBC, Hibernate, Node.js,
-                        Bun, Go
+                        Java, Spring Boot, JDBC, Hibernate, C#, .NET Core,
+                        Entity Framework
                       </td>
                     </tr>
                     <tr className="divide-x divide-zinc-100 dark:divide-zinc-700/40">
