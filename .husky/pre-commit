@@ -1,4 +1,10 @@
 # .husky/pre-commit
-oxfmt $(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g') --no-error-on-unmatched-pattern
-oxlint $(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g') --fix
+# Format staged files supported by oxfmt; no-op when none match.
+format_files=$(git diff --cached --name-only --diff-filter=ACMR | grep -E '\.(js|jsx|ts|tsx|mjs|cjs|json|md|mdx|css)$' | sed 's| |\\ |g' || true)
+[ -n "$format_files" ] && oxfmt $format_files --no-error-on-unmatched-pattern
+
+# Lint only supported source files and skip declaration files.
+lint_files=$(git diff --cached --name-only --diff-filter=ACMR | grep -E '\.(js|jsx|ts|tsx|mjs|cjs)$' | grep -vE '\.d\.ts$' | sed 's| |\\ |g' || true)
+[ -n "$lint_files" ] && oxlint $lint_files --fix
+
 git update-index --again
