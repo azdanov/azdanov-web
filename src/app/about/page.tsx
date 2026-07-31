@@ -102,17 +102,21 @@ export default function About() {
                   </thead>
                   <tbody className="divide-y divide-zinc-100 dark:divide-zinc-700/40">
                     <tr className="divide-x divide-zinc-100 dark:divide-zinc-700/40">
-                      <td className="py-2 pr-3 pl-0 font-semibold">Frontend</td>
+                      <td className="py-2 pr-3 pl-0 font-semibold">
+                        Programming
+                        <br /> Languages
+                      </td>
                       <td className="py-2 pl-3">
-                        HTML, CSS, JavaScript, TypeScript, React.js, Astro.js,
-                        Tailwind CSS
+                        HTML, CSS, JavaScript, TypeScript, Java, C#, SQL, Zig
                       </td>
                     </tr>
                     <tr className="divide-x divide-zinc-100 dark:divide-zinc-700/40">
-                      <td className="py-2 pl-0 font-semibold">Backend</td>
+                      <td className="py-2 pl-0 font-semibold">
+                        Frameworks &<br /> Libraries
+                      </td>
                       <td className="py-2 pl-3">
-                        Java, Spring Boot, JDBC, Hibernate, C#, .NET Core,
-                        Entity Framework
+                        React.js, Astro.js, Tailwind CSS, Spring Boot, JDBC,
+                        Hibernate, .NET Core, Entity Framework
                       </td>
                     </tr>
                     <tr className="divide-x divide-zinc-100 dark:divide-zinc-700/40">
@@ -120,8 +124,8 @@ export default function About() {
                         Data &<br /> Integration
                       </td>
                       <td className="py-2 pl-3">
-                        SQL, MySQL, PostgreSQL, Hashicorp Vault, Keycloak,
-                        RabbitMQ, REST, gRPC, OpenAPI, SOAP
+                        MySQL, PostgreSQL, Hashicorp Vault, Keycloak, RabbitMQ,
+                        REST, gRPC, OpenAPI, SOAP
                       </td>
                     </tr>
                     <tr className="divide-x divide-zinc-100 dark:divide-zinc-700/40">
