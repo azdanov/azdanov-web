@@ -9,7 +9,7 @@ interface PageInfo {
 }
 
 function getStaticPageInfo(dir: string): PageInfo[] {
-  const pagesDir = path.join(process.cwd(), dir);
+  const pagesDir = path.join(/*turbopackIgnore: true*/ process.cwd(), dir);
   const entries = fs.readdirSync(pagesDir, { withFileTypes: true });
 
   let pageInfo: PageInfo[] = [];
@@ -19,7 +19,10 @@ function getStaticPageInfo(dir: string): PageInfo[] {
       const subDirInfo = getStaticPageInfo(path.join(dir, entry.name));
       pageInfo = pageInfo.concat(subDirInfo);
     } else if (entry.name === "page.tsx") {
-      const filePath = path.join(pagesDir, entry.name);
+      const filePath = path.join(
+        /*turbopackIgnore: true*/ pagesDir,
+        entry.name,
+      );
       const stats = fs.statSync(filePath);
       const route = dir === "src/app" ? "" : `${path.relative("src/app", dir)}`;
       pageInfo.push({
@@ -43,7 +46,7 @@ function extractDateFromMdx(content: string): Date | null {
 }
 
 function getArticleInfo(dir: string, baseRoute = ""): PageInfo[] {
-  const articlesDir = path.join(process.cwd(), dir);
+  const articlesDir = path.join(/*turbopackIgnore: true*/ process.cwd(), dir);
   const entries = fs.readdirSync(articlesDir, { withFileTypes: true });
 
   let articleInfo: PageInfo[] = [];
@@ -55,7 +58,10 @@ function getArticleInfo(dir: string, baseRoute = ""): PageInfo[] {
       const subDirInfo = getArticleInfo(subDir, subRoute);
       articleInfo = articleInfo.concat(subDirInfo);
     } else if (entry.name === "page.mdx") {
-      const filePath = path.join(articlesDir, entry.name);
+      const filePath = path.join(
+        /*turbopackIgnore: true*/ articlesDir,
+        entry.name,
+      );
       const fileContents = fs.readFileSync(filePath, "utf8");
       const extractedDate = extractDateFromMdx(fileContents);
       const route = path.join(
