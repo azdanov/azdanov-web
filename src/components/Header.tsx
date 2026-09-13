@@ -13,8 +13,7 @@ import { useTheme } from "next-themes";
 import {
   type ComponentPropsWithoutRef,
   type ReactNode,
-  useEffect,
-  useState,
+  useSyncExternalStore,
 } from "react";
 
 import { Container } from "@/components/Container";
@@ -75,12 +74,12 @@ function MobileNavigation(
       </PopoverButton>
       <PopoverBackdrop
         transition
-        className="fixed inset-0 z-50 bg-zinc-800/40 backdrop-blur-xs duration-150 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in dark:bg-black/80"
+        className="fixed inset-0 z-50 bg-zinc-800/40 backdrop-blur-xs transition-opacity duration-150 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in dark:bg-black/80"
       />
       <PopoverPanel
         focus
         transition
-        className="fixed inset-x-4 top-8 z-50 origin-top rounded-xs bg-white p-8 ring-1 ring-zinc-900/5 duration-150 data-closed:scale-95 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in dark:bg-zinc-900 dark:ring-zinc-800"
+        className="fixed inset-x-4 top-8 z-50 origin-top rounded-xs bg-white p-8 ring-1 ring-zinc-900/5 [transition-property:opacity,scale] duration-150 data-closed:scale-95 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in dark:bg-zinc-900 dark:ring-zinc-800"
       >
         <div className="flex flex-row-reverse items-center justify-between">
           <PopoverButton aria-label="Close menu" className="-m-1 p-1">
@@ -145,15 +144,28 @@ function DesktopNavigation(props: Readonly<ComponentPropsWithoutRef<"nav">>) {
   );
 }
 
+function subscribeToMounted() {
+  return () => {};
+}
+
+function getMountedSnapshot() {
+  return true;
+}
+
+function getMountedServerSnapshot() {
+  return false;
+}
+
 function ModeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
   const otherTheme = resolvedTheme === "dark" ? "light" : "dark";
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setMounted(true);
-  }, []);
+  // next-themes resolves the theme on the client only, so the server markup and
+  // the first client render have to agree before the real theme is known.
+  const mounted = useSyncExternalStore(
+    subscribeToMounted,
+    getMountedSnapshot,
+    getMountedServerSnapshot,
+  );
 
   return (
     <button

@@ -4,6 +4,23 @@ import path from "node:path";
 import * as cheerio from "cheerio";
 import { Feed } from "feed";
 
+const articlesDir = path.join(process.cwd(), "src/app/articles");
+
+function findArticleIds(dir: string): string[] {
+  return fs.readdirSync(dir, { withFileTypes: true }).flatMap((dirent) => {
+    const fullPath = path.join(dir, dirent.name);
+    if (dirent.isDirectory()) {
+      return findArticleIds(fullPath);
+    }
+    if (dirent.name === "page.mdx") {
+      return [path.relative(articlesDir, fullPath).replace(/\/page\.mdx$/, "")];
+    }
+    return [];
+  });
+}
+
+const articleIds = findArticleIds(articlesDir);
+
 export async function GET() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
@@ -29,25 +46,6 @@ export async function GET() {
       rss2: `${siteUrl}/feed.xml`,
     },
   });
-
-  const articlesDir = path.join(process.cwd(), "src/app/articles");
-
-  const findArticleIds = (dir: string): string[] => {
-    return fs.readdirSync(dir, { withFileTypes: true }).flatMap((dirent) => {
-      const fullPath = path.join(dir, dirent.name);
-      if (dirent.isDirectory()) {
-        return findArticleIds(fullPath);
-      }
-      if (dirent.name === "page.mdx") {
-        return [
-          path.relative(articlesDir, fullPath).replace(/\/page\.mdx$/, ""),
-        ];
-      }
-      return [];
-    });
-  };
-
-  const articleIds = findArticleIds(articlesDir);
 
   const articleUrls = articleIds.map((id) => ({
     id,

@@ -17,8 +17,11 @@ export const viewport: Viewport = {
   colorScheme: "light dark",
 };
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "";
+const metadataBase = URL.canParse(siteUrl) ? new URL(siteUrl) : undefined;
+
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? ""),
+  metadataBase,
   title: {
     template: "%s - Anton Ždanov",
     default: "Anton Ždanov - Software Developer",
@@ -26,7 +29,7 @@ export const metadata: Metadata = {
   description:
     "Hey, I'm Anton, a software developer based in Tallinn. I work with front-end, back-end, database, and infrastructure technologies. In my free time, I like to play video games, enjoy doing fitness, read books and study to get better at what I do.",
   alternates: {
-    canonical: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? ""),
+    canonical: metadataBase,
     types: {
       "application/rss+xml": "/feed.xml",
     },

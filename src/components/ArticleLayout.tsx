@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { type ReactNode, useContext } from "react";
 
-import { AppContext } from "@/app/providers";
+import { AppContext } from "@/app/AppContext";
 import { Container } from "@/components/Container";
 import { ArrowLeftIcon } from "@/components/icons/ArrowLeftIcon";
 import { Prose } from "@/components/Prose";
