@@ -12,7 +12,7 @@ import portraitImage from "@/images/portrait.jpg";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "I'm Anton Ždanov. I live in Tallinn. I'm a software developer, and I'm passionate about building products that make people's lives better.",
+    "I'm Anton Ždanov. I live in Tallinn. I'm a software developer, and I'm passionate about building products that make people's lives better. These days I do open source work with Seafoam Labs and CachyOS.",
 };
 
 export default function About() {
@@ -78,6 +78,46 @@ export default function About() {
                 creating web applications. <br /> I have worked with various
                 technologies across the front end, back end, database, and
                 infrastructure layers.
+              </p>
+              <p>
+                Right now I'm doing open source work with{" "}
+                <a
+                  className="underline"
+                  href="https://www.seafoam-labs.org/about/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Seafoam Labs
+                </a>{" "}
+                and{" "}
+                <a
+                  className="underline"
+                  href="https://cachyos.org/about/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  CachyOS
+                </a>
+                , where I help maintain tools for the Arch Linux ecosystem such
+                as{" "}
+                <a
+                  className="underline"
+                  href="https://github.com/Seafoam-Labs/Shelly-ALPM"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Shelly
+                </a>
+                , a pacman alternative, and{" "}
+                <a
+                  className="underline"
+                  href="https://github.com/Seafoam-Labs/Atoll"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Atoll
+                </a>
+                , an AUR metadata API.
               </p>
               <p>
                 I'm always eager to learn new skills and broaden my knowledge.
